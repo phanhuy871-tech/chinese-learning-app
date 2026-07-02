@@ -1,0 +1,3 @@
+sentence_id,sentence_hanzi,sentence_pinyin,sentence_vi,words,word_ids,blank_sentence,blank_answer_hanzi,blank_answer_word_id,blank_options_word_ids,grammar_ids,level,lesson_id,lesson_order,max_word_lesson_order,topic_id,audio_url,difficulty,tags,is_active
+s1,我喜欢学习中文,wo xi huan xue xi zhong wen,Toi thich hoc tieng Trung,我|喜欢|学习|中文,w7|w8|w6,我喜欢学习___,中文,w6,w4|w5|w6,grammar-like,HSK1,lesson-2,2,2,language,,1,sentence|blank,true
+

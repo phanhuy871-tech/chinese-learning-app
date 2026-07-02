@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chinese Learning App</title>
+    <link rel="stylesheet" href="/static/css/app.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">Chinese Learning</p>
+          <h1>Học từ vựng, câu và ngữ pháp theo bài</h1>
+        </div>
+        <button id="syncButton" type="button">Đồng bộ Sheet</button>
+      </section>
+
+      <section class="stats">
+        <article>
+          <span>{{ words_count }}</span>
+          <p>Từ vựng</p>
+        </article>
+        <article>
+          <span>{{ sentences_count }}</span>
+          <p>Câu game</p>
+        </article>
+        <article>
+          <span>{{ lessons|length }}</span>
+          <p>Bài học</p>
+        </article>
+        <article>
+          <span>{{ grammar_count }}</span>
+          <p>Ngữ pháp</p>
+        </article>
+      </section>
+
+      <!-- Tiến độ học theo từng người dùng nhỏ, lưu ở SQLite backend. -->
+      <section class="progress-panel" aria-label="Tiến độ học">
+        <div class="user-picker">
+          <label for="userSelect">Người học</label>
+          <select id="userSelect"></select>
+          <div class="new-user-row">
+            <input id="newUserName" type="text" placeholder="Tên người học mới" />
+            <button id="addUser" type="button">Thêm</button>
+          </div>
+        </div>
+        <article>
+          <span id="progressWords">0</span>
+          <p>Từ đã xem</p>
+        </article>
+        <article>
+          <span id="progressAnswered">0</span>
+          <p>Câu đã làm</p>
+        </article>
+        <article>
+          <span id="progressCorrect">0</span>
+          <p>Câu đúng</p>
+        </article>
+        <article>
+          <span id="progressAccuracy">0%</span>
+          <p>Tỉ lệ đúng</p>
+        </article>
+        <button id="resetProgress" type="button">Xóa tiến độ</button>
+      </section>
+
+      <!-- Thanh chọn module chính của ứng dụng. data-mode sẽ được JavaScript dùng để bật/tắt panel. -->
+      <section class="modebar" aria-label="Chế độ học">
+        <button class="mode is-active" data-mode="study" type="button">Học từ vựng</button>
+        <button class="mode" data-mode="radicals" type="button">Bộ thủ</button>
+        <button class="mode" data-mode="grammar" type="button">Ngữ pháp</button>
+        <button class="mode" data-mode="game" type="button">Game luyện tập</button>
+      </section>
+
+      <!-- Lưới nội dung chính: cột bài học luôn hiện, các panel còn lại đổi theo module. -->
+      <section class="grid">
+        <div class="panel">
+          <h2>Bài học</h2>
+          <div class="list">
+            {% for lesson in lessons %}
+              <button class="lesson{% if loop.first %} is-active{% endif %}" data-lesson="{{ lesson.order_index }}" type="button">
+                <strong>{{ lesson.name }}</strong>
+                <span>Học từ bài {{ lesson.order_index }}; game cho phép dùng từ bài 1 đến bài {{ lesson.order_index }}</span>
+              </button>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Module học từ vựng: danh sách từ và chi tiết từ. -->
+        <div class="panel study-panel" data-panel="study">
+          <h2>Từ vựng</h2>
+          <div id="wordList" class="word-list"></div>
+        </div>
+
+        <div class="panel detail-panel" data-panel="study">
+          <h2>Chi tiết</h2>
+          <div id="wordDetail" class="empty-state">Chọn một từ vựng để học.</div>
+        </div>
+
+        <!-- Module bộ thủ: danh sách bộ thủ và kiến thức chi tiết. -->
+        <div class="panel radical-panel hidden" data-panel="radicals">
+          <h2>Bộ thủ</h2>
+          <div id="radicalList" class="radical-list"></div>
+        </div>
+
+        <div class="panel radical-detail-panel hidden" data-panel="radicals">
+          <h2>Kiến thức bộ thủ</h2>
+          <div id="radicalDetail" class="empty-state">Chọn một bộ thủ để học.</div>
+        </div>
+
+        <!-- Module ngữ pháp: học công thức, ví dụ và ghi chú theo bài. -->
+        <div class="panel grammar-panel hidden" data-panel="grammar">
+          <h2>Ngữ pháp</h2>
+          <div id="grammarList" class="grammar-list"></div>
+        </div>
+
+        <div class="panel grammar-detail-panel hidden" data-panel="grammar">
+          <h2>Chi tiết ngữ pháp</h2>
+          <div id="grammarDetail" class="empty-state">Chọn một điểm ngữ pháp để học.</div>
+        </div>
+
+        <!-- Module game: chọn loại game và làm câu hỏi. -->
+        <div class="panel game-panel hidden" data-panel="game">
+          <h2>Game</h2>
+          <div class="list">
+            {% for game in game_types %}
+              <button class="game" data-game="{{ game['id'] }}" type="button">
+                <span class="game-group">{{ game['group'] }}</span>
+                <strong>{{ game['label'] }}</strong>
+                <span>{{ game['description'] }}</span>
+                <code>{{ game['id'] }}</code>
+              </button>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="panel question-panel hidden" data-panel="game">
+          <h2>Câu hỏi</h2>
+          <div id="questionBox">Chọn bài và game để tạo câu hỏi.</div>
+        </div>
+      </section>
+    </main>
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>

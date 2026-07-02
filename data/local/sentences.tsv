@@ -1,0 +1,517 @@
+sentence_id	target_word_id	target_hanzi	sentence_slot	sentence_hanzi	sentence_pinyin	sentence_vi	words	word_ids	blank_sentence	blank_answer_hanzi	blank_answer_word_id	blank_options_word_ids	grammar_ids	level	lesson_id	lesson_order	max_word_lesson_order	topic_id	audio_url	difficulty	tags	is_active	validation_status	scope_rule	note
+s0001_1	w0001	我	1	我很好。	wǒ hěn hǎo	Tôi rất tốt.	我|很|好	w0001|w0020|w0002	___很好。	我	w0001			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0001_2	w0001	我	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0001_3	w0001	我	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0002_1	w0002	好	1	我很好。	wǒ hěn hǎo	Tôi rất tốt.	我|很|好	w0001|w0020|w0002	我很___。	好	w0002			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0002_2	w0002	好	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0002_3	w0002	好	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0003_1	w0003	大	1	马很大。	mǎ hěn dà	Con ngựa rất lớn.	马|很|大	w0008|w0020|w0003	马很___。	大	w0003			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0003_2	w0003	大	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0003_3	w0003	大	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0004_1	w0004	不	1	汉语不难。	Hànyǔ bù nán	Tiếng Hán không khó.	汉语|不|难	w0021|w0004|w0022	汉语___难。	不	w0004			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0004_2	w0004	不	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0004_3	w0004	不	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0005_1	w0005	口	1	口不大。	kǒu bù dà	Miệng không lớn.	口|不|大	w0005|w0004|w0003	___不大。	口	w0005			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0005_2	w0005	口	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0005_3	w0005	口	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0006_1	w0006	白	1	白马很大。	bái mǎ hěn dà	Con ngựa trắng rất lớn.	白|马|很|大	w0006|w0008|w0020|w0003	___马很大。	白	w0006			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0006_2	w0006	白	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0006_3	w0006	白	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0007_1	w0007	女	1	女的在学校。	nǚ de zài xuéxiào	Người nữ ở trường học.	女|的|在|学|校	w0007	___的在学校。	女	w0007			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0007_2	w0007	女	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0007_3	w0007	女	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0008_1	w0008	马	1	我有马。	wǒ yǒu mǎ	Tôi có ngựa.	我|有|马	w0001|w0008	我有___。	马	w0008			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0008_2	w0008	马	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0008_3	w0008	马	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0009_1	w0009	一	1	一个口。	yī gè kǒu	Một cái miệng.	一|个|口	w0009|w0005	___个口。	一	w0009			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0009_2	w0009	一	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0009_3	w0009	一	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0010_1	w0010	二	1	二月二号。	èr yuè èr hào	Ngày 2 tháng 2.	二|月|二|号	w0010	___月二号。	二	w0010			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0010_2	w0010	二	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0010_3	w0010	二	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0011_1	w0011	三	1	三月三号。	sān yuè sān hào	Ngày 3 tháng 3.	三|月|三|号	w0011	___月三号。	三	w0011			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0011_2	w0011	三	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0011_3	w0011	三	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0012_1	w0012	四	1	四月四号。	sì yuè sì hào	Ngày 4 tháng 4.	四|月|四|号	w0012	___月四号。	四	w0012			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0012_2	w0012	四	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0012_3	w0012	四	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0013_1	w0013	五	1	五月五号。	wǔ yuè wǔ hào	Ngày 5 tháng 5.	五|月|五|号	w0013	___月五号。	五	w0013			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0013_2	w0013	五	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0013_3	w0013	五	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0014_1	w0014	六	1	六月六号。	liù yuè liù hào	Ngày 6 tháng 6.	六|月|六|号	w0014	___月六号。	六	w0014			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0014_2	w0014	六	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0014_3	w0014	六	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0015_1	w0015	七	1	七月七号。	qī yuè qī hào	Ngày 7 tháng 7.	七|月|七|号	w0015	___月七号。	七	w0015			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0015_2	w0015	七	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0015_3	w0015	七	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0016_1	w0016	八	1	八月八号。	bā yuè bā hào	Ngày 8 tháng 8.	八|月|八|号	w0016	___月八号。	八	w0016			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0016_2	w0016	八	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0016_3	w0016	八	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0017_1	w0017	九	1	九月九号。	jiǔ yuè jiǔ hào	Ngày 9 tháng 9.	九|月|九|号	w0017	___月九号。	九	w0017			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0017_2	w0017	九	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0017_3	w0017	九	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0018_1	w0018	十	1	十月十号。	shí yuè shí hào	Ngày 10 tháng 10.	十|月|十|号	w0018	___月十号。	十	w0018			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0018_2	w0018	十	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0018_3	w0018	十	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0019_1	w0019	忙	1	我很忙。	wǒ hěn máng	Tôi rất bận.	我|很|忙	w0001|w0020|w0019	我很___。	忙	w0019			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0019_2	w0019	忙	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0019_3	w0019	忙	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0020_1	w0020	很	1	汉语很难。	Hànyǔ hěn nán	Tiếng Hán rất khó.	汉语|很|难	w0021|w0020|w0022	汉语___难。	很	w0020			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0020_2	w0020	很	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0020_3	w0020	很	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0021_1	w0021	汉语	1	我学汉语。	wǒ xué Hànyǔ	Tôi học tiếng Hán.	我|学|汉语	w0001|w0021	我学___。	汉语	w0021			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0021_2	w0021	汉语	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0021_3	w0021	汉语	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0022_1	w0022	难	1	汉语难。	Hànyǔ nán	Tiếng Hán khó.	汉语|难	w0021|w0022	汉语___。	难	w0022			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0022_2	w0022	难	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0022_3	w0022	难	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0023_1	w0023	太	1	太难吗？	tài nán ma	Quá khó không?	太|难|吗	w0023|w0022|w0024	___难吗？	太	w0023			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0023_2	w0023	太	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0023_3	w0023	太	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0024_1	w0024	吗	1	你好吗？	nǐ hǎo ma	Bạn khỏe/tốt không?	你|好|吗	w0002|w0024	你好___？	吗	w0024			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0024_2	w0024	吗	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0024_3	w0024	吗	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0025_1	w0025	他	1	他很忙。	tā hěn máng	Anh ấy rất bận.	他|很|忙	w0025|w0020|w0019	___很忙。	他	w0025			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0025_2	w0025	他	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0025_3	w0025	他	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0026_1	w0026	她	1	她很好。	tā hěn hǎo	Cô ấy rất tốt.	她|很|好	w0026|w0020|w0002	___很好。	她	w0026			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0026_2	w0026	她	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0026_3	w0026	她	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0027_1	w0027	它	1	它很大。	tā hěn dà	Nó rất lớn.	它|很|大	w0027|w0020|w0003	___很大。	它	w0027			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0027_2	w0027	它	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0027_3	w0027	它	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0028_1	w0028	哥哥	1	哥哥学汉语。	gēge xué Hànyǔ	Anh trai học tiếng Hán.	哥哥|学|汉语	w0028|w0021	___学汉语。	哥哥	w0028			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0028_2	w0028	哥哥	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0028_3	w0028	哥哥	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0029_1	w0029	妹妹	1	妹妹学英语。	mèimei xué Yīngyǔ	Em gái học tiếng Anh.	妹妹|学|英|语	w0029	___学英语。	妹妹	w0029			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0029_2	w0029	妹妹	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0029_3	w0029	妹妹	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0030_1	w0030	姐姐	1	姐姐学日语。	jiějie xué Rìyǔ	Chị gái học tiếng Nhật.	姐姐|学|日|语	w0030	___学日语。	姐姐	w0030			HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0030_2	w0030	姐姐	2											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0030_3	w0030	姐姐	3											HSK1	lesson-1	1	1			1	Nhóm 1|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0031_1	w0031	爸爸	1	爸爸去银行。	bàba qù yínháng	Bố đi ngân hàng.	爸爸|去|银行	w0031|w0042|w0052	___去银行。	爸爸	w0031			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0031_2	w0031	爸爸	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0031_3	w0031	爸爸	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0032_1	w0032	弟弟	1	弟弟去学校。	dìdi qù xuéxiào	Em trai đi trường học.	弟弟|去|学|校	w0032|w0042|w0033	___去学校。	弟弟	w0032			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0032_2	w0032	弟弟	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0032_3	w0032	弟弟	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0033_1	w0033	学	1	我学汉语。	wǒ xué Hànyǔ	Tôi học tiếng Hán.	我|学|汉语	w0001|w0033|w0021	我___汉语。	学	w0033			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0033_2	w0033	学	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0033_3	w0033	学	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0034_1	w0034	英语	1	我学英语。	wǒ xué Yīngyǔ	Tôi học tiếng Anh.	我|学|英语	w0001|w0033|w0034	我学___。	英语	w0034			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0034_2	w0034	英语	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0034_3	w0034	英语	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0035_1	w0035	阿拉伯语	1	他学阿拉伯语。	tā xué Ālābóyǔ	Anh ấy học tiếng Ả Rập.	他|学|阿拉伯语	w0025|w0033|w0035	他学___。	阿拉伯语	w0035			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0035_2	w0035	阿拉伯语	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0035_3	w0035	阿拉伯语	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0036_1	w0036	德语	1	她学德语。	tā xué Déyǔ	Cô ấy học tiếng Đức.	她|学|德语	w0026|w0033|w0036	她学___。	德语	w0036			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0036_2	w0036	德语	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0036_3	w0036	德语	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0037_1	w0037	俄语	1	哥哥学俄语。	gēge xué Éyǔ	Anh trai học tiếng Nga.	哥哥|学|俄语	w0028|w0033|w0037	哥哥学___。	俄语	w0037			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0037_2	w0037	俄语	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0037_3	w0037	俄语	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0038_1	w0038	法语	1	姐姐学法语。	jiějie xué Fǎyǔ	Chị gái học tiếng Pháp.	姐姐|学|法语	w0030|w0033|w0038	姐姐学___。	法语	w0038			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0038_2	w0038	法语	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0038_3	w0038	法语	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0039_1	w0039	韩国语	1											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0039_2	w0039	韩国语	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0039_3	w0039	韩国语	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0040_1	lesson-2	妹妹学韩国语。(mèimei xué Hánguóyǔ)	1											HSK1	lesson-0	1	1			1	Vây thành dày (囗) bọc ngọc xanh (玉), tạo thành đất Quốc (国) thái dân an."|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0040_2	lesson-2	妹妹学韩国语。(mèimei xué Hánguóyǔ)	2											HSK1	lesson-0	1	1			1	Vây thành dày (囗) bọc ngọc xanh (玉), tạo thành đất Quốc (国) thái dân an."|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0040_3	lesson-2	妹妹学韩国语。(mèimei xué Hánguóyǔ)	3											HSK1	lesson-0	1	1			1	Vây thành dày (囗) bọc ngọc xanh (玉), tạo thành đất Quốc (国) thái dân an."|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0041_1	w0040	日语	1	爸爸学日语。	bàba xué Rìyǔ	HSK1	爸爸|学|日语	w0031|w0033|w0040	爸爸学___。	日语	w0040			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0041_2	w0040	日语	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0041_3	w0040	日语	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0042_1	w0041	西班牙语	1	弟弟学西班牙语。	dìdi xué Xībānyáyǔ	Bố học tiếng Nhật.	弟弟|学|西班牙语	w0032|w0033|w0041	弟弟学___。	西班牙语	w0041			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0042_2	w0041	西班牙语	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0042_3	w0041	西班牙语	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0043_1	w0042	去	1	我去学校。	wǒ qù xuéxiào	Em trai học tiếng Tây Ban Nha.	我|去|学|校	w0001|w0042|w0033	我___学校。	去	w0042			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0043_2	w0042	去	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0043_3	w0042	去	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0044_1	w0043	对	1	这个对吗？	zhège duì ma	Tôi đi trường học.	这|个|对|吗	w0043|w0024	这个___吗？	对	w0043			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0044_2	w0043	对	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0044_3	w0043	对	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0045_1	w0044	邮局	1	我去邮局。	wǒ qù yóujú	Cái này đúng không?	我|去|邮局	w0001|w0042|w0044	我去___。	邮局	w0044			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0045_2	w0044	邮局	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0045_3	w0044	邮局	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0046_1	w0047	寄	1											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0046_2	w0047	寄	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0046_3	w0047	寄	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0047_1	lesson-2	我寄信。(wǒ jì xìn)	1											HSK1	lesson-0	1	1			1	可 (Chữ Khả): Có thể, khả năng."|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0047_2	lesson-2	我寄信。(wǒ jì xìn)	2											HSK1	lesson-0	1	1			1	可 (Chữ Khả): Có thể, khả năng."|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0047_3	lesson-2	我寄信。(wǒ jì xìn)	3											HSK1	lesson-0	1	1			1	可 (Chữ Khả): Có thể, khả năng."|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0048_1	w0050	信	1											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0048_2	w0050	信	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0048_3	w0050	信	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0049_1	lesson-2	我有信。(wǒ yǒu xìn)	1											HSK1	lesson-0	1	1			1	言 (Chữ Ngôn): Ngôn ngữ, lời nói."|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0049_2	lesson-2	我有信。(wǒ yǒu xìn)	2											HSK1	lesson-0	1	1			1	言 (Chữ Ngôn): Ngôn ngữ, lời nói."|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0049_3	lesson-2	我有信。(wǒ yǒu xìn)	3											HSK1	lesson-0	1	1			1	言 (Chữ Ngôn): Ngôn ngữ, lời nói."|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0050_1	w0052	银行	1											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0050_2	w0052	银行	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0050_3	w0052	银行	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0051_1	lesson-2	我去银行。(wǒ qù yínháng)	1											HSK1	lesson-2	1	1			1	2 亍 (Bộ Súc): Bước chân phải (bước tiếp theo để hoàn thành bước đi)."|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0051_2	lesson-2	我去银行。(wǒ qù yínháng)	2											HSK1	lesson-2	1	1			1	2 亍 (Bộ Súc): Bước chân phải (bước tiếp theo để hoàn thành bước đi)."|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0051_3	lesson-2	我去银行。(wǒ qù yínháng)	3											HSK1	lesson-2	1	1			1	2 亍 (Bộ Súc): Bước chân phải (bước tiếp theo để hoàn thành bước đi)."|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0052_1	w0055	取	1											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0052_2	w0055	取	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0052_3	w0055	取	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0053_1	w0056	我去银行取钱。(wǒ qù yínháng qǔ qián)	1											HSK1	lesson-0	1	1			1	又 (Chữ Hựu): Cái tay (hành động lặp đi lặp lại, hoặc nắm lấy)."|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0053_2	w0056	我去银行取钱。(wǒ qù yínháng qǔ qián)	2											HSK1	lesson-0	1	1			1	又 (Chữ Hựu): Cái tay (hành động lặp đi lặp lại, hoặc nắm lấy)."|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0053_3	w0056	我去银行取钱。(wǒ qù yínháng qǔ qián)	3											HSK1	lesson-0	1	1			1	又 (Chữ Hựu): Cái tay (hành động lặp đi lặp lại, hoặc nắm lấy)."|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0054_1	w0057	钱	1											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0054_2	w0057	钱	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0054_3	w0057	钱	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0055_1	w0058	我有钱。(wǒ yǒu qián)	1											HSK1	lesson-0	1	1			1	Qua (戈 - binh khí, cây giáo) chồng lên nhau."|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0055_2	w0058	我有钱。(wǒ yǒu qián)	2											HSK1	lesson-0	1	1			1	Qua (戈 - binh khí, cây giáo) chồng lên nhau."|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0055_3	w0058	我有钱。(wǒ yǒu qián)	3											HSK1	lesson-0	1	1			1	Qua (戈 - binh khí, cây giáo) chồng lên nhau."|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0056_1	w0059	明天	1											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0056_2	w0059	明天	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0056_3	w0059	明天	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0057_1	lesson-2	明天我去北京。(míngtiān wǒ qù Běijīng)	1											HSK1	lesson-0	1	1			1	THIÊN (天 - Trời, ngày)"|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0057_2	lesson-2	明天我去北京。(míngtiān wǒ qù Běijīng)	2											HSK1	lesson-0	1	1			1	THIÊN (天 - Trời, ngày)"|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0057_3	lesson-2	明天我去北京。(míngtiān wǒ qù Běijīng)	3											HSK1	lesson-0	1	1			1	THIÊN (天 - Trời, ngày)"|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0058_1	w0062	天	1											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0058_2	w0062	天	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0058_3	w0062	天	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0059_1	w0063	一天很忙。(yī tiān hěn máng)	1											HSK1	lesson-0	1	1			1	一 (Nét Ngang)"|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0059_2	w0063	一天很忙。(yī tiān hěn máng)	2											HSK1	lesson-0	1	1			1	一 (Nét Ngang)"|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0059_3	w0063	一天很忙。(yī tiān hěn máng)	3											HSK1	lesson-0	1	1			1	一 (Nét Ngang)"|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0060_1	w0064	见	1											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0060_2	w0064	见	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0060_3	w0064	见	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0061_1	lesson-2	明天见。(míngtiān jiàn)	1											HSK1	lesson-0	1	1			1	儿 (Chữ Nhi / bộ Nhân đi)"|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0061_2	lesson-2	明天见。(míngtiān jiàn)	2											HSK1	lesson-0	1	1			1	儿 (Chữ Nhi / bộ Nhân đi)"|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0061_3	lesson-2	明天见。(míngtiān jiàn)	3											HSK1	lesson-0	1	1			1	儿 (Chữ Nhi / bộ Nhân đi)"|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0062_1	w0053	北京	1	北京很大。	Běijīng hěn dà		北京|很|大	w0053|w0020|w0003	___很大。	北京	w0053			HSK1	lesson-1	1	1			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_1	auto_from_vocab_example
+s0062_2	w0053	北京	2											HSK1	lesson-1	1	1			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0062_3	w0053	北京	3											HSK1	lesson-1	1	1			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0063_1	w0067	你	1											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0063_2	w0067	你	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0063_3	w0067	你	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0064_1	lesson-2	你学汉语吗？(nǐ xué Hànyǔ ma)	1											HSK1	lesson-2	1	1			1	小 (Chữ Tiểu): Nhỏ bé (2 nét phẩy hai bên và nét móc ở giữa)."|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0064_2	lesson-2	你学汉语吗？(nǐ xué Hànyǔ ma)	2											HSK1	lesson-2	1	1			1	小 (Chữ Tiểu): Nhỏ bé (2 nét phẩy hai bên và nét móc ở giữa)."|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0064_3	lesson-2	你学汉语吗？(nǐ xué Hànyǔ ma)	3											HSK1	lesson-2	1	1			1	小 (Chữ Tiểu): Nhỏ bé (2 nét phẩy hai bên và nét móc ở giữa)."|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0065_1	w0055	也	1	我也学汉语。	wǒ yě xué Hànyǔ	HSK1	我|也|学|汉语	w0001|w0055|w0033|w0021	我___学汉语。	也	w0055			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0065_2	w0055	也	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0065_3	w0055	也	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0066_1	w0071	今天	1											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0066_2	w0071	今天	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0066_3	w0071	今天	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0067_1	w0072	今天我很忙。(jīntiān wǒ hěn máng)	1											HSK1	lesson-0	1	1			1	THIÊN (天 - Trời, ngày)"|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0067_2	w0072	今天我很忙。(jīntiān wǒ hěn máng)	2											HSK1	lesson-0	1	1			1	THIÊN (天 - Trời, ngày)"|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0067_3	w0072	今天我很忙。(jīntiān wǒ hěn máng)	3											HSK1	lesson-0	1	1			1	THIÊN (天 - Trời, ngày)"|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0068_1	w0057	昨天	1	昨天我去学校。	zuótiān wǒ qù xuéxiào		昨天|我|去|学|校	w0057|w0001|w0042|w0033	___我去学校。	昨天	w0057			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0068_2	w0057	昨天	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0068_3	w0057	昨天	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0069_1	w0074	星期	1											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0069_2	w0074	星期	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0069_3	w0074	星期	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0070_1	w0078	今天星期几？(jīntiān xīngqī jǐ)	1											HSK1	lesson-0	1	1			1	"|sentence_slot_1	true	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0070_2	w0078	今天星期几？(jīntiān xīngqī jǐ)	2											HSK1	lesson-0	1	1			1	|sentence_slot_2"	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0070_3	w0078	今天星期几？(jīntiān xīngqī jǐ)	3											HSK1	lesson-0	1	1			1	"|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0071_1	w0059	星期一	1	今天星期一。	jīntiān xīngqīyī		今天|星期一	w0071|w0059	今天___。	星期一	w0059			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	true	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0071_2	w0059	星期一	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0071_3	w0059	星期一	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0072_1	w0060	星期二	1	今天星期二。	jīntiān xīngqīèr	HSK1	今天|星期二	w0071|w0060	今天___。	星期二	w0060			HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_1	true	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0072_2	w0060	星期二	2											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0072_3	w0060	星期二	3											HSK1	lesson-2	2	2			1	Nhóm 2|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0073_1	w0061	星期三	1	今天星期三。	jīntiān xīngqīsān	Hôm qua tôi đi trường học.	今天|星期三	w0071|w0061	今天___。	星期三	w0061			HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	true	ready	only_words_from_lesson_1_to_3	auto_from_vocab_example
+s0073_2	w0061	星期三	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0073_3	w0061	星期三	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0074_1	w0062	星期四	1	今天星期四。	jīntiān xīngqīsì		今天|星期四	w0071|w0062	今天___。	星期四	w0062			HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_1	true	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0074_2	w0062	星期四	2											HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0074_3	w0062	星期四	3											HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0075_1	w0063	星期五	1	今天星期五。	jīntiān xīngqīwǔ		今天|星期五	w0071|w0063	今天___。	星期五	w0063			HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	true	ready	only_words_from_lesson_1_to_3	auto_from_vocab_example
+s0075_2	w0063	星期五	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0075_3	w0063	星期五	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0076_1	w0064	星期六	1	今天星期六。	jīntiān xīngqīliù		今天|星期六	w0071|w0064	今天___。	星期六	w0064			HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_1	true	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0076_2	w0064	星期六	2											HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0076_3	w0064	星期六	3											HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0077_1	w0085	星期天	1											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	true	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0077_2	w0085	星期天	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0077_3	w0085	星期天	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0078_1	w0087	明天星期天。(míngtiān xīngqītiān)	1											HSK1	lesson-0	1	1			1	天 (Thiên)|sentence_slot_1"	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0078_2	w0087	明天星期天。(míngtiān xīngqītiān)	2											HSK1	lesson-0	1	1			1	天 (Thiên)"|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0078_3	w0087	明天星期天。(míngtiān xīngqītiān)	3											HSK1	lesson-0	1	1			1	天 (Thiên)"|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0079_1	w0088	周末	1											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0079_2	w0088	周末	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0079_3	w0088	周末	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0080_1	lesson-2	周末我去公园。(zhōumò wǒ qù gōngyuán)	1											HSK1	lesson-0	1	1			1	MẠT (末) Ngọn, cuối cùng, kết thúc:木 (Chữ Mộc) có thêm gạch ngang"|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0080_2	lesson-2	周末我去公园。(zhōumò wǒ qù gōngyuán)	2											HSK1	lesson-0	1	1			1	MẠT (末) Ngọn, cuối cùng, kết thúc:木 (Chữ Mộc) có thêm gạch ngang"|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0080_3	lesson-2	周末我去公园。(zhōumò wǒ qù gōngyuán)	3											HSK1	lesson-0	1	1			1	MẠT (末) Ngọn, cuối cùng, kết thúc:木 (Chữ Mộc) có thêm gạch ngang"|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0081_1	w0091	周	1											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0081_2	w0091	周	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0081_3	w0091	周	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0082_1	lesson-2	一周很忙。(yī zhōu hěn máng)	1											HSK1	lesson-0	1	1			1	吉 (Chữ Cát - Tốt lành): Gồm chữ Sĩ (士 - kẻ sĩ) ở trên và chữ Khẩu (口) kẻ si nói lời tốt lành"|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0082_2	lesson-2	一周很忙。(yī zhōu hěn máng)	2											HSK1	lesson-0	1	1			1	吉 (Chữ Cát - Tốt lành): Gồm chữ Sĩ (士 - kẻ sĩ) ở trên và chữ Khẩu (口) kẻ si nói lời tốt lành"|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0082_3	lesson-2	一周很忙。(yī zhōu hěn máng)	3											HSK1	lesson-0	1	1			1	吉 (Chữ Cát - Tốt lành): Gồm chữ Sĩ (士 - kẻ sĩ) ở trên và chữ Khẩu (口) kẻ si nói lời tốt lành"|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0083_1	w0068	周一	1	今天周一。	jīntiān zhōuyī	Hôm nay là thứ sáu.	今天|周一	w0071|w0068	今天___。	周一	w0068			HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_3	auto_from_vocab_example
+s0083_2	w0068	周一	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0083_3	w0068	周一	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0084_1	w0069	周二	1	今天周二。	jīntiān zhōuèr	Hôm nay là thứ bảy.	今天|周二	w0071|w0069	今天___。	周二	w0069			HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0084_2	w0069	周二	2											HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0084_3	w0069	周二	3											HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0085_1	w0070	周三	1	今天周三。	jīntiān zhōusān		今天|周三	w0071|w0070	今天___。	周三	w0070			HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0085_2	w0070	周三	2											HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0085_3	w0070	周三	3											HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0086_1	w0071	周四	1	今天周四。	jīntiān zhōusì		今天|周四	w0071	今天___。	周四	w0071			HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0086_2	w0071	周四	2											HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0086_3	w0071	周四	3											HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0087_1	w0072	周五	1	今天周五。	jīntiān zhōuwǔ	HSK1	今天|周五	w0071|w0072	今天___。	周五	w0072			HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_3	auto_from_vocab_example
+s0087_2	w0072	周五	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0087_3	w0072	周五	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0088_1	w0073	周六	1	今天周六。	jīntiān zhōuliù		今天|周六	w0071|w0073	今天___。	周六	w0073			HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_2	auto_from_vocab_example
+s0088_2	w0073	周六	2											HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0088_3	w0073	周六	3											HSK1	lesson-2	2	2			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_2	can_bo_sung_cau_chua_tu_vung_nay
+s0089_1	w0075	几	1	你有几个哥哥？	nǐ yǒu jǐ gè gēge		你|有|几|个|哥哥	w0067|w0124|w0075|w0028	你有___个哥哥？	几	w0075			HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_3	auto_from_vocab_example
+s0089_2	w0075	几	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0089_3	w0075	几	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0090_1	w0076	回	1	我回学校。	wǒ huí xuéxiào	HSK1	我|回|学校	w0001|w0076|w0102	我___学校。	回	w0076			HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_3	auto_from_vocab_example
+s0090_2	w0076	回	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0090_3	w0076	回	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0091_1	w0102	学校	1											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0091_2	w0102	学校	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0091_3	w0102	学校	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0092_1	w0103	我在学校学汉语。(wǒ zài xuéxiào xué Hànyǔ)	1											HSK1	lesson-0	1	1			1	chu HIỆU,trường học (校) xiào :木 (Bộ Mộc) +交 (Chữ Giao) nơi có cây 木  mọi người giao lưu luu 交  ,là trường học"|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0092_2	w0103	我在学校学汉语。(wǒ zài xuéxiào xué Hànyǔ)	2											HSK1	lesson-0	1	1			1	chu HIỆU,trường học (校) xiào :木 (Bộ Mộc) +交 (Chữ Giao) nơi có cây 木  mọi người giao lưu luu 交  ,là trường học"|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0092_3	w0103	我在学校学汉语。(wǒ zài xuéxiào xué Hànyǔ)	3											HSK1	lesson-0	1	1			1	chu HIỆU,trường học (校) xiào :木 (Bộ Mộc) +交 (Chữ Giao) nơi có cây 木  mọi người giao lưu luu 交  ,là trường học"|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0093_1	w0104	再见	1											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0093_2	w0104	再见	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0093_3	w0104	再见	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0094_1	w0109	明天见，再见。(míngtiān jiàn, zàijiàn)	1											HSK1	lesson-0	1	1			1	"|sentence_slot_1	true	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0094_2	w0109	明天见，再见。(míngtiān jiàn, zàijiàn)	2											HSK1	lesson-0	1	1			1	|sentence_slot_2"	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0094_3	w0109	明天见，再见。(míngtiān jiàn, zàijiàn)	3											HSK1	lesson-0	1	1			1	"|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0095_1	w0110	xingqi	1											HSK1	true	79	79			1	w0079|sentence_slot_1	true	needs_content	only_words_from_lesson_1_to_79	can_bo_sung_cau_chua_tu_vung_nay
+s0095_2	w0110	xingqi	2											HSK1	true	79	79			1	w0079|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_79	can_bo_sung_cau_chua_tu_vung_nay
+s0095_3	w0110	xingqi	3											HSK1	true	79	79			1	w0079|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_79	can_bo_sung_cau_chua_tu_vung_nay
+s0096_1	w0111	xingqi	1											HSK1	true	80	80			1	w0080|sentence_slot_1	true	needs_content	only_words_from_lesson_1_to_80	can_bo_sung_cau_chua_tu_vung_nay
+s0096_2	w0111	xingqi	2											HSK1	true	80	80			1	w0080|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_80	can_bo_sung_cau_chua_tu_vung_nay
+s0096_3	w0111	xingqi	3											HSK1	true	80	80			1	w0080|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_80	can_bo_sung_cau_chua_tu_vung_nay
+s0097_1	w0112	xingqi	1											HSK1	true	81	81			1	w0081|sentence_slot_1	true	needs_content	only_words_from_lesson_1_to_81	can_bo_sung_cau_chua_tu_vung_nay
+s0097_2	w0112	xingqi	2											HSK1	true	81	81			1	w0081|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_81	can_bo_sung_cau_chua_tu_vung_nay
+s0097_3	w0112	xingqi	3											HSK1	true	81	81			1	w0081|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_81	can_bo_sung_cau_chua_tu_vung_nay
+s0098_1	w0113	xingqi	1											HSK1	true	82	82			1	w0082|sentence_slot_1	true	needs_content	only_words_from_lesson_1_to_82	can_bo_sung_cau_chua_tu_vung_nay
+s0098_2	w0113	xingqi	2											HSK1	true	82	82			1	w0082|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_82	can_bo_sung_cau_chua_tu_vung_nay
+s0098_3	w0113	xingqi	3											HSK1	true	82	82			1	w0082|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_82	can_bo_sung_cau_chua_tu_vung_nay
+s0099_1	w0114	xingqi	1											HSK1	true	83	83			1	w0083|sentence_slot_1	true	needs_content	only_words_from_lesson_1_to_83	can_bo_sung_cau_chua_tu_vung_nay
+s0099_2	w0114	xingqi	2											HSK1	true	83	83			1	w0083|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_83	can_bo_sung_cau_chua_tu_vung_nay
+s0099_3	w0114	xingqi	3											HSK1	true	83	83			1	w0083|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_83	can_bo_sung_cau_chua_tu_vung_nay
+s0100_1	w0115	xingqi	1											HSK1	true	84	84			1	w0084|sentence_slot_1	true	needs_content	only_words_from_lesson_1_to_84	can_bo_sung_cau_chua_tu_vung_nay
+s0100_2	w0115	xingqi	2											HSK1	true	84	84			1	w0084|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_84	can_bo_sung_cau_chua_tu_vung_nay
+s0100_3	w0115	xingqi	3											HSK1	true	84	84			1	w0084|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_84	can_bo_sung_cau_chua_tu_vung_nay
+s0101_1	w0116	xingqitian	1											HSK1	true	85	85			1	w0085|sentence_slot_1	true	needs_content	only_words_from_lesson_1_to_85	can_bo_sung_cau_chua_tu_vung_nay
+s0101_2	w0116	xingqitian	2											HSK1	true	85	85			1	w0085|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_85	can_bo_sung_cau_chua_tu_vung_nay
+s0101_3	w0116	xingqitian	3											HSK1	true	85	85			1	w0085|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_85	can_bo_sung_cau_chua_tu_vung_nay
+s0102_1	w0118	ngay mai la chu nhat/cuoi tuan.	1											HSK1	TRUE	87	87			1	w0087|sentence_slot_1	true	needs_content	only_words_from_lesson_1_to_87	can_bo_sung_cau_chua_tu_vung_nay
+s0102_2	w0118	ngay mai la chu nhat/cuoi tuan.	2											HSK1	TRUE	87	87			1	w0087|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_87	can_bo_sung_cau_chua_tu_vung_nay
+s0102_3	w0118	ngay mai la chu nhat/cuoi tuan.	3											HSK1	TRUE	87	87			1	w0087|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_87	can_bo_sung_cau_chua_tu_vung_nay
+s0103_1	w0119	对不起	1											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	true	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0103_2	w0119	对不起	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0103_3	w0119	对不起	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	true	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0104_1	lesson-3	对不起，没关系。(duìbuqǐ, méiguānxi)	1											HSK1	lesson-0	1	1			1	|sentence_slot_1"	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0104_2	lesson-3	对不起，没关系。(duìbuqǐ, méiguānxi)	2											HSK1	lesson-0	1	1			1	"|sentence_slot_2	true	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0104_3	lesson-3	对不起，没关系。(duìbuqǐ, méiguānxi)	3											HSK1	lesson-0	1	1			1	|sentence_slot_3"	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0105_1	w0122	身体	1											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0105_2	w0122	身体	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0105_3	w0122	身体	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0106_1	w0123	身体很好。(shēntǐ hěn hǎo)	1											HSK1	lesson-0	1	1			1	chữ THỂ: 体 tǐ(thể trạng.) :Nhân đứng (亻- con người) ở bên trái và chữ Bổn/Bản (本 - cái gốc, gốc rễ của cái cây) ở bên phải."|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0106_2	w0123	身体很好。(shēntǐ hěn hǎo)	2											HSK1	lesson-0	1	1			1	chữ THỂ: 体 tǐ(thể trạng.) :Nhân đứng (亻- con người) ở bên trái và chữ Bổn/Bản (本 - cái gốc, gốc rễ của cái cây) ở bên phải."|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0106_3	w0123	身体很好。(shēntǐ hěn hǎo)	3											HSK1	lesson-0	1	1			1	chữ THỂ: 体 tǐ(thể trạng.) :Nhân đứng (亻- con người) ở bên trái và chữ Bổn/Bản (本 - cái gốc, gốc rễ của cái cây) ở bên phải."|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0107_1	w0124	有	1											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0107_2	w0124	有	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0107_3	w0124	有	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0108_1	w0125	我有书。(wǒ yǒu shū)	1											HSK1	lesson-0	1	1			1	hần dưới (月 - Bộ Nguyệt): Trong trường hợp này, bộ Nguyệt không chỉ mặt trăng mà là biến thể của chữ Nhục (肉 - miếng thịt)."|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0108_2	w0125	我有书。(wǒ yǒu shū)	2											HSK1	lesson-0	1	1			1	hần dưới (月 - Bộ Nguyệt): Trong trường hợp này, bộ Nguyệt không chỉ mặt trăng mà là biến thể của chữ Nhục (肉 - miếng thịt)."|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0108_3	w0125	我有书。(wǒ yǒu shū)	3											HSK1	lesson-0	1	1			1	hần dưới (月 - Bộ Nguyệt): Trong trường hợp này, bộ Nguyệt không chỉ mặt trăng mà là biến thể của chữ Nhục (肉 - miếng thịt)."|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0109_1	w0126	没关系	1											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0109_2	w0126	没关系	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0109_3	w0126	没关系	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0110_1	lesson-3	没关系。(méiguānxi)	1											HSK1	lesson-0	1	1			1	Chữ 系 (xì/xi - Sợi dây xích"|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0110_2	lesson-3	没关系。(méiguānxi)	2											HSK1	lesson-0	1	1			1	Chữ 系 (xì/xi - Sợi dây xích"|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0110_3	lesson-3	没关系。(méiguānxi)	3											HSK1	lesson-0	1	1			1	Chữ 系 (xì/xi - Sợi dây xích"|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_1	can_bo_sung_cau_chua_tu_vung_nay
+s0111_1	w0092	哪儿	1	你在哪儿？	nǐ zài nǎr		你|在|哪儿	w0067|w0092	你在___？	哪儿	w0092			HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_3	auto_from_vocab_example
+s0111_2	w0092	哪儿	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0111_3	w0092	哪儿	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0112_1	w0093	天安门	1	天安门在北京。	Tiānānmén zài Běijīng		天安门|在|北京	w0093|w0053	___在北京。	天安门	w0093			HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_3	auto_from_vocab_example
+s0112_2	w0093	天安门	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0112_3	w0093	天安门	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0113_1	w0094	书	1	我有书。	wǒ yǒu shū		我|有|书	w0001|w0124|w0094	我有___。	书	w0094			HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_3	auto_from_vocab_example
+s0113_2	w0094	书	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0113_3	w0094	书	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0114_1	w0096	都	1	我和你都学汉语。	wǒ hé nǐ dōu xué Hànyǔ		我|和|你|都|学|汉语	w0001|w0097|w0067|w0096|w0033|w0021	我和你___学汉语。	都	w0096			HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_3	auto_from_vocab_example
+s0114_2	w0096	都	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0114_3	w0096	都	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0115_1	w0097	和	1	我和她去学校。	wǒ hé tā qù xuéxiào		我|和|她|去|学校	w0001|w0097|w0026|w0042|w0102	我___她去学校。	和	w0097			HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_3	auto_from_vocab_example
+s0115_2	w0097	和	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0115_3	w0097	和	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0116_1	w0098	身体	1	身体很好。	shēntǐ hěn hǎo		身体|很|好	w0098|w0122|w0020|w0002	___很好。	身体	w0098			HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_3	auto_from_vocab_example
+s0116_2	w0098	身体	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0116_3	w0098	身体	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0117_1	w0136	公园	1	我去公园。	wǒ qù gōngyuán		我|去|公园	w0001|w0042|w0136	我去___。	公园	w0136			HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_3	auto_from_vocab_example
+s0117_2	w0136	公园	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0117_3	w0136	公园	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0118_1	w0137	那	1	那个很大。	nàge hěn dà		那|个|很|大	w0137|w0020|w0003	___个很大。	那	w0137			HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_3	auto_from_vocab_example
+s0118_2	w0137	那	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0118_3	w0137	那	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0119_1	w0138	哪	1	哪个学校？	nǎge xuéxiào		哪|个|学校	w0138|w0102	___个学校？	哪	w0138			HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_3	auto_from_vocab_example
+s0119_2	w0138	哪	2											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0119_3	w0138	哪	3											HSK1	lesson-3	3	3			1	Nhóm 3|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_3	can_bo_sung_cau_chua_tu_vung_nay
+s0120_1	w0139	这	1											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0120_2	w0139	这	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0120_3	w0139	这	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0121_1	w0142	那里	1	我在那里。	wǒ zài nàlǐ	HSK1	我|在|那里	w0001|w0150|w0142	我在___。	那里	w0142			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0121_2	w0142	那里	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0121_3	w0142	那里	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0122_1	w0143	哪里	1	你在哪里？	nǐ zài nǎlǐ		你|在|哪里	w0067|w0150|w0143	你在___？	哪里	w0143			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0122_2	w0143	哪里	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0122_3	w0143	哪里	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0123_1	w0144	这里	1	我在这里。	wǒ zài zhèlǐ	HSK1	我|在|这里	w0001|w0150|w0144	我在___。	这里	w0144			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0123_2	w0144	这里	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0123_3	w0144	这里	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0124_1	w0145	个	1	我有一个。	wǒ yǒu yī gè		我|有|一|个	w0001|w0124|w0009|w0145	我有一___。	个	w0145			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0124_2	w0145	个	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0124_3	w0145	个	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0125_1	w0146	这个	1	这个很好。	zhège hěn hǎo	HSK1	这个|很|好	w0146|w0020|w0002	___很好。	这个	w0146			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0125_2	w0146	这个	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0125_3	w0146	这个	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0126_1	w0147	那个	1	那个马很大。	nàge mǎ hěn dà		那个|马|很|大	w0147|w0008|w0020|w0003	___马很大。	那个	w0147			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0126_2	w0147	那个	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0126_3	w0147	那个	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0127_1	w0148	哪个	1	哪个哥哥？	nǎge gēge		哪个|哥哥	w0148|w0028	___哥哥？	哪个	w0148			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0127_2	w0148	哪个	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0127_3	w0148	哪个	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0128_1	w0149	几	1	你有几个？	nǐ yǒu jǐ gè	HSK1	你|有|几|个	w0149|w0067|w0124|w0075|w0145	你有___个？	几	w0149			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0128_2	w0149	几	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0128_3	w0149	几	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0129_1	w0150	在	1	我在北京。	wǒ zài Běijīng	Bạn ở đâu?	我|在|北京	w0001|w0150|w0053	我___北京。	在	w0150			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0129_2	w0150	在	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0129_3	w0150	在	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0130_1	w0151	都	1	我和你都好。	wǒ hé nǐ dōu hǎo	Thiên An Môn ở Bắc Kinh.	我|和|你|都|好	w0151|w0001|w0097|w0067|w0096|w0002	我和你___好。	都	w0151			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0130_2	w0151	都	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0130_3	w0151	都	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0131_1	w0152	后天	1	后天见。	hòutiān jiàn	Tôi có sách.	后天|见	w0152|w0064	___见。	后天	w0152			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0131_2	w0152	后天	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0131_3	w0152	后天	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0132_1	w0153	河内	1	我在河内。	wǒ zài Hénèi		我|在|河内	w0001|w0150|w0153	我在___。	河内	w0153			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0132_2	w0153	河内	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0132_3	w0153	河内	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0133_1	w0154	的	1	我的书。	wǒ de shū	Tôi và bạn đều học tiếng Hán.	我|的|书	w0001|w0154|w0094	我___书。	的	w0154			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0133_2	w0154	的	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0133_3	w0154	的	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0134_1	w0155	年	1	一年有十个月。	yī nián yǒu shí gè yuè	Tôi và cô ấy đi trường học.	一|年|有|十|个|月	w0009|w0155|w0124|w0018|w0145|w0156	一___有十个月。	年	w0155			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0134_2	w0155	年	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0134_3	w0155	年	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0135_1	w0156	月	1	一月一号。	yī yuè yī hào	Sức khỏe rất tốt.	一|月|一|号	w0009|w0156|w0157	一___一号。	月	w0156			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0135_2	w0156	月	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0135_3	w0156	月	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0136_1	w0157	号	1	今天几号？	jīntiān jǐ hào	Tôi đi công viên.	今天|几|号	w0071|w0075|w0157	今天几___？	号	w0157			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0136_2	w0157	号	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0136_3	w0157	号	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0137_1	w0158	日	1	一月一日。	yī yuè yī rì	Cái kia rất lớn.	一|月|一|日	w0009|w0156|w0158	一月一___。	日	w0158			HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_4	auto_from_vocab_example
+s0137_2	w0158	日	2											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0137_3	w0158	日	3											HSK1	lesson-4	4	4			1	Nhóm 4|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_4	can_bo_sung_cau_chua_tu_vung_nay
+s0138_1	w0159	这	1	这是老师。	zhè shì lǎoshī	Trường nào?	这|是|老师	w0159|w0139|w0161	___是老师。	这	w0159			HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_5	auto_from_vocab_example
+s0138_2	w0159	这	2											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0138_3	w0159	这	3											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0139_1	w0160	他们	1	他们学习汉语。	tāmen xuéxí Hànyǔ		他们|学|习|汉语	w0160|w0033|w0021	___学习汉语。	他们	w0160			HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_5	auto_from_vocab_example
+s0139_2	w0160	他们	2											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0139_3	w0160	他们	3											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0140_1	w0161	老师	1	老师请进。	lǎoshī qǐng jìn		老师|请|进	w0161|w0163|w0164	___请进。	老师	w0161			HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_5	auto_from_vocab_example
+s0140_2	w0161	老师	2											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0140_3	w0161	老师	3											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0141_1	w0162	您	1	您好！	nín hǎo		您|好	w0162|w0002	___好！	您	w0162			HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_5	auto_from_vocab_example
+s0141_2	w0162	您	2											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0141_3	w0162	您	3											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0142_1	w0163	请	1	请坐。	qǐng zuò	Tôi ở chỗ đó.	请|坐	w0163|w0165	___坐。	请	w0163			HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_5	auto_from_vocab_example
+s0142_2	w0163	请	2											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0142_3	w0163	请	3											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0143_1	w0164	进	1	请进！	qǐng jìn	Bạn ở đâu?	请|进	w0163|w0164	请___！	进	w0164			HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_5	auto_from_vocab_example
+s0143_2	w0164	进	2											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0143_3	w0164	进	3											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0144_1	w0165	坐	1	请坐。	qǐng zuò	Tôi ở đây.	请|坐	w0163|w0165	请___。	坐	w0165			HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_5	auto_from_vocab_example
+s0144_2	w0165	坐	2											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0144_3	w0165	坐	3											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0145_1	w0166	喝	1	我喝茶。	wǒ hē chá	Tôi có một cái.	我|喝|茶	w0001|w0166|w0167	我___茶。	喝	w0166			HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_5	auto_from_vocab_example
+s0145_2	w0166	喝	2											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0145_3	w0166	喝	3											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0146_1	w0167	茶	1	请喝茶。	qǐng hē chá	Cái này rất tốt.	请|喝|茶	w0163|w0166|w0167	请喝___。	茶	w0167			HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_5	auto_from_vocab_example
+s0146_2	w0167	茶	2											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0146_3	w0167	茶	3											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0147_1	w0168	谢谢	1	谢谢老师。	xièxie lǎoshī	Con ngựa kia rất lớn.	谢谢|老师	w0168|w0161	___老师。	谢谢	w0168			HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_5	auto_from_vocab_example
+s0147_2	w0168	谢谢	2											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0147_3	w0168	谢谢	3											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0148_1	w0169	不客气	1	不客气。	bú kèqi	Anh trai nào?	不客气	w0169	___。	不客气	w0169			HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_5	auto_from_vocab_example
+s0148_2	w0169	不客气	2											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0148_3	w0169	不客气	3											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0149_1	w0170	客气	1	你太客气了。	nǐ tài kèqi le	Bạn có mấy cái?	你|太|客气|了	w0067|w0023|w0170	你太___了。	客气	w0170			HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_5	auto_from_vocab_example
+s0149_2	w0170	客气	2											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0149_3	w0170	客气	3											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0150_1	w0171	工作	1	我工作很忙。	wǒ gōngzuò hěn máng	Tôi ở Bắc Kinh.	我|工作|很|忙	w0001|w0171|w0020|w0019	我___很忙。	工作	w0171			HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_5	auto_from_vocab_example
+s0150_2	w0171	工作	2											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0150_3	w0171	工作	3											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0151_1	w0172	身体	1	您身体好吗？	nín shēntǐ hǎo ma	Tôi và bạn đều ổn.	您|身体|好|吗	w0172|w0162|w0122|w0002|w0024	您___好吗？	身体	w0172			HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_5	auto_from_vocab_example
+s0151_2	w0172	身体	2											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0151_3	w0172	身体	3											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0152_1	w0173	神	1	我不信神。	wǒ bù xìn shén	Ngày mốt gặp.	我|不|信|神	w0001|w0004|w0050|w0173	我不信___。	神	w0173			HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_5	auto_from_vocab_example
+s0152_2	w0173	神	2											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0152_3	w0173	神	3											HSK1	lesson-5	5	5			1	nhóm 5|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_5	can_bo_sung_cau_chua_tu_vung_nay
+s0153_1	w0174	请问	1	请问，您贵姓？	qǐngwèn, nín guìxìng	Tôi ở Hà Nội.	请问|您|贵姓	w0174|w0162|w0176	___，您贵姓？	请问	w0174			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0153_2	w0174	请问	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0153_3	w0174	请问	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0154_1	w0175	问	1	我问老师。	wǒ wèn lǎoshī	Sách của tôi.	我|问|老师	w0001|w0175|w0161	我___老师。	问	w0175			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0154_2	w0175	问	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0154_3	w0175	问	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0155_1	w0176	贵姓	1	您贵姓？	nín guìxìng	Một năm có mười tháng.	您|贵姓	w0162|w0176	您___？	贵姓	w0176			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0155_2	w0176	贵姓	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0155_3	w0176	贵姓	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0156_1	w0177	姓	1	我姓王。	wǒ xìng Wáng	Ngày 1 tháng 1.	我|姓|王	w0001|w0177	我___王。	姓	w0177			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0156_2	w0177	姓	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0156_3	w0177	姓	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0157_1	w0178	叫	1	我叫小明。	wǒ jiào Xiǎomíng	Hôm nay ngày mấy?	我|叫|小|明	w0001|w0178	我___小明。	叫	w0178			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0157_2	w0178	叫	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0157_3	w0178	叫	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0158_1	w0179	名字	1	你的名字是什么？	nǐ de míngzi shì shénme	Ngày 1 tháng 1.	你|的|名字|是|什么	w0067|w0154|w0179|w0193|w0185	你的___是什么？	名字	w0179			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0158_2	w0179	名字	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0158_3	w0179	名字	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0159_1	w0180	国	1	你是哪国人？	nǐ shì nǎ guó rén	Đây là thầy/cô giáo.	你|是|哪|国|人	w0067|w0193|w0138|w0180	你是哪___人？	国	w0180			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0159_2	w0180	国	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0159_3	w0180	国	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0160_1	w0181	认识	1	我认识他。	wǒ rènshi tā	Họ học tiếng Hán.	我|认识|他	w0001|w0181|w0025	我___他。	认识	w0181			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0160_2	w0181	认识	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0160_3	w0181	认识	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0161_1	w0182	高兴	1	认识你很高兴。	rènshi nǐ hěn gāoxìng	Thầy/cô giáo xin mời vào.	认识|你|很|高兴	w0181|w0067|w0020|w0182	认识你很___。	高兴	w0182			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0161_2	w0182	高兴	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0161_3	w0182	高兴	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0162_1	w0183	也	1	我也学习汉语。	wǒ yě xuéxí Hànyǔ	Chào ngài/anh/chị ạ.	我|也|学习|汉语	w0183|w0001|w0055|w0184|w0021	我___学习汉语。	也	w0183			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0162_2	w0183	也	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0162_3	w0183	也	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0163_1	w0184	学习	1	他们学习汉语。	tāmen xuéxí Hànyǔ	Mời ngồi.	他们|学习|汉语	w0160|w0184|w0021	他们___汉语。	学习	w0184			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0163_2	w0184	学习	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0163_3	w0184	学习	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0164_1	w0185	什么	1	这是什么？	zhè shì shénme	Mời vào!	这|是|什么	w0139|w0193|w0185	这是___？	什么	w0185			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0164_2	w0185	什么	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0164_3	w0185	什么	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0165_1	w0186	发音	1	这个字怎么发音？	zhège zì zěnme fāyīn	Mời ngồi.	这个|字|怎|么|发音	w0146|w0186	这个字怎么___？	发音	w0186			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0165_2	w0186	发音	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0165_3	w0186	发音	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0166_1	w0187	汉字	1	我学习汉字。	wǒ xuéxí Hànzì	Tôi uống trà.	我|学习|汉字	w0001|w0184|w0187	我学习___。	汉字	w0187			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0166_2	w0187	汉字	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0166_3	w0187	汉字	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0167_1	w0188	书	1	这是谁的书？	zhè shì shéi de shū	Mời uống trà.	这|是|谁|的|书	w0188|w0139|w0193|w0189|w0154|w0094	这是谁的___？	书	w0188			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0167_2	w0188	书	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0167_3	w0188	书	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0168_1	w0189	谁	1	谁是老师？	shéi shì lǎoshī	Cảm ơn thầy/cô.	谁|是|老师	w0189|w0193|w0161	___是老师？	谁	w0189			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0168_2	w0189	谁	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0168_3	w0189	谁	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0169_1	w0190	的	1	这是我的书。	zhè shì wǒ de shū	Không có gì.	这|是|我|的|书	w0190|w0139|w0193|w0001|w0154|w0094	这是我___书。	的	w0190			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0169_2	w0190	的	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0169_3	w0190	的	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0170_1	w0191	杂志	1	这是汉语杂志。	zhè shì Hànyǔ zázhì	Bạn khách sáo quá rồi.	这|是|汉语|杂志	w0139|w0193|w0021|w0191	这是汉语___。	杂志	w0191			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0170_2	w0191	杂志	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0170_3	w0191	杂志	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0171_1	w0192	文	1	我学习中文。	wǒ xuéxí Zhōngwén	Công việc của tôi rất bận.	我|学习|中|文	w0001|w0184|w0192	我学习中___。	文	w0192			HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	ready	only_words_from_lesson_1_to_6	auto_from_vocab_example
+s0171_2	w0192	文	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0171_3	w0192	文	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0172_1	w0193	是	1											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_1	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0172_2	w0193	是	2											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_2	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay
+s0172_3	w0193	是	3											HSK1	lesson-6	6	6			1	nhóm 6|sentence_slot_3	TRUE	needs_content	only_words_from_lesson_1_to_6	can_bo_sung_cau_chua_tu_vung_nay

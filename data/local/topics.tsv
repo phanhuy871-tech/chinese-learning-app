@@ -1,0 +1,7 @@
+topic_id	topic_name	description	is_active
+basic	Cơ bản	Từ vựng cơ bản	TRUE
+greeting	Chào hỏi	Từ và câu chào hỏi	TRUE
+number	Số đếm	Số và lượng từ	TRUE
+family	Gia đình	Người thân và xưng hô	TRUE
+school	Trường học	Học tập và trường lớp	TRUE
+grammar	Ngữ pháp	Câu theo điểm ngữ pháp	TRUE

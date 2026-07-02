@@ -1,0 +1,10 @@
+word_id,hanzi,pinyin,pinyin_no_tone,meaning_vi,meaning_en,word_type,level,lesson_id,lesson_order,topic_id,grammar_ids,audio_url,image_url,difficulty,tags,is_active
+w1,你好,ni hao,ni hao,xin chao,hello,phrase,HSK1,lesson-1,1,greeting,,,1,greeting,true
+w2,谢谢,xie xie,xie xie,cam on,thank you,phrase,HSK1,lesson-1,1,greeting,,,1,greeting,true
+w3,再见,zai jian,zai jian,tam biet,goodbye,phrase,HSK1,lesson-1,1,greeting,,,1,greeting,true
+w4,老师,lao shi,lao shi,giao vien,teacher,noun,HSK1,lesson-2,2,school,,,1,school,true
+w5,学生,xue sheng,xue sheng,hoc sinh,student,noun,HSK1,lesson-2,2,school,,,1,school,true
+w6,中文,zhong wen,zhong wen,tieng Trung,Chinese,noun,HSK1,lesson-2,2,language,grammar-like,,1,language,true
+w7,喜欢,xi huan,xi huan,thich,like,verb,HSK1,lesson-2,2,language,grammar-like,,1,verb,true
+w8,学习,xue xi,xue xi,hoc tap,study,verb,HSK1,lesson-2,2,school,grammar-like,,1,verb,true
+

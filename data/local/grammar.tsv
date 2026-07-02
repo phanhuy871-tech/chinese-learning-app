@@ -1,0 +1,55 @@
+Bài	Tên bài trong giáo trình	STT	Điểm ngữ pháp	Công thức / cấu trúc	Ví dụ tiếng Trung	Nghĩa tiếng Việt	Ghi chú học nhanh	grammar_id	lesson_id	lesson_order	level	tags	is_active
+1	你好	1	Câu chào hỏi cơ bản	你/您 + 好	你好！	Xin chào!	你 dùng thân mật/bình thường; 您 dùng lịch sự.	g0001	lesson-1	1	HSK1	bai-1|grammar	TRUE
+1	你好	2	Đại từ nhân xưng cơ bản	我 / 你 / 他 / 她	我是学生。	Tôi là học sinh.	Ghi nhớ nhóm đại từ trước khi học câu 是.	g0002	lesson-1	1	HSK1	bai-1|grammar	TRUE
+1	你好	3	Câu hỏi với 吗	Câu trần thuật + 吗？	你好吗？	Bạn khỏe không?	吗 đứng cuối câu để biến câu thành câu hỏi có/không.	g0003	lesson-1	1	HSK1	bai-1|grammar	TRUE
+1	你好	4	Phủ định với 不	不 + tính từ/động từ trạng thái	我不好。	Tôi không khỏe/không tốt.	不 đọc bù; trước âm 4 thường đổi giọng đọc thành bú.	g0004	lesson-1	1	HSK1	bai-1|grammar	TRUE
+2	汉语不太难	1	Vị ngữ tính từ	Chủ ngữ + 很 + tính từ	汉语很难。	Tiếng Hán rất khó.	Trong tiếng Trung tính từ có thể làm vị ngữ; 很 nhiều khi chỉ nối nhịp, không nhất thiết là rất.	g0005	lesson-2	2	HSK1	bai-2|grammar	TRUE
+2	汉语不太难	2	Phủ định vị ngữ tính từ	Chủ ngữ + 不 + tính từ	汉语不难。	Tiếng Hán không khó.	Không dùng 是 trước tính từ trong mẫu này.	g0006	lesson-2	2	HSK1	bai-2|grammar	TRUE
+2	汉语不太难	3	太...了 biểu thị mức độ	太 + tính từ + 了	太好了！	Tốt quá!	Thường dùng để cảm thán, khen hoặc than mức độ cao.	g0007	lesson-2	2	HSK1	bai-2|grammar	TRUE
+2	汉语不太难	4	也 biểu thị “cũng”	Chủ ngữ + 也 + vị ngữ	我也学习汉语。	Tôi cũng học tiếng Hán.	也 đứng trước động từ hoặc trước cụm vị ngữ.	g0008	lesson-2	2	HSK1	bai-2|grammar	TRUE
+3	明天见	1	Câu động từ vị ngữ	Chủ ngữ + động từ + tân ngữ	我学汉语。	Tôi học tiếng Hán.	Trật tự cơ bản: ai + làm gì + cái gì.	g0009	lesson-3	3	HSK1	bai-3|grammar	TRUE
+3	明天见	2	Từ chỉ thời gian làm trạng ngữ	Thời gian + chủ ngữ + vị ngữ / Chủ ngữ + thời gian + vị ngữ	明天我去学校。	Ngày mai tôi đi trường.	Thời gian thường đặt trước chủ ngữ hoặc sau chủ ngữ, trước động từ.	g0010	lesson-3	3	HSK1	bai-3|grammar	TRUE
+3	明天见	3	去 + địa điểm	Chủ ngữ + 去 + nơi chốn	我去北京。	Tôi đi Bắc Kinh.	去 là động từ “đi”, sau nó thường là địa điểm.	g0011	lesson-3	3	HSK1	bai-3|grammar	TRUE
+3	明天见	4	Cách nói tạm biệt/hẹn gặp	Thời gian + 见	明天见！	Ngày mai gặp!	见 nghĩa là gặp/thấy; dùng trong lời chào tạm biệt.	g0012	lesson-3	3	HSK1	bai-3|grammar	TRUE
+4	你去哪儿	1	Đại từ nghi vấn 哪儿 / 哪里	Chủ ngữ + động từ + 哪儿/哪里？	你去哪儿？	Bạn đi đâu?	Câu hỏi có đại từ nghi vấn không thêm 吗.	g0013	lesson-4	4	HSK1	bai-4|grammar	TRUE
+4	你去哪儿	2	在 biểu thị ở/tồn tại	Chủ ngữ + 在 + nơi chốn	我在学校。	Tôi ở trường.	在 làm động từ: ở, có mặt tại.	g0014	lesson-4	4	HSK1	bai-4|grammar	TRUE
+4	你去哪儿	3	这/那/哪 + lượng từ + danh từ	这/那/哪 + 个 + danh từ	这个人是谁？	Người này là ai?	个 là lượng từ thông dụng, dùng khi chưa học lượng từ chuyên biệt.	g0015	lesson-4	4	HSK1	bai-4|grammar	TRUE
+4	你去哪儿	4	几 hỏi số lượng nhỏ	几 + lượng từ + danh từ	你有几个哥哥？	Bạn có mấy anh trai?	几 thường dùng khi dự đoán số lượng không lớn.	g0016	lesson-4	4	HSK1	bai-4|grammar	TRUE
+4	你去哪儿	5	的 biểu thị sở hữu	Danh từ/đại từ + 的 + danh từ	我的书	Sách của tôi	Quan hệ thân thuộc gần gũi đôi khi có thể lược 的.	g0017	lesson-4	4	HSK1	bai-4|grammar	TRUE
+5	这是王老师	1	Câu chữ 是	A + 是 + B	这是王老师。	Đây là thầy/cô Vương.	是 dùng để xác định/giới thiệu A là B.	g0018	lesson-5	5	HSK1	bai-5|grammar	TRUE
+5	这是王老师	2	Câu phủ định với 不是	A + 不是 + B	他不是老师。	Anh ấy không phải là thầy giáo.	Phủ định của 是 là 不是.	g0019	lesson-5	5	HSK1	bai-5|grammar	TRUE
+5	这是王老师	3	Câu hỏi 是...吗	A + 是 + B + 吗？	这是书吗？	Đây là sách à?	Câu hỏi đúng/sai, trả lời 是 hoặc 不是.	g0020	lesson-5	5	HSK1	bai-5|grammar	TRUE
+5	这是王老师	4	Hậu tố số nhiều 们	Đại từ/người + 们	他们是学生。	Họ là học sinh.	们 chỉ số nhiều cho người, không dùng tùy tiện với đồ vật.	g0021	lesson-5	5	HSK1	bai-5|grammar	TRUE
+5	这是王老师	5	请 + động từ	请 + V	请进。	Mời vào.	Dùng trong lời mời/lời yêu cầu lịch sự.	g0022	lesson-5	5	HSK1	bai-5|grammar	TRUE
+6	我学习汉语	1	Cách hỏi họ tên lịch sự	您贵姓？ / 你叫什么名字？	您贵姓？	Ngài họ gì ạ?	贵姓 là cách hỏi họ lịch sự; 叫什么名字 hỏi tên đầy đủ.	g0023	lesson-6	6	HSK1	bai-6|grammar	TRUE
+6	我学习汉语	2	姓 và 叫	Chủ ngữ + 姓 + họ / 主语 + 叫 + tên	我姓王，叫王明。	Tôi họ Vương, tên là Vương Minh.	姓 dùng cho họ; 叫 dùng cho tên/gọi là.	g0024	lesson-6	6	HSK1	bai-6|grammar	TRUE
+6	我学习汉语	3	什么 hỏi “cái gì”	什么 + danh từ / V + 什么	你学习什么？	Bạn học gì?	Có 什么 thì không thêm 吗 ở cuối câu.	g0025	lesson-6	6	HSK1	bai-6|grammar	TRUE
+6	我学习汉语	4	谁 hỏi “ai”	谁 + vị ngữ / ... + 谁	谁是老师？	Ai là thầy/cô giáo?	谁 có thể làm chủ ngữ hoặc tân ngữ.	g0026	lesson-6	6	HSK1	bai-6|grammar	TRUE
+6	我学习汉语	5	Định ngữ với 的	Định ngữ + 的 + trung tâm ngữ	我的汉语书	Sách tiếng Hán của tôi	的 nối phần bổ nghĩa với danh từ chính.	g0027	lesson-6	6	HSK1	bai-6|grammar	TRUE
+7	你吃什么	1	Động từ + tân ngữ đồ ăn/uống	Chủ ngữ + 吃/喝 + tân ngữ	我喝茶。	Tôi uống trà.	吃 dùng với đồ ăn; 喝 dùng với đồ uống.	g0028	lesson-7	7	HSK1	bai-7|grammar	TRUE
+7	你吃什么	2	Câu hỏi lựa chọn với 还是	A + 还是 + B？	你喝茶还是喝咖啡？	Bạn uống trà hay cà phê?	还是 dùng trong câu hỏi lựa chọn; không dùng 吗.	g0029	lesson-7	7	HSK1	bai-7|grammar	TRUE
+7	你吃什么	3	Muốn làm gì với 要	主语 + 要 + V/名词	我要茶。	Tôi muốn trà.	要 có nghĩa muốn/cần/lấy tùy ngữ cảnh.	g0030	lesson-7	7	HSK1	bai-7|grammar	TRUE
+8	苹果一斤多少钱	1	Hỏi giá tiền	Danh từ + 多少钱？	苹果一斤多少钱？	Táo một cân bao nhiêu tiền?	多少钱 dùng để hỏi giá.	g0031	lesson-8	8	HSK1	bai-8|grammar	TRUE
+8	苹果一斤多少钱	2	Số lượng + lượng từ + danh từ	Số + lượng từ + danh từ	一斤苹果	Một cân táo	Tiếng Trung thường cần lượng từ giữa số và danh từ.	g0032	lesson-8	8	HSK1	bai-8|grammar	TRUE
+8	苹果一斤多少钱	3	一点儿 biểu thị một chút	一点儿 + danh từ / tính từ + 一点儿	便宜一点儿。	Rẻ hơn một chút.	一点儿 dùng cho lượng ít hoặc mức độ nhẹ.	g0033	lesson-8	8	HSK1	bai-8|grammar	TRUE
+9	我换人民币	1	Động từ năng nguyện 想	主语 + 想 + V	我想换人民币。	Tôi muốn đổi Nhân dân tệ.	想 nhấn mạnh mong muốn/dự định.	g0034	lesson-9	9	HSK1	bai-9|grammar	TRUE
+9	我换人民币	2	Động từ năng nguyện 能/可以	主语 + 能/可以 + V	我可以换钱吗？	Tôi có thể đổi tiền không?	能 nhấn mạnh khả năng/điều kiện; 可以 nhấn mạnh được phép/có thể.	g0035	lesson-9	9	HSK1	bai-9|grammar	TRUE
+9	我换人民币	3	Câu hỏi với 怎么	怎么 + V？	怎么换？	Đổi như thế nào?	怎么 hỏi cách thức.	g0036	lesson-9	9	HSK1	bai-9|grammar	TRUE
+10	他住哪儿	1	住 + nơi chốn	主语 + 住 + 在/地点	他住在北京。	Anh ấy sống ở Bắc Kinh.	住 thường đi với nơi ở; có thể dùng 住在.	g0037	lesson-10	10	HSK1	bai-10|grammar	TRUE
+10	他住哪儿	2	Cấu trúc 有 biểu thị sở hữu	主语 + 有 + tân ngữ	我有书。	Tôi có sách.	Phủ định là 没有, không nói 不有.	g0038	lesson-10	10	HSK1	bai-10|grammar	TRUE
+10	他住哪儿	3	Câu tồn tại với 有	Nơi chốn + 有 + người/vật	学校有老师。	Trường có giáo viên.	Mẫu này nói ở đâu có cái gì/ai.	g0039	lesson-10	10	HSK1	bai-10|grammar	TRUE
+11	我们都是留学生	1	都 biểu thị “đều/tất cả”	Chủ ngữ số nhiều + 都 + vị ngữ	我们都是学生。	Chúng tôi đều là học sinh.	都 đứng trước động từ/tính từ chính.	g0040	lesson-11	11	HSK1	bai-11|grammar	TRUE
+11	我们都是留学生	2	和 nối danh từ/đại từ	A + 和 + B	我和你都学习汉语。	Tôi và bạn đều học tiếng Hán.	和 nối các thành phần cùng loại, không dùng để nối hai mệnh đề như “và” tiếng Việt.	g0041	lesson-11	11	HSK1	bai-11|grammar	TRUE
+11	我们都是留学生	3	也 và 都 phối hợp	A 也..., B 也... / 都	他们也都学习汉语。	Họ cũng đều học tiếng Hán.	Trật tự thường là 也 + 都 + động từ/tính từ.	g0042	lesson-11	11	HSK1	bai-11|grammar	TRUE
+12	你在哪儿学习	1	Địa điểm đặt trước động từ với 在	主语 + 在 + nơi chốn + V	我在学校学习。	Tôi học ở trường.	在 + nơi chốn làm trạng ngữ, đặt trước động từ hành động.	g0043	lesson-12	12	HSK1	bai-12|grammar	TRUE
+12	你在哪儿学习	2	呢 trong câu hỏi tỉnh lược	Danh từ/đại từ + 呢？	你呢？	Còn bạn thì sao?	呢 dùng để hỏi tiếp cùng chủ đề đã nói.	g0044	lesson-12	12	HSK1	bai-12|grammar	TRUE
+12	你在哪儿学习	3	Câu hỏi với 哪	哪 + lượng từ + danh từ	你在哪个学校学习？	Bạn học ở trường nào?	哪 hỏi lựa chọn trong một phạm vi.	g0045	lesson-12	12	HSK1	bai-12|grammar	TRUE
+13	这是不是中药	1	Câu hỏi chính phản	V + 不 + V / Adj + 不 + Adj	这是不是中药？	Đây có phải là thuốc Trung Quốc không?	Không dùng 吗 trong câu hỏi chính phản.	g0046	lesson-13	13	HSK1	bai-13|grammar	TRUE
+13	这是不是中药	2	Câu hỏi 有...没有	有 + tân ngữ + 没有？	你有没有书？	Bạn có sách không?	Dạng chính phản của 有 là 有没有.	g0047	lesson-13	13	HSK1	bai-13|grammar	TRUE
+13	这是不是中药	3	Trả lời tỉnh lược	是/不是, 有/没有	是，这是中药。	Vâng, đây là thuốc Trung Quốc.	Có thể trả lời ngắn bằng động từ chính.	g0048	lesson-13	13	HSK1	bai-13|grammar	TRUE
+14	你的车是新的还是旧的	1	Câu hỏi lựa chọn với 还是	A + 还是 + B？	你的车是新的还是旧的？	Xe của bạn là mới hay cũ?	还是 chỉ dùng trong câu hỏi lựa chọn.	g0049	lesson-14	14	HSK1	bai-14|grammar	TRUE
+14	你的车是新的还是旧的	2	的 thay thế danh từ đã biết	Tính từ/định ngữ + 的	这是新的。	Đây là cái mới.	的 có thể thay cho danh từ đã rõ trong ngữ cảnh.	g0050	lesson-14	14	HSK1	bai-14|grammar	TRUE
+14	你的车是新的还是旧的	3	Tính từ làm định ngữ	Tính từ + 的 + danh từ	新的书	Sách mới	Tính từ một âm tiết đôi khi không cần 的 nếu quan hệ rất cố định.	g0051	lesson-14	14	HSK1	bai-14|grammar	TRUE
+15	你们公司有多少职员	1	多少 hỏi số lượng	多少 + danh từ	你们公司有多少职员？	Công ty các bạn có bao nhiêu nhân viên?	多少 dùng cho số lượng chưa biết, thường lớn hơn 几.	g0052	lesson-15	15	HSK1	bai-15|grammar	TRUE
+15	你们公司有多少职员	2	Câu hỏi số lượng với 几/多少	几/多少 + lượng từ + danh từ	你有几本书？	Bạn có mấy quyển sách?	几 thường cần lượng từ; 多少 có thể linh hoạt hơn.	g0053	lesson-15	15	HSK1	bai-15|grammar	TRUE
+15	你们公司有多少职员	3	Câu có chủ ngữ là nơi/tổ chức + 有	Nơi/tổ chức + 有 + số lượng + danh từ	公司有二十个职员。	Công ty có 20 nhân viên.	Dùng để mô tả quy mô, thành phần, số lượng.	g0054	lesson-15	15	HSK1	bai-15|grammar	TRUE
