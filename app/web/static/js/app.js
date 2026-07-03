@@ -258,6 +258,41 @@ function completedBlankSentence(question) {
   return blank.replace("___", answer);
 }
 
+function explanationParts(question) {
+  // Chuẩn hóa giải thích sau khi trả lời thành 3 dòng: Hán tự, pinyin, nghĩa.
+  const explanation = question.explanation || {};
+  const completed = completedBlankSentence(question);
+  const hanzi = completed || explanation.hanzi || explanation.sentence_hanzi || "";
+  const pinyin = explanation.pinyin || explanation.sentence_pinyin || "";
+  const meaning = explanation.meaning_vi || explanation.sentence_vi || "";
+  return { hanzi, pinyin, meaning };
+}
+
+function renderFeedbackContent(title, question) {
+  // Dùng HTML có escape để kết quả game câu dễ đọc hơn trên điện thoại.
+  const parts = explanationParts(question);
+  const rows = [
+    ["Hán tự", parts.hanzi],
+    ["Pinyin", parts.pinyin],
+    ["Nghĩa", parts.meaning],
+  ]
+    .filter(([, value]) => value)
+    .map(
+      ([label, value]) => `
+        <div class="feedback-row">
+          <span>${escapeHtml(label)}</span>
+          <strong>${escapeHtml(value)}</strong>
+        </div>
+      `,
+    )
+    .join("");
+
+  return `
+    <div class="feedback-title">${escapeHtml(title)}</div>
+    <div class="feedback-details">${rows}</div>
+  `;
+}
+
 async function switchMode(mode) {
   // Đổi module đang xem: study, radicals, grammar, hoặc game.
   document.querySelectorAll(".mode").forEach((item) => {
@@ -521,19 +556,16 @@ function markOptions(selectedOptionId) {
 function showResult(isCorrect, selectedOptionId) {
   const feedback = document.querySelector("#gameFeedback");
   const nextButton = document.querySelector("#nextQuestion");
-  const completed = completedBlankSentence(currentQuestion);
-  const baseExplanation = explainQuestion(currentQuestion);
-  const explanation = `${completed && !baseExplanation.startsWith(completed) ? `${completed} · ` : ""}${baseExplanation}`;
   markOptions(selectedOptionId);
   recordGameAnswer(isCorrect);
 
   if (isCorrect) {
     score += 1;
     feedback.className = "game-feedback is-correct";
-    feedback.textContent = `Đúng. ${explanation}`;
+    feedback.innerHTML = renderFeedbackContent("Đúng", currentQuestion);
   } else {
     feedback.className = "game-feedback is-wrong";
-    feedback.textContent = `Chưa đúng. Đáp án: ${explanation}`;
+    feedback.innerHTML = renderFeedbackContent("Chưa đúng. Đáp án đúng", currentQuestion);
   }
 
   document.querySelector("#scoreText").textContent = score;

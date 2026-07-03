@@ -680,6 +680,31 @@ h1 {
   padding: 12px;
 }
 
+.feedback-title {
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.feedback-details {
+  display: grid;
+  gap: 6px;
+}
+
+.feedback-row {
+  display: grid;
+  gap: 2px;
+}
+
+.feedback-row span {
+  color: #5a6270;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.feedback-row strong {
+  line-height: 1.35;
+}
+
 .game-feedback.is-correct {
   background: #e9f8ef;
   color: #17633a;
