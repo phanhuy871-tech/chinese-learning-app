@@ -6,15 +6,18 @@ let grammarCards = [];
 let users = [];
 let selectedUserId = localStorage.getItem("selectedUserId") || "user-01";
 let currentProgress = emptyProgress();
+let selectedWordId = "";
 
 let currentQuestion = null;
 let currentQuestionIndex = 0;
 let score = 0;
 let answered = false;
 let orderingSelection = [];
+let visibleExampleCount = 3;
 
 const progressStorageKey = "chineseLearningProgressV1";
 const audioLikeGames = new Set(["audio_to_hanzi", "audio_to_pinyin", "audio_to_meaning"]);
+const mobileMedia = window.matchMedia("(max-width: 820px)");
 const gameLabels = {
   audio_to_hanzi: "Nghe âm thanh, chọn chữ Hán",
   audio_to_pinyin: "Nghe âm thanh, chọn pinyin",
@@ -152,20 +155,69 @@ function escapeHtml(value) {
     .replaceAll('"', "&quot;");
 }
 
+function showAudioStatus(message, isError = false) {
+  // Hiển thị phản hồi ngắn để người học biết nút nghe đã nhận thao tác.
+  let status = document.querySelector("#audioStatus");
+  if (!status) {
+    status = document.createElement("div");
+    status.id = "audioStatus";
+    status.className = "audio-status";
+    document.body.appendChild(status);
+  }
+  status.textContent = message;
+  status.classList.toggle("is-error", isError);
+  status.classList.add("is-visible");
+  window.clearTimeout(showAudioStatus.timer);
+  showAudioStatus.timer = window.setTimeout(() => status.classList.remove("is-visible"), 2600);
+}
+
+function googleTtsUrl(text) {
+  // Fallback TTS online: dùng khi Sheet chưa có audio_url và máy không hỗ trợ giọng đọc nội bộ.
+  const query = encodeURIComponent(String(text || "").slice(0, 180));
+  return `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh-CN&q=${query}`;
+}
+
+function playAudioSource(source) {
+  // Tạo audio mới cho mỗi lần bấm để mobile coi đây là thao tác phát do người dùng khởi tạo.
+  const audio = new Audio(source);
+  audio.preload = "auto";
+  return audio.play();
+}
+
+function speakWithBrowserVoice(text) {
+  // Dùng Web Speech API nếu trình duyệt có sẵn giọng đọc tiếng Trung.
+  if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+    return false;
+  }
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "zh-CN";
+  utterance.rate = 0.88;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utterance);
+  return true;
+}
+
 function speakWord(text, audioUrl) {
-  // Nếu Sheet có audio_url thì phát file âm thanh đó.
-  if (audioUrl) {
-    new Audio(audioUrl).play();
+  // Ưu tiên file audio trong Sheet, nếu chưa có thì dùng TTS online, cuối cùng mới dùng giọng trình duyệt.
+  const speakText = String(text || "").trim();
+  const source = audioUrl || (speakText ? googleTtsUrl(speakText) : "");
+  if (source) {
+    playAudioSource(source)
+      .then(() => showAudioStatus("Đang phát âm thanh"))
+      .catch(() => {
+        if (speakWithBrowserVoice(speakText)) {
+          showAudioStatus("Đang phát bằng giọng của trình duyệt");
+          return;
+        }
+        showAudioStatus("Máy này chưa phát được âm thanh. Hãy thử mở bằng Chrome/Safari.", true);
+      });
     return;
   }
-
-  // Nếu chưa có audio_url, dùng giọng đọc có sẵn của trình duyệt để đọc tiếng Trung.
-  if ("speechSynthesis" in window) {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "zh-CN";
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(utterance);
+  if (speakWithBrowserVoice(speakText)) {
+    showAudioStatus("Đang phát bằng giọng của trình duyệt");
+    return;
   }
+  showAudioStatus("Chưa có dữ liệu âm thanh cho mục này.", true);
 }
 
 function explainQuestion(question) {
@@ -485,8 +537,9 @@ function renderWordList(cards) {
   list.innerHTML = cards
     .map((card, index) => {
       const word = card.word;
+      const isActive = word.id === selectedWordId ? " is-active" : "";
       return `
-        <button class="word-item" data-word-index="${index}" type="button">
+        <button class="word-item${isActive}" data-word-index="${index}" type="button">
           <span class="hanzi">${escapeHtml(word.hanzi)}</span>
           <span>${escapeHtml(word.pinyin)} · ${escapeHtml(word.meaning_vi)}</span>
         </button>
@@ -496,17 +549,29 @@ function renderWordList(cards) {
 
   document.querySelectorAll(".word-item").forEach((button) => {
     // Khi bấm vào 1 từ, cập nhật cột "Chi tiết" bên phải.
-    button.addEventListener("click", () => renderWordDetail(cards[Number(button.dataset.wordIndex)]));
+    button.addEventListener("click", () => {
+      renderWordDetail(cards[Number(button.dataset.wordIndex)]);
+      if (mobileMedia.matches) {
+        document.querySelector("#wordDetail").scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
   });
 }
 
-function renderWordDetail(card) {
+function renderWordDetail(card, showAll = false) {
   // Hiện chi tiết 1 từ: chữ Hán, pinyin, nghĩa, chiết tự, ví dụ, bộ thủ liên quan.
   const detail = document.querySelector("#wordDetail");
   const word = card.word;
+  selectedWordId = word.id;
+  visibleExampleCount = showAll ? card.sentences.length : mobileMedia.matches ? 3 : 5;
+  document.querySelectorAll(".word-item").forEach((button) => {
+    const item = vocabularyCards[Number(button.dataset.wordIndex)]?.word;
+    button.classList.toggle("is-active", item?.id === selectedWordId);
+  });
   recordStudiedWord(word);
-  const examples = card.sentences.length
-    ? card.sentences
+  const visibleSentences = card.sentences.slice(0, visibleExampleCount);
+  const examples = visibleSentences.length
+    ? visibleSentences
         .map(
           (sentence) => `
             <li>
@@ -528,6 +593,10 @@ function renderWordDetail(card) {
         )
         .join("")
     : `<li><em>Chưa có câu ví dụ sẵn sàng cho từ này.</em></li>`;
+  const moreExamples =
+    card.sentences.length > visibleExampleCount
+      ? `<button class="show-more-examples" type="button">Xem thêm ${card.sentences.length - visibleExampleCount} câu</button>`
+      : "";
 
   const radicals = card.radicals.length
     ? card.radicals
@@ -562,6 +631,7 @@ function renderWordDetail(card) {
     <section>
       <h3>Ví dụ</h3>
       <ul class="examples">${examples}</ul>
+      ${moreExamples}
     </section>
     <section>
       <h3>Bộ thủ liên quan</h3>
@@ -578,6 +648,8 @@ function renderWordDetail(card) {
     button.addEventListener("click", () => speakWord(button.dataset.speakValue, button.dataset.audioUrl));
   });
 
+  detail.querySelector(".show-more-examples")?.addEventListener("click", () => renderWordDetail(card, true));
+
   detail.querySelectorAll(".radical-link").forEach((button) => {
     button.addEventListener("click", async () => {
       await switchMode("radicals");
@@ -590,6 +662,7 @@ async function loadVocabulary() {
   // Gọi API module 1: lấy các thẻ học từ vựng theo lesson_order.
   const list = document.querySelector("#wordList");
   const detail = document.querySelector("#wordDetail");
+  selectedWordId = "";
   list.innerHTML = '<div class="empty-state">Đang tải từ vựng...</div>';
   detail.innerHTML = "Chọn một từ vựng để học.";
   const response = await fetch(`/api/study/vocabulary?lesson_order=${selectedLesson}`);
