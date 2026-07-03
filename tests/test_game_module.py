@@ -1,6 +1,7 @@
 import unittest
 
 from app.data_sources.local_snapshot import load_local_snapshot
+from app.database.repository import repository
 from app.games.registry import build_game_question, list_game_types
 
 
@@ -50,6 +51,14 @@ class GameModuleTest(unittest.TestCase):
         question = build_game_question("hanzi_to_pinyin", lesson_order=6, item_index=0)
 
         self.assertEqual(question.explanation["lesson_id"], "lesson-6")
+
+    def test_two_character_word_gets_two_character_distractors(self) -> None:
+        question = build_game_question("hanzi_to_pinyin", lesson_order=6, item_index=0)
+        distractors = [option for option in question.options if option.id != question.answer_id]
+        words_by_id = {word.id: word for word in repository.list_words()}
+        two_character_count = sum(1 for option in distractors if len(words_by_id[option.id].hanzi) == 2)
+
+        self.assertGreaterEqual(two_character_count, 2)
 
     def test_lesson_six_sentence_translation_is_repaired(self) -> None:
         question = build_game_question("sentence_blank", lesson_order=6, item_index=0)
