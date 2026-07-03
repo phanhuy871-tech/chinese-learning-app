@@ -190,19 +190,24 @@ function speakWithBrowserVoice(text) {
     return false;
   }
   const utterance = new SpeechSynthesisUtterance(text);
+  const voices = window.speechSynthesis.getVoices();
+  const chineseVoice = voices.find((voice) => voice.lang.toLowerCase().startsWith("zh"));
+  if (chineseVoice) {
+    utterance.voice = chineseVoice;
+  }
   utterance.lang = "zh-CN";
   utterance.rate = 0.88;
+  utterance.volume = 1;
   window.speechSynthesis.cancel();
   window.speechSynthesis.speak(utterance);
   return true;
 }
 
 function speakWord(text, audioUrl) {
-  // Ưu tiên file audio trong Sheet, nếu chưa có thì dùng TTS online, cuối cùng mới dùng giọng trình duyệt.
+  // iPhone/Safari cần lệnh phát chạy ngay trong thao tác bấm, nên fallback giọng trình duyệt được gọi đồng bộ.
   const speakText = String(text || "").trim();
-  const source = audioUrl || (speakText ? googleTtsUrl(speakText) : "");
-  if (source) {
-    playAudioSource(source)
+  if (audioUrl) {
+    playAudioSource(audioUrl)
       .then(() => showAudioStatus("Đang phát âm thanh"))
       .catch(() => {
         if (speakWithBrowserVoice(speakText)) {
@@ -213,10 +218,22 @@ function speakWord(text, audioUrl) {
       });
     return;
   }
+
   if (speakWithBrowserVoice(speakText)) {
     showAudioStatus("Đang phát bằng giọng của trình duyệt");
     return;
   }
+
+  const source = speakText ? googleTtsUrl(speakText) : "";
+  if (source) {
+    playAudioSource(source)
+      .then(() => showAudioStatus("Đang phát âm thanh"))
+      .catch(() =>
+        showAudioStatus("Máy này chưa phát được âm thanh. Hãy thử bật âm lượng và tắt chế độ im lặng.", true),
+      );
+    return;
+  }
+
   showAudioStatus("Chưa có dữ liệu âm thanh cho mục này.", true);
 }
 
