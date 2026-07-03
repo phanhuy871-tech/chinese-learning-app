@@ -1,5 +1,6 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Response
 
+from app.audio.tts_service import synthesize_chinese_audio
 from app.core.exceptions import DataSyncError, NotEnoughDataError
 from app.database.repository import repository
 from app.data_sources.bootstrap import load_sample_data
@@ -33,6 +34,23 @@ def health():
         "radicals": len(repository.list_radicals()),
         "lessons": len(repository.list_lessons()),
     }
+
+
+@router.get("/tts")
+async def tts_audio(text: str):
+    """Tạo file MP3 phát âm tiếng Trung cho từ/câu đang học."""
+    try:
+        audio = await synthesize_chinese_audio(text)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail="Chưa tạo được âm thanh TTS.") from exc
+
+    return Response(
+        content=audio,
+        media_type="audio/mpeg",
+        headers={"Cache-Control": "public, max-age=604800"},
+    )
 
 
 @router.get("/users")

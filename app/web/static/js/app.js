@@ -172,9 +172,14 @@ function showAudioStatus(message, isError = false) {
 }
 
 function googleTtsUrl(text) {
-  // Fallback TTS online: dùng khi Sheet chưa có audio_url và máy không hỗ trợ giọng đọc nội bộ.
+  // Fallback cuối cùng nếu backend TTS chưa sẵn sàng.
   const query = encodeURIComponent(String(text || "").slice(0, 180));
   return `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh-CN&q=${query}`;
+}
+
+function appTtsUrl(text) {
+  // Endpoint Python tạo MP3 bằng giọng neural tiếng Trung, ổn định hơn giọng của iPhone/browser.
+  return `/api/tts?text=${encodeURIComponent(String(text || "").slice(0, 180))}`;
 }
 
 function playAudioSource(source) {
@@ -204,19 +209,23 @@ function speakWithBrowserVoice(text) {
 }
 
 function speakWord(text, audioUrl) {
-  // Ưu tiên nguồn audio chuẩn: file riêng trong Sheet, rồi tới Google TTS tiếng Trung.
-  // Giọng trình duyệt chỉ là fallback vì iPhone có thể chọn nhầm giọng và đọc sai âm Hán.
+  // Ưu tiên nguồn audio chuẩn: file riêng trong Sheet, rồi tới backend TTS tiếng Trung của app.
+  // Giọng trình duyệt chỉ là fallback cuối cùng vì iPhone có thể chọn nhầm giọng và đọc sai âm Hán.
   const speakText = String(text || "").trim();
-  const source = audioUrl || (speakText ? googleTtsUrl(speakText) : "");
+  const source = audioUrl || (speakText ? appTtsUrl(speakText) : "");
   if (source) {
     playAudioSource(source)
       .then(() => showAudioStatus("Đang phát âm thanh"))
       .catch(() => {
-        if (speakWithBrowserVoice(speakText)) {
-          showAudioStatus("Đang phát bằng giọng của trình duyệt");
-          return;
-        }
-        showAudioStatus("Máy này chưa phát được âm thanh. Hãy thử bật âm lượng và tắt chế độ im lặng.", true);
+        playAudioSource(googleTtsUrl(speakText))
+          .then(() => showAudioStatus("Đang phát âm thanh dự phòng"))
+          .catch(() => {
+            if (speakWithBrowserVoice(speakText)) {
+              showAudioStatus("Đang phát bằng giọng của trình duyệt");
+              return;
+            }
+            showAudioStatus("Máy này chưa phát được âm thanh. Hãy thử bật âm lượng và tắt chế độ im lặng.", true);
+          });
       });
     return;
   }
