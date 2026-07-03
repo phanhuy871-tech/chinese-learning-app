@@ -35,6 +35,14 @@ class GameModuleTest(unittest.TestCase):
         self.assertIn(question.answer_id, option_ids)
         self.assertTrue(question.question_text)
 
+    def test_sentence_ordering_includes_vietnamese_translation(self) -> None:
+        question = build_game_question("sentence_ordering", lesson_order=1, item_index=0)
+
+        self.assertEqual(question.game_type, "sentence_ordering")
+        self.assertTrue(question.explanation["sentence_hanzi"])
+        self.assertTrue(question.explanation["sentence_pinyin"])
+        self.assertTrue(question.explanation["sentence_vi"])
+
     def test_audio_choice_has_speak_fallback(self) -> None:
         question = build_game_question("hanzi_to_audio", lesson_order=1, item_index=0)
 

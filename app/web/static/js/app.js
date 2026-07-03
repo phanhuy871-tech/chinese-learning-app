@@ -264,7 +264,10 @@ function explanationParts(question) {
   const completed = completedBlankSentence(question);
   const hanzi = completed || explanation.hanzi || explanation.sentence_hanzi || "";
   const pinyin = explanation.pinyin || explanation.sentence_pinyin || "";
-  const meaning = explanation.meaning_vi || explanation.sentence_vi || "";
+  const meaning =
+    explanation.meaning_vi ||
+    explanation.sentence_vi ||
+    (question.game_type === "sentence_ordering" ? question.question_text : "");
   return { hanzi, pinyin, meaning };
 }
 
@@ -274,7 +277,7 @@ function renderFeedbackContent(title, question) {
   const rows = [
     ["Hán tự", parts.hanzi],
     ["Pinyin", parts.pinyin],
-    ["Nghĩa", parts.meaning],
+    ["Nghĩa tiếng Việt", parts.meaning],
   ]
     .filter(([, value]) => value)
     .map(
