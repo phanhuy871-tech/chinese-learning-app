@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Chinese Learning App</title>
-    <link rel="stylesheet" href="/static/css/app.css?v=20260703-feedback2" />
+    <link rel="stylesheet" href="/static/css/app.css?v=20260705-audio-speed" />
   </head>
   <body>
     <main class="shell">
@@ -13,7 +13,10 @@
           <p class="eyebrow">Chinese Learning</p>
           <h1>Học từ vựng, câu và ngữ pháp theo bài</h1>
         </div>
-        <button id="syncButton" type="button">Đồng bộ Sheet</button>
+        <div class="topbar-actions">
+          <button id="settingsButton" class="secondary-button" type="button" aria-haspopup="dialog">Cài đặt</button>
+          <button id="syncButton" type="button">Đồng bộ Sheet</button>
+        </div>
       </section>
 
       <section class="stats">
@@ -140,6 +143,26 @@
         </div>
       </section>
     </main>
-    <script src="/static/js/app.js?v=20260703-feedback2"></script>
+
+    <!-- Hộp cài đặt dùng chung, lựa chọn được lưu trên chính thiết bị của người học. -->
+    <dialog id="settingsDialog" class="settings-dialog">
+      <form method="dialog">
+        <div class="settings-head">
+          <h2>Cài đặt âm thanh</h2>
+          <button class="close-settings" value="close" type="submit" aria-label="Đóng">×</button>
+        </div>
+        <label for="audioSpeed">Tốc độ phát âm</label>
+        <select id="audioSpeed">
+          <option value="0.75">Chậm - 0.75x</option>
+          <option value="0.9">Hơi chậm - 0.9x</option>
+          <option value="1">Bình thường - 1x</option>
+          <option value="1.15">Nhanh - 1.15x</option>
+        </select>
+        <button class="test-audio-button" id="testAudioButton" type="button">Nghe thử: 你好</button>
+        <button class="save-settings" value="save" type="submit">Xong</button>
+      </form>
+    </dialog>
+
+    <script src="/static/js/app.js?v=20260705-audio-speed"></script>
   </body>
 </html>

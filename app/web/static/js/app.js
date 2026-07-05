@@ -16,6 +16,7 @@ let orderingSelection = [];
 let visibleExampleCount = 3;
 
 const progressStorageKey = "chineseLearningProgressV1";
+const audioSpeedStorageKey = "chineseLearningAudioSpeed";
 const audioLikeGames = new Set(["audio_to_hanzi", "audio_to_pinyin", "audio_to_meaning"]);
 const mobileMedia = window.matchMedia("(max-width: 820px)");
 const gameLabels = {
@@ -30,6 +31,14 @@ const gameLabels = {
   sentence_ordering: "Sắp xếp câu",
   sentence_blank: "Điền từ vào câu",
 };
+
+function readAudioSpeed() {
+  // Đọc tốc độ đã chọn trên thiết bị; nếu dữ liệu không hợp lệ thì dùng tốc độ bình thường.
+  const savedSpeed = Number(localStorage.getItem(audioSpeedStorageKey) || "1");
+  return [0.75, 0.9, 1, 1.15].includes(savedSpeed) ? savedSpeed : 1;
+}
+
+let audioSpeed = readAudioSpeed();
 
 function emptyProgress() {
   // Cấu trúc dữ liệu tiến độ lưu cho từng người học.
@@ -186,6 +195,7 @@ function playAudioSource(source) {
   // Tạo audio mới cho mỗi lần bấm để mobile coi đây là thao tác phát do người dùng khởi tạo.
   const audio = new Audio(source);
   audio.preload = "auto";
+  audio.playbackRate = audioSpeed;
   return audio.play();
 }
 
@@ -201,7 +211,8 @@ function speakWithBrowserVoice(text) {
     utterance.voice = chineseVoice;
   }
   utterance.lang = "zh-CN";
-  utterance.rate = 0.88;
+  // Đồng bộ tốc độ fallback với tốc độ người học đã chọn trong phần Cài đặt.
+  utterance.rate = audioSpeed;
   utterance.volume = 1;
   window.speechSynthesis.cancel();
   window.speechSynthesis.speak(utterance);
@@ -989,6 +1000,26 @@ document.querySelector("#resetProgress").addEventListener("click", async () => {
   }
   localStorage.setItem(progressStorageKey, JSON.stringify(currentProgress));
   renderProgress();
+});
+
+const settingsDialog = document.querySelector("#settingsDialog");
+const audioSpeedSelect = document.querySelector("#audioSpeed");
+
+document.querySelector("#settingsButton").addEventListener("click", () => {
+  // Mỗi lần mở hộp cài đặt, đưa ô chọn về đúng tốc độ đang được sử dụng.
+  audioSpeedSelect.value = String(audioSpeed);
+  settingsDialog.showModal();
+});
+
+audioSpeedSelect.addEventListener("change", () => {
+  // Áp dụng ngay để người học có thể bấm "Nghe thử" trước khi đóng hộp cài đặt.
+  audioSpeed = Number(audioSpeedSelect.value);
+  localStorage.setItem(audioSpeedStorageKey, String(audioSpeed));
+});
+
+document.querySelector("#testAudioButton").addEventListener("click", () => {
+  // Câu nghe thử giúp kiểm tra tốc độ mà không phải quay lại bài học.
+  speakWord("你好", "");
 });
 
 async function initApp() {

@@ -2,7 +2,8 @@ import hashlib
 
 
 VOICE = "zh-CN-YunyangNeural"
-RATE = "-15%"
+# Giữ giọng đọc ở tốc độ chuẩn; người học tự điều chỉnh tốc độ ở giao diện Cài đặt.
+RATE = "+0%"
 MAX_TEXT_LENGTH = 180
 _AUDIO_CACHE: dict[str, bytes] = {}
 
