@@ -1,7 +1,8 @@
 import hashlib
 
 
-VOICE = "zh-CN-XiaoxiaoNeural"
+VOICE = "zh-CN-YunyangNeural"
+RATE = "-15%"
 MAX_TEXT_LENGTH = 180
 _AUDIO_CACHE: dict[str, bytes] = {}
 
@@ -22,13 +23,13 @@ async def synthesize_chinese_audio(text: str) -> bytes:
     if not cleaned:
         raise ValueError("Không có nội dung để phát âm.")
 
-    key = cache_key(cleaned)
+    key = cache_key(f"{VOICE}|{RATE}|{cleaned}")
     if key in _AUDIO_CACHE:
         return _AUDIO_CACHE[key]
 
     import edge_tts
 
-    communicate = edge_tts.Communicate(cleaned, VOICE, rate="-10%")
+    communicate = edge_tts.Communicate(cleaned, VOICE, rate=RATE)
     chunks: list[bytes] = []
     async for chunk in communicate.stream():
         if chunk["type"] == "audio":

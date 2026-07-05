@@ -2,7 +2,10 @@ import unittest
 
 from app.data_sources.local_snapshot import load_local_snapshot
 from app.database.repository import repository
+from app.games.common.option_generator import build_word_options
+from app.games.common.similarity import pinyin_similarity_score
 from app.games.registry import build_game_question, list_game_types
+from app.vocabulary.schemas import Word
 
 
 class GameModuleTest(unittest.TestCase):
@@ -67,6 +70,45 @@ class GameModuleTest(unittest.TestCase):
         two_character_count = sum(1 for option in distractors if len(words_by_id[option.id].hanzi) == 2)
 
         self.assertGreaterEqual(two_character_count, 2)
+
+    def test_pinyin_similarity_prefers_tone_only_difference(self) -> None:
+        tone_only = pinyin_similarity_score("mǎi", "mài")
+        one_sound_change = pinyin_similarity_score("mǎi", "měi")
+        unrelated = pinyin_similarity_score("mǎi", "hǎo")
+
+        self.assertGreater(tone_only, one_sound_change)
+        self.assertGreater(one_sound_change, unrelated)
+
+    def test_pinyin_options_are_unique_and_include_tone_neighbor(self) -> None:
+        correct = Word(
+            id="correct",
+            hanzi="买",
+            pinyin="mǎi",
+            pinyin_no_tone="mai",
+            meaning_vi="mua",
+            lesson_order=1,
+        )
+        candidates = [
+            correct,
+            Word(id="tone", hanzi="卖", pinyin="mài", pinyin_no_tone="mai", meaning_vi="bán", lesson_order=1),
+            Word(id="near", hanzi="美", pinyin="měi", pinyin_no_tone="mei", meaning_vi="đẹp", lesson_order=1),
+            Word(id="near-2", hanzi="慢", pinyin="màn", pinyin_no_tone="man", meaning_vi="chậm", lesson_order=1),
+            Word(id="far", hanzi="好", pinyin="hǎo", pinyin_no_tone="hao", meaning_vi="tốt", lesson_order=1),
+            Word(id="duplicate", hanzi="另", pinyin="mǎi", pinyin_no_tone="mai", meaning_vi="khác", lesson_order=1),
+        ]
+
+        options = build_word_options(
+            correct=correct,
+            candidates=candidates,
+            mode="pinyin",
+            strategy="similar_pinyin",
+        )
+        option_texts = [option.text for option in options]
+        option_ids = {option.id for option in options}
+
+        self.assertEqual(len(option_texts), len(set(option_texts)))
+        self.assertIn("tone", option_ids)
+        self.assertNotIn("duplicate", option_ids)
 
     def test_lesson_six_sentence_translation_is_repaired(self) -> None:
         question = build_game_question("sentence_blank", lesson_order=6, item_index=0)

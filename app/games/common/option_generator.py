@@ -1,6 +1,10 @@
 from random import Random
 
-from app.games.common.similarity import pinyin_similarity_score, sort_by_similar_pinyin
+from app.games.common.similarity import (
+    pinyin_option_key,
+    pinyin_similarity_score,
+    sort_by_similar_pinyin,
+)
 from app.games.schemas import GameOption
 from app.vocabulary.schemas import Word
 
@@ -46,7 +50,7 @@ def distractor_score(correct: Word, candidate: Word, strategy: str) -> tuple[int
     same_syllables = int(pinyin_syllable_count(candidate) == pinyin_syllable_count(correct))
     lesson_distance = -abs(candidate.lesson_order - correct.lesson_order)
     similar_sound = (
-        pinyin_similarity_score(correct.pinyin_no_tone, candidate.pinyin_no_tone)
+        pinyin_similarity_score(correct.pinyin, candidate.pinyin)
         if strategy == "similar_pinyin"
         else 0
     )
@@ -87,6 +91,17 @@ def build_word_options(
     pool = [word for word in candidates if word.id != correct.id]
     if exclude_same_pinyin:
         pool = [word for word in pool if word.pinyin_no_tone != correct.pinyin_no_tone]
+    if mode == "pinyin":
+        # Không cho hai nút có cùng pinyin; người học phải luôn phân biệt được đáp án.
+        seen_pinyin = {pinyin_option_key(correct.pinyin)}
+        unique_pool: list[Word] = []
+        for word in pool:
+            key = pinyin_option_key(word.pinyin)
+            if key in seen_pinyin:
+                continue
+            seen_pinyin.add(key)
+            unique_pool.append(word)
+        pool = unique_pool
     if strategy == "similar_pinyin":
         pool = sort_by_similar_pinyin(correct, pool)
 
