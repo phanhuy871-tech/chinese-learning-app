@@ -122,11 +122,17 @@ def build_sentence_translation(sentence: Sentence, candidates: list[Sentence]) -
     Nguoi hoc nhin nghia tieng Viet, sau do chon cau Han tu dung trong 4 dap an.
     Dap an nhieu lay tu cac cau cung pham vi bai hoc de khong vuot qua luong tu da hoc.
     """
-    pool = [
-        candidate
-        for candidate in candidates
-        if candidate.id != sentence.id and candidate.sentence_hanzi
-    ]
+    # Khong cho 2 nut dap an co cung sentence_hanzi; neu khong nguoi hoc chon dung chu
+    # nhung khac id van bi cham sai.
+    seen_hanzi = {sentence.sentence_hanzi}
+    pool: list[Sentence] = []
+    for candidate in candidates:
+        if candidate.id == sentence.id or not candidate.sentence_hanzi:
+            continue
+        if candidate.sentence_hanzi in seen_hanzi:
+            continue
+        seen_hanzi.add(candidate.sentence_hanzi)
+        pool.append(candidate)
     if len(pool) < 1:
         raise NotEnoughDataError("Can it nhat 2 cau trong pham vi bai hoc de tao game dich cau.")
 
