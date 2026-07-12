@@ -14,6 +14,9 @@ let score = 0;
 let answered = false;
 let orderingSelection = [];
 let visibleExampleCount = 3;
+let gameQueue = [];
+let currentGameItemIndex = 0;
+let gameSessionTotal = 0;
 
 const progressStorageKey = "chineseLearningProgressV1";
 const audioSpeedStorageKey = "chineseLearningAudioSpeed";
@@ -26,10 +29,12 @@ const gameLabels = {
   hanzi_to_audio: "Nhìn chữ Hán, chọn âm thanh",
   hanzi_to_pinyin: "Nhìn chữ Hán, chọn pinyin",
   hanzi_to_meaning: "Nhìn chữ Hán, chọn nghĩa",
+  meaning_to_hanzi: "Dịch từ Việt sang Trung",
   pinyin_to_hanzi: "Nhìn pinyin, chọn chữ Hán",
   pinyin_to_meaning: "Nhìn pinyin, chọn nghĩa",
   sentence_ordering: "Sắp xếp câu",
   sentence_blank: "Điền từ vào câu",
+  sentence_vi_to_hanzi: "Dịch câu Việt sang Trung",
 };
 
 function readAudioSpeed() {
@@ -162,6 +167,28 @@ function escapeHtml(value) {
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+function shuffleItems(items) {
+  // Tron Fisher-Yates de moi phien choi co thu tu tu/cau khac nhau.
+  const shuffled = [...items];
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+  }
+  return shuffled;
+}
+
+function clearGameSession() {
+  // Xoa hang doi hien tai khi doi bai, doi game, dong bo Sheet, hoac bam reset.
+  gameQueue = [];
+  currentGameItemIndex = 0;
+  gameSessionTotal = 0;
+  currentQuestionIndex = 0;
+  score = 0;
+  currentQuestion = null;
+  answered = false;
+  orderingSelection = [];
 }
 
 function showAudioStatus(message, isError = false) {
@@ -327,11 +354,29 @@ async function switchMode(mode) {
 }
 
 async function loadQuestion() {
-  // Gọi backend để tạo 1 câu hỏi game theo loại game và bài đang chọn.
+  // Gọi backend để tạo 1 câu hỏi game theo hàng đợi ngẫu nhiên của phiên chơi.
   const box = document.querySelector("#questionBox");
   box.innerHTML = '<div class="empty-state">Đang tạo câu hỏi...</div>';
+
+  if (!gameSessionTotal && !gameQueue.length) {
+    const sessionResponse = await fetch(`/api/games/${selectedGame}/session?lesson_order=${selectedLesson}`);
+    const session = await sessionResponse.json();
+    if (!sessionResponse.ok || !session.item_count) {
+      box.innerHTML = `<div class="game-feedback is-wrong">${escapeHtml(session.detail || "Chưa có dữ liệu để tạo phiên chơi.")}</div>`;
+      return;
+    }
+    gameSessionTotal = session.item_count;
+    gameQueue = shuffleItems(Array.from({ length: gameSessionTotal }, (_, index) => index));
+  }
+
+  if (!gameQueue.length) {
+    renderGameComplete();
+    return;
+  }
+
+  currentGameItemIndex = gameQueue.shift();
   const response = await fetch(
-    `/api/games/${selectedGame}/question?lesson_order=${selectedLesson}&item_index=${currentQuestionIndex}`,
+    `/api/games/${selectedGame}/question?lesson_order=${selectedLesson}&item_index=${currentGameItemIndex}`,
   );
   const data = await response.json();
   if (!response.ok) {
@@ -344,11 +389,43 @@ async function loadQuestion() {
   renderGameQuestion(data);
 }
 
+function renderGameComplete() {
+  // Khi tat ca muc da tra loi dung, hien man hoan thanh va nut reset de choi lai tu dau.
+  const box = document.querySelector("#questionBox");
+  currentQuestion = null;
+  answered = true;
+  box.innerHTML = `
+    <div class="game-card game-complete">
+      <div class="feedback-title">Hoàn thành lượt chơi</div>
+      <p>Bạn đã trả lời đúng toàn bộ ${gameSessionTotal} mục của game này.</p>
+      <div class="game-actions">
+        <button id="resetGameSession" class="next-button" type="button">Chơi lại</button>
+      </div>
+    </div>
+  `;
+  box.querySelector("#resetGameSession").addEventListener("click", async () => {
+    clearGameSession();
+    await loadQuestion();
+  });
+}
+
 function renderGamePrompt(question) {
   if (audioLikeGames.has(question.game_type)) {
     return `
       <div class="game-prompt">
         <button class="play-question sound-button" type="button">Nghe câu hỏi</button>
+        <p>${escapeHtml(question.prompt)}</p>
+      </div>
+    `;
+  }
+
+  if (question.game_type === "meaning_to_hanzi" || question.game_type === "sentence_vi_to_hanzi") {
+    // Game dịch Việt -> Trung không phát âm trước khi trả lời, để người học thật sự tự dịch.
+    return `
+      <div class="game-prompt">
+        <div class="prompt-head">
+          <div class="prompt-text">${escapeHtml(question.meaning_vi || question.question_text)}</div>
+        </div>
         <p>${escapeHtml(question.prompt)}</p>
       </div>
     `;
@@ -428,13 +505,15 @@ function renderGameQuestion(question) {
   const box = document.querySelector("#questionBox");
   const options = question.options.map((option) => renderOption(option, question)).join("");
   const orderingArea = question.game_type === "sentence_ordering" ? '<div id="orderingAnswer" class="ordering-answer"></div>' : "";
+  const remainingCount = gameQueue.length + 1;
 
   box.innerHTML = `
     <div class="game-card">
       <div class="game-meta">
         <span>${escapeHtml(gameLabels[question.game_type] || question.game_type)}</span>
         <span>Điểm: <strong id="scoreText">${score}</strong></span>
-        <span>Câu: <strong>${currentQuestionIndex + 1}</strong></span>
+        <span>Đã làm: <strong id="attemptText">${currentQuestionIndex}</strong></span>
+        <span>Còn lại: <strong id="remainingText">${remainingCount}/${gameSessionTotal}</strong></span>
       </div>
       ${renderGamePrompt(question)}
       ${orderingArea}
@@ -451,6 +530,7 @@ function renderGameQuestion(question) {
       }
       <div id="gameFeedback" class="game-feedback"></div>
       <div class="game-actions">
+        <button id="resetGameSession" class="tool-button" type="button">Reset lượt chơi</button>
         <button id="nextQuestion" class="next-button" type="button" disabled>Câu tiếp theo</button>
       </div>
     </div>
@@ -470,7 +550,11 @@ function renderGameQuestion(question) {
   });
 
   box.querySelector("#nextQuestion").addEventListener("click", async () => {
-    currentQuestionIndex += 1;
+    await loadQuestion();
+  });
+
+  box.querySelector("#resetGameSession").addEventListener("click", async () => {
+    clearGameSession();
     await loadQuestion();
   });
 
@@ -572,17 +656,25 @@ function showResult(isCorrect, selectedOptionId) {
   const nextButton = document.querySelector("#nextQuestion");
   markOptions(selectedOptionId);
   recordGameAnswer(isCorrect);
+  currentQuestionIndex += 1;
 
   if (isCorrect) {
     score += 1;
     feedback.className = "game-feedback is-correct";
     feedback.innerHTML = renderFeedbackContent("Đúng", currentQuestion);
   } else {
+    // Tra loi sai thi muc nay quay lai cuoi hang doi, den khi dung moi tinh la hoan thanh.
+    gameQueue.push(currentGameItemIndex);
     feedback.className = "game-feedback is-wrong";
     feedback.innerHTML = renderFeedbackContent("Chưa đúng. Đáp án đúng", currentQuestion);
   }
 
   document.querySelector("#scoreText").textContent = score;
+  document.querySelector("#attemptText").textContent = currentQuestionIndex;
+  document.querySelector("#remainingText").textContent = `${gameQueue.length}/${gameSessionTotal}`;
+  if (!gameQueue.length) {
+    nextButton.textContent = "Xem hoàn thành";
+  }
   nextButton.disabled = false;
 }
 
@@ -919,9 +1011,7 @@ document.querySelectorAll(".lesson").forEach((button) => {
     document.querySelectorAll(".lesson").forEach((item) => item.classList.remove("is-active"));
     button.classList.add("is-active");
     selectedLesson = button.dataset.lesson;
-    currentQuestionIndex = 0;
-    score = 0;
-    currentQuestion = null;
+    clearGameSession();
     const activeMode = document.querySelector(".mode.is-active")?.dataset.mode;
     await loadVocabulary();
     if (activeMode === "grammar") {
@@ -939,8 +1029,7 @@ document.querySelectorAll(".game").forEach((button) => {
     document.querySelectorAll(".game").forEach((item) => item.classList.remove("is-active"));
     button.classList.add("is-active");
     selectedGame = button.dataset.game;
-    currentQuestionIndex = 0;
-    score = 0;
+    clearGameSession();
     await loadQuestion();
   });
 });
@@ -960,6 +1049,7 @@ document.querySelector("#syncButton").addEventListener("click", async () => {
   const data = await response.json();
   detail.innerHTML = `<pre>${escapeHtml(JSON.stringify(data, null, 2))}</pre>`;
   currentQuestion = null;
+  clearGameSession();
   radicalCards = [];
   grammarCards = [];
   await loadVocabulary();

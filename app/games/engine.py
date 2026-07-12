@@ -1,3 +1,5 @@
+from random import Random
+
 from app.core.exceptions import NotEnoughDataError
 from app.games.common.option_generator import build_word_options
 from app.games.schemas import GameOption, GameQuestion
@@ -106,6 +108,44 @@ def build_sentence_blank(sentence: Sentence, candidate_words: list[Word]) -> Gam
         question_text=sentence.blank_sentence,
         options=options,
         answer_id=correct.id,
+        explanation={
+            "sentence_hanzi": sentence.sentence_hanzi,
+            "sentence_pinyin": sentence.sentence_pinyin,
+            "sentence_vi": sentence.sentence_vi,
+        },
+    )
+
+
+def build_sentence_translation(sentence: Sentence, candidates: list[Sentence]) -> GameQuestion:
+    """Tao game dich cau tu tieng Viet sang tieng Trung.
+
+    Nguoi hoc nhin nghia tieng Viet, sau do chon cau Han tu dung trong 4 dap an.
+    Dap an nhieu lay tu cac cau cung pham vi bai hoc de khong vuot qua luong tu da hoc.
+    """
+    pool = [
+        candidate
+        for candidate in candidates
+        if candidate.id != sentence.id and candidate.sentence_hanzi
+    ]
+    if len(pool) < 1:
+        raise NotEnoughDataError("Can it nhat 2 cau trong pham vi bai hoc de tao game dich cau.")
+
+    # Tron dap an bang seed on dinh theo id cau, giup moi cau co dap an nhieu nhat quan.
+    randomizer = Random(f"{sentence.id}:sentence_vi_to_hanzi")
+    randomizer.shuffle(pool)
+    selected = [sentence, *pool[:3]]
+    randomizer.shuffle(selected)
+    options = [
+        GameOption(id=item.id, text=item.sentence_hanzi, value=item.sentence_hanzi)
+        for item in selected
+    ]
+    return GameQuestion(
+        game_type="sentence_vi_to_hanzi",
+        prompt="Dich cau tieng Viet sang tieng Trung",
+        lesson_order=sentence.lesson_order,
+        question_text=sentence.sentence_vi,
+        options=options,
+        answer_id=sentence.id,
         explanation={
             "sentence_hanzi": sentence.sentence_hanzi,
             "sentence_pinyin": sentence.sentence_pinyin,

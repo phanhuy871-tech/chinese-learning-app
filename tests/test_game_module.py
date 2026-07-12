@@ -4,7 +4,7 @@ from app.data_sources.local_snapshot import load_local_snapshot
 from app.database.repository import repository
 from app.games.common.option_generator import build_word_options
 from app.games.common.similarity import pinyin_similarity_score
-from app.games.registry import build_game_question, list_game_types
+from app.games.registry import build_game_question, game_item_count, list_game_types
 from app.vocabulary.schemas import Word
 
 
@@ -20,6 +20,7 @@ class GameModuleTest(unittest.TestCase):
             "audio_to_meaning",
             "hanzi_to_pinyin",
             "hanzi_to_meaning",
+            "meaning_to_hanzi",
             "pinyin_to_hanzi",
             "pinyin_to_meaning",
         ]
@@ -46,6 +47,22 @@ class GameModuleTest(unittest.TestCase):
         self.assertTrue(question.explanation["sentence_pinyin"])
         self.assertTrue(question.explanation["sentence_vi"])
 
+    def test_meaning_to_hanzi_asks_vietnamese_and_answers_hanzi(self) -> None:
+        question = build_game_question("meaning_to_hanzi", lesson_order=1, item_index=0)
+        answer = next(option for option in question.options if option.id == question.answer_id)
+
+        self.assertEqual(question.game_type, "meaning_to_hanzi")
+        self.assertTrue(question.meaning_vi)
+        self.assertEqual(answer.text, question.explanation["hanzi"])
+
+    def test_sentence_translation_asks_vietnamese_and_answers_hanzi(self) -> None:
+        question = build_game_question("sentence_vi_to_hanzi", lesson_order=1, item_index=0)
+        answer = next(option for option in question.options if option.id == question.answer_id)
+
+        self.assertEqual(question.game_type, "sentence_vi_to_hanzi")
+        self.assertTrue(question.question_text)
+        self.assertEqual(answer.text, question.explanation["sentence_hanzi"])
+
     def test_audio_choice_has_speak_fallback(self) -> None:
         question = build_game_question("hanzi_to_audio", lesson_order=1, item_index=0)
 
@@ -56,7 +73,16 @@ class GameModuleTest(unittest.TestCase):
         game_types = list_game_types()
 
         self.assertIn("hanzi_to_pinyin", game_types)
+        self.assertIn("meaning_to_hanzi", game_types)
         self.assertIn("sentence_blank", game_types)
+        self.assertIn("sentence_vi_to_hanzi", game_types)
+
+    def test_game_item_count_matches_session_targets(self) -> None:
+        word_count = game_item_count("meaning_to_hanzi", lesson_order=1)
+        sentence_count = game_item_count("sentence_vi_to_hanzi", lesson_order=1)
+
+        self.assertGreater(word_count, 0)
+        self.assertGreater(sentence_count, 0)
 
     def test_selected_lesson_targets_exact_lesson_word(self) -> None:
         question = build_game_question("hanzi_to_pinyin", lesson_order=6, item_index=0)

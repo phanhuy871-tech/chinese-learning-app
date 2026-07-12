@@ -1,5 +1,10 @@
 from app.database.repository import repository
-from app.games.engine import build_sentence_blank, build_sentence_ordering, build_word_question
+from app.games.engine import (
+    build_sentence_blank,
+    build_sentence_ordering,
+    build_sentence_translation,
+    build_word_question,
+)
 
 
 # Cấu hình các game từ vựng.
@@ -16,6 +21,7 @@ WORD_GAME_CONFIG = {
     "hanzi_to_audio": ("hanzi", "audio", "Nhin chu Han, chon am thanh dung", "same_lesson_scope", False),
     "hanzi_to_pinyin": ("hanzi", "pinyin", "Nhin chu Han, chon pinyin dung", "same_lesson_scope", False),
     "hanzi_to_meaning": ("hanzi", "meaning", "Nhin chu Han, chon nghia dung", "same_lesson_scope", False),
+    "meaning_to_hanzi": ("meaning_vi", "hanzi", "Nhin nghia tieng Viet, chon chu Han dung", "same_lesson_scope", False),
     "pinyin_to_hanzi": ("pinyin", "hanzi", "Nhin pinyin, chon chu Han dung", "same_lesson_scope", True),
     "pinyin_to_meaning": ("pinyin", "meaning", "Nhin pinyin, chon nghia dung", "same_lesson_scope", False),
 }
@@ -53,6 +59,11 @@ GAME_META = {
         "description": "Nhìn chữ Hán rồi chọn nghĩa đúng.",
         "group": "Chữ Hán",
     },
+    "meaning_to_hanzi": {
+        "label": "Dịch từ Việt -> Trung",
+        "description": "Nhìn nghĩa tiếng Việt rồi chọn từ tiếng Trung đúng.",
+        "group": "Dịch",
+    },
     "pinyin_to_hanzi": {
         "label": "Nhìn pinyin chọn chữ",
         "description": "Nhìn pinyin rồi chọn chữ Hán, tránh từ cùng cách đọc.",
@@ -73,12 +84,17 @@ GAME_META = {
         "description": "Chọn từ phù hợp với ngữ cảnh và chỗ trống.",
         "group": "Câu",
     },
+    "sentence_vi_to_hanzi": {
+        "label": "Dịch câu Việt -> Trung",
+        "description": "Nhìn nghĩa tiếng Việt rồi chọn câu tiếng Trung đúng.",
+        "group": "Dịch",
+    },
 }
 
 
 def list_game_types() -> list[str]:
     # Thứ tự trong list này cũng là thứ tự hiển thị game trên giao diện.
-    return [*WORD_GAME_CONFIG.keys(), "sentence_ordering", "sentence_blank"]
+    return [*WORD_GAME_CONFIG.keys(), "sentence_ordering", "sentence_blank", "sentence_vi_to_hanzi"]
 
 
 def list_game_metadata() -> list[dict[str, str]]:
@@ -87,6 +103,22 @@ def list_game_metadata() -> list[dict[str, str]]:
         {"id": game_type, **GAME_META[game_type]}
         for game_type in list_game_types()
     ]
+
+
+def game_item_count(game_type: str, lesson_order: int) -> int:
+    """Dem so muc can hoan thanh trong mot phien choi.
+
+    Frontend dung con so nay de tron thu tu cau hoi va dam bao moi muc chi bien mat
+    khoi hang doi khi nguoi hoc tra loi dung.
+    """
+    words = repository.list_words_for_lesson(lesson_order)
+    sentences = repository.list_sentences_for_lesson(lesson_order)
+    if game_type in WORD_GAME_CONFIG:
+        target_words = [word for word in words if word.lesson_order == lesson_order] or words
+        return len(target_words)
+    if game_type in {"sentence_ordering", "sentence_blank", "sentence_vi_to_hanzi"}:
+        return len(sentences)
+    raise ValueError(f"Unknown game type: {game_type}")
 
 
 def build_game_question(game_type: str, lesson_order: int, item_index: int = 0):
@@ -124,5 +156,7 @@ def build_game_question(game_type: str, lesson_order: int, item_index: int = 0):
         return build_sentence_ordering(sentence)
     if game_type == "sentence_blank":
         return build_sentence_blank(sentence, words)
+    if game_type == "sentence_vi_to_hanzi":
+        return build_sentence_translation(sentence, sentences)
 
     raise ValueError(f"Unknown game type: {game_type}")

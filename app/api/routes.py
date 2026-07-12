@@ -6,7 +6,7 @@ from app.database.repository import repository
 from app.data_sources.bootstrap import load_sample_data
 from app.data_sources.google_sheets.sync_service import sync_google_sheet
 from app.data_sources.local_snapshot import load_local_snapshot
-from app.games.registry import build_game_question, list_game_types
+from app.games.registry import build_game_question, game_item_count, list_game_types
 from app.users.progress_store import (
     create_user,
     get_progress,
@@ -173,6 +173,15 @@ def sentences(lesson_order: int | None = None):
 def games():
     # Trả danh sách mã game. Trang HTML dùng metadata từ web route để hiển thị đẹp hơn.
     return {"game_types": list_game_types()}
+
+
+@router.get("/games/{game_type}/session")
+def game_session(game_type: str, lesson_order: int = 1):
+    # Tra ve so muc trong mot phien choi de frontend tron thu tu va theo doi hoan thanh.
+    try:
+        return {"game_type": game_type, "lesson_order": lesson_order, "item_count": game_item_count(game_type, lesson_order)}
+    except ValueError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
 
 
 @router.get("/games/{game_type}/question")
