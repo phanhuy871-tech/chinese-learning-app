@@ -528,7 +528,7 @@ function renderTypedAnswerArea(question) {
   const expectedLength = Math.max(1, typedAnswerTarget(question).length);
   return `
     <form id="typedAnswerForm" class="typed-answer" autocomplete="off">
-      <label for="typedAnswerInput">Go chu Han</label>
+      <label for="typedAnswerInput">Gõ chữ Hán</label>
       <input
         id="typedAnswerInput"
         type="text"
@@ -537,9 +537,9 @@ function renderTypedAnswerArea(question) {
         autocapitalize="off"
         spellcheck="false"
         maxlength="${Math.max(expectedLength + 4, 12)}"
-        placeholder="Vi du: 你好"
+        placeholder="Ví dụ: 你好"
       />
-      <button id="checkTypedAnswer" class="next-button" type="submit">Kiem tra</button>
+      <button id="checkTypedAnswer" class="next-button" type="submit">Kiểm tra</button>
     </form>
   `;
 }
