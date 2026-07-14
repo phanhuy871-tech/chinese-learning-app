@@ -138,6 +138,28 @@ class GameModuleTest(unittest.TestCase):
         self.assertIn("tone", option_ids)
         self.assertNotIn("duplicate", option_ids)
 
+    def test_word_options_do_not_show_duplicate_hanzi_or_meaning(self) -> None:
+        correct = Word(id="correct", hanzi="身体", pinyin="shēntǐ", meaning_vi="thân thể", lesson_order=1)
+        candidates = [
+            correct,
+            Word(id="same-hanzi", hanzi="身体", pinyin="shēntǐ", meaning_vi="cơ thể", lesson_order=1),
+            Word(id="same-meaning", hanzi="天", pinyin="tiān", meaning_vi="thân thể", lesson_order=1),
+            Word(id="ok-1", hanzi="学校", pinyin="xuéxiào", meaning_vi="trường học", lesson_order=1),
+            Word(id="ok-2", hanzi="公园", pinyin="gōngyuán", meaning_vi="công viên", lesson_order=1),
+            Word(id="ok-3", hanzi="银行", pinyin="yínháng", meaning_vi="ngân hàng", lesson_order=1),
+        ]
+
+        hanzi_options = build_word_options(correct, candidates, mode="hanzi")
+        meaning_options = build_word_options(correct, candidates, mode="meaning")
+
+        self.assertEqual(len([option.text for option in hanzi_options]), len({option.text for option in hanzi_options}))
+        self.assertNotIn("same-hanzi", {option.id for option in hanzi_options})
+        self.assertEqual(
+            len([option.text for option in meaning_options]),
+            len({option.text for option in meaning_options}),
+        )
+        self.assertNotIn("same-meaning", {option.id for option in meaning_options})
+
     def test_lesson_six_sentence_translation_is_repaired(self) -> None:
         question = build_game_question("sentence_blank", lesson_order=6, item_index=0)
 

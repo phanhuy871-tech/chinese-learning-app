@@ -24,6 +24,21 @@ def word_option(word: Word, mode: str) -> GameOption:
     return GameOption(id=word.id, text=word.hanzi, value=word.hanzi)
 
 
+def option_display_key(word: Word, mode: str) -> str:
+    """Gia tri nguoi hoc thay tren nut dap an.
+
+    Hai dap an co cung key se bi loai bot, vi nhin giong nhau nhung khac id se lam
+    nguoi hoc co the chon dung mat chu ma van bi cham sai.
+    """
+    if mode == "pinyin":
+        return pinyin_option_key(word.pinyin)
+    if mode == "meaning":
+        return str(word.meaning_vi or "").strip().casefold()
+    if mode == "audio":
+        return str(word.hanzi or word.audio_url or "").strip()
+    return str(word.hanzi or "").strip()
+
+
 def hanzi_length(word: Word) -> int:
     return len(str(word.hanzi or "").strip())
 
@@ -91,17 +106,17 @@ def build_word_options(
     pool = [word for word in candidates if word.id != correct.id]
     if exclude_same_pinyin:
         pool = [word for word in pool if word.pinyin_no_tone != correct.pinyin_no_tone]
-    if mode == "pinyin":
-        # Không cho hai nút có cùng pinyin; người học phải luôn phân biệt được đáp án.
-        seen_pinyin = {pinyin_option_key(correct.pinyin)}
-        unique_pool: list[Word] = []
-        for word in pool:
-            key = pinyin_option_key(word.pinyin)
-            if key in seen_pinyin:
-                continue
-            seen_pinyin.add(key)
-            unique_pool.append(word)
-        pool = unique_pool
+    # Không cho hai nút đáp án hiển thị giống nhau trong cùng một câu hỏi.
+    # Áp dụng cho Hán tự, pinyin, nghĩa và audio fallback.
+    seen_display = {option_display_key(correct, mode)}
+    unique_pool: list[Word] = []
+    for word in pool:
+        key = option_display_key(word, mode)
+        if not key or key in seen_display:
+            continue
+        seen_display.add(key)
+        unique_pool.append(word)
+    pool = unique_pool
     if strategy == "similar_pinyin":
         pool = sort_by_similar_pinyin(correct, pool)
 

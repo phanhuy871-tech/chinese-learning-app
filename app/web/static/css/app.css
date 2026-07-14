@@ -641,6 +641,35 @@ h1 {
   grid-template-columns: 1fr 1fr;
 }
 
+.typed-answer {
+  display: grid;
+  gap: 10px;
+}
+
+.typed-answer label {
+  color: #5a6270;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.typed-answer input {
+  border: 1px solid #d9dde5;
+  border-radius: 8px;
+  color: #16181d;
+  font: inherit;
+  font-size: 28px;
+  font-weight: 700;
+  min-height: 58px;
+  padding: 10px 12px;
+  text-align: center;
+  width: 100%;
+}
+
+.typed-answer input:focus {
+  border-color: #255f85;
+  outline: 3px solid #d7e8f3;
+}
+
 .play-option {
   min-height: 54px;
   text-align: center;
@@ -939,6 +968,11 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .typed-answer input {
+    font-size: 30px;
+    min-height: 64px;
+  }
+
   .prompt-head {
     align-items: stretch;
     flex-direction: column;
@@ -956,5 +990,81 @@ h1 {
   .game-panel .list {
     max-height: 48vh;
     overflow: auto;
+  }
+
+  body[data-active-mode="game"] .stats,
+  body[data-active-mode="game"] .progress-panel {
+    display: none;
+  }
+
+  body[data-active-mode="game"] .grid {
+    gap: 8px;
+  }
+
+  body[data-active-mode="game"] .grid > .panel:first-child,
+  body[data-active-mode="game"] .game-panel {
+    padding: 10px;
+  }
+
+  body[data-active-mode="game"] .grid > .panel:first-child h2,
+  body[data-active-mode="game"] .game-panel h2 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  body[data-active-mode="game"] .grid > .panel:first-child .list,
+  body[data-active-mode="game"] .game-panel .list {
+    display: grid;
+    gap: 8px;
+    grid-auto-columns: minmax(132px, 42vw);
+    grid-auto-flow: column;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 4px;
+    scroll-snap-type: x proximity;
+  }
+
+  body[data-active-mode="game"] .lesson,
+  body[data-active-mode="game"] .game {
+    min-height: 48px;
+    scroll-snap-align: start;
+  }
+
+  body[data-active-mode="game"] .lesson {
+    text-align: center;
+  }
+
+  body[data-active-mode="game"] .lesson span,
+  body[data-active-mode="game"] .game span:not(.game-group),
+  body[data-active-mode="game"] .game code {
+    display: none;
+  }
+
+  body[data-active-mode="game"] .game-meta {
+    gap: 6px;
+  }
+
+  body[data-active-mode="game"] .game-meta span {
+    font-size: 12px;
+  }
+
+  body[data-active-mode="game"] .question-panel {
+    scroll-margin-top: 92px;
+  }
+
+  body[data-active-mode="game"] .prompt-text {
+    font-size: clamp(24px, 8vw, 34px);
+  }
+
+  body[data-active-mode="game"] .game-actions {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 1fr;
+  }
+
+  body[data-active-mode="game"] .tool-button,
+  body[data-active-mode="game"] .next-button {
+    width: 100%;
   }
 }

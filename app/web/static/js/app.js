@@ -334,8 +334,19 @@ function renderFeedbackContent(title, question) {
   `;
 }
 
+function scrollQuestionIntoViewIfMobile() {
+  // Tren dien thoai, dua cau hoi len dau man hinh sau khi doi game/bai de khong phai cuon dai.
+  if (!mobileMedia.matches) {
+    return;
+  }
+  window.requestAnimationFrame(() => {
+    document.querySelector(".question-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
+
 async function switchMode(mode) {
   // Đổi module đang xem: study, radicals, grammar, hoặc game.
+  document.body.dataset.activeMode = mode;
   document.querySelectorAll(".mode").forEach((item) => {
     item.classList.toggle("is-active", item.dataset.mode === mode);
   });
@@ -350,6 +361,7 @@ async function switchMode(mode) {
   }
   if (mode === "game") {
     await loadQuestion();
+    scrollQuestionIntoViewIfMobile();
   }
 }
 
@@ -501,9 +513,43 @@ function renderOption(option, question) {
   `;
 }
 
+function typedAnswerTarget(question) {
+  // Lay dap an chu Han dung cho game go tu Viet -> Trung.
+  const answerOption = question.options?.find((option) => option.id === question.answer_id);
+  return String(answerOption?.value || answerOption?.text || question.explanation?.hanzi || "").trim();
+}
+
+function normalizeTypedAnswer(value) {
+  // Chuan hoa khoang trang dau/cuoi; giu nguyen chu Han de khong lam sai y nguoi hoc da go.
+  return String(value || "").trim().replace(/\s+/g, "");
+}
+
+function renderTypedAnswerArea(question) {
+  const expectedLength = Math.max(1, typedAnswerTarget(question).length);
+  return `
+    <form id="typedAnswerForm" class="typed-answer" autocomplete="off">
+      <label for="typedAnswerInput">Go chu Han</label>
+      <input
+        id="typedAnswerInput"
+        type="text"
+        inputmode="text"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        maxlength="${Math.max(expectedLength + 4, 12)}"
+        placeholder="Vi du: 你好"
+      />
+      <button id="checkTypedAnswer" class="next-button" type="submit">Kiem tra</button>
+    </form>
+  `;
+}
+
 function renderGameQuestion(question) {
   const box = document.querySelector("#questionBox");
-  const options = question.options.map((option) => renderOption(option, question)).join("");
+  const useTypedAnswer = question.game_type === "meaning_to_hanzi";
+  const options = useTypedAnswer
+    ? renderTypedAnswerArea(question)
+    : question.options.map((option) => renderOption(option, question)).join("");
   const orderingArea = question.game_type === "sentence_ordering" ? '<div id="orderingAnswer" class="ordering-answer"></div>' : "";
   const remainingCount = gameQueue.length + 1;
 
@@ -517,7 +563,7 @@ function renderGameQuestion(question) {
       </div>
       ${renderGamePrompt(question)}
       ${orderingArea}
-      <div class="answer-grid">${options}</div>
+      <div class="${useTypedAnswer ? "typed-answer-wrap" : "answer-grid"}">${options}</div>
       ${
         question.game_type === "sentence_ordering"
           ? `
@@ -548,6 +594,16 @@ function renderGameQuestion(question) {
   box.querySelectorAll(".play-option").forEach((button) => {
     button.addEventListener("click", () => speakWord(button.dataset.speakValue, button.dataset.audioUrl));
   });
+
+  const typedAnswerForm = box.querySelector("#typedAnswerForm");
+  if (typedAnswerForm) {
+    const input = box.querySelector("#typedAnswerInput");
+    input.focus();
+    typedAnswerForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      handleTypedAnswer(input.value);
+    });
+  }
 
   box.querySelector("#nextQuestion").addEventListener("click", async () => {
     await loadQuestion();
@@ -586,6 +642,31 @@ function handleAnswer(optionId) {
   answered = true;
   const isCorrect = optionId === currentQuestion.answer_id;
   showResult(isCorrect, optionId);
+}
+
+function handleTypedAnswer(value) {
+  if (!currentQuestion || answered || currentQuestion.game_type !== "meaning_to_hanzi") {
+    return;
+  }
+
+  const input = document.querySelector("#typedAnswerInput");
+  const checkButton = document.querySelector("#checkTypedAnswer");
+  const target = typedAnswerTarget(currentQuestion);
+  const typed = normalizeTypedAnswer(value);
+  if (!typed) {
+    input?.focus();
+    return;
+  }
+
+  answered = true;
+  if (input) {
+    input.disabled = true;
+  }
+  if (checkButton) {
+    checkButton.disabled = true;
+  }
+  const isCorrect = typed === normalizeTypedAnswer(target);
+  showResult(isCorrect, isCorrect ? currentQuestion.answer_id : "");
 }
 
 function handleOrderingAnswer(optionId) {
@@ -1019,6 +1100,7 @@ document.querySelectorAll(".lesson").forEach((button) => {
     }
     if (activeMode === "game") {
       await loadQuestion();
+      scrollQuestionIntoViewIfMobile();
     }
   });
 });
@@ -1031,6 +1113,7 @@ document.querySelectorAll(".game").forEach((button) => {
     selectedGame = button.dataset.game;
     clearGameSession();
     await loadQuestion();
+    scrollQuestionIntoViewIfMobile();
   });
 });
 
