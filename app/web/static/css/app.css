@@ -1069,6 +1069,57 @@ h1 {
 
   body[data-active-mode="game"] .grid {
     gap: 8px;
+    max-width: 100%;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  body[data-active-mode="game"] .game-panel,
+  body[data-active-mode="game"] .question-panel,
+  body[data-active-mode="game"] #questionBox,
+  body[data-active-mode="game"] .game-card,
+  body[data-active-mode="game"] .game-prompt,
+  body[data-active-mode="game"] .prompt-head,
+  body[data-active-mode="game"] .answer-grid,
+  body[data-active-mode="game"] .audio-choice,
+  body[data-active-mode="game"] .ordering-answer,
+  body[data-active-mode="game"] .ordering-tools,
+  body[data-active-mode="game"] .game-feedback,
+  body[data-active-mode="game"] .game-actions {
+    contain: inline-size;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  body[data-active-mode="game"] .prompt-head,
+  body[data-active-mode="game"] .ordering-tools,
+  body[data-active-mode="game"] .game-actions {
+    flex-wrap: wrap;
+  }
+
+  body[data-active-mode="game"] .answer-option,
+  body[data-active-mode="game"] .play-option,
+  body[data-active-mode="game"] .tool-button,
+  body[data-active-mode="game"] .next-button {
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    width: 100%;
+  }
+
+  body[data-active-mode="game"] .game-meta > *,
+  body[data-active-mode="game"] .prompt-text,
+  body[data-active-mode="game"] .game-prompt p,
+  body[data-active-mode="game"] .feedback-row,
+  body[data-active-mode="game"] .feedback-row strong,
+  body[data-active-mode="game"] .ordering-answer {
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   body[data-active-mode="game"] .grid > .panel:first-child,
