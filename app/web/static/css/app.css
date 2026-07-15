@@ -218,6 +218,14 @@ h1 {
   min-width: 0;
 }
 
+/* A grid item defaults to min-width:auto. When a child list uses horizontal
+   tracks, that intrinsic width can expand the entire page. */
+.grid > .panel {
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
+}
+
 .list {
   display: grid;
   gap: 8px;
@@ -885,7 +893,7 @@ h1 {
 
   .topbar,
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .topbar {
