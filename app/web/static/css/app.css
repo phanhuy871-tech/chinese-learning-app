@@ -6,16 +6,16 @@
   color: #16181d;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  min-width: 0;
 }
 
 html,
 body {
   margin: 0;
-  max-width: 100%;
-  overflow-x: clip;
+  width: 100%;
 }
 
 button {
@@ -27,7 +27,7 @@ button {
 .shell {
   /* Khung ngoài giữ nội dung không quá rộng trên PC và vẫn full trên mobile. */
   width: min(1120px, 100%);
-  max-width: 100vw;
+  max-width: 100%;
   margin: 0 auto;
   padding: 20px;
 }
@@ -38,6 +38,7 @@ button {
   gap: 16px;
   justify-content: space-between;
   padding: 18px 0;
+  width: 100%;
 }
 
 .eyebrow {
@@ -83,6 +84,8 @@ h1 {
 .grid {
   display: grid;
   gap: 14px;
+  max-width: 100%;
+  width: 100%;
 }
 
 .stats {
@@ -98,10 +101,12 @@ h1 {
 
 .modebar {
   /* Thanh chuyển module: Học từ vựng, Bộ thủ, Ngữ pháp, Game. */
-  display: inline-grid;
+  display: grid;
   gap: 8px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: 12px 0 14px;
+  max-width: 100%;
+  width: 100%;
 }
 
 .mode {
@@ -176,7 +181,20 @@ h1 {
 .new-user-row {
   display: grid;
   gap: 8px;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+.new-user-row > *,
+.user-picker select,
+.user-picker input {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.user-picker input {
+  width: 100%;
 }
 
 #addUser {
@@ -190,6 +208,14 @@ h1 {
 .grid {
   /* Layout chính 3 cột trên PC, xuống 1 cột ở mobile. */
   grid-template-columns: 0.9fr 1fr 1.5fr;
+}
+
+.grid > *,
+.stats > *,
+.progress-panel > *,
+.topbar > *,
+.modebar > * {
+  min-width: 0;
 }
 
 .list {
@@ -556,6 +582,9 @@ h1 {
 .game-card {
   display: grid;
   gap: 14px;
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
 }
 
 .game-meta {
@@ -581,6 +610,7 @@ h1 {
   display: flex;
   gap: 12px;
   justify-content: space-between;
+  min-width: 0;
 }
 
 .prompt-text {
@@ -692,6 +722,7 @@ h1 {
 
 .ordering-tools {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -751,6 +782,7 @@ h1 {
 
 .game-actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
 }
 
@@ -780,7 +812,7 @@ h1 {
   border: 0;
   border-radius: 8px;
   box-shadow: 0 18px 50px rgba(22, 24, 29, 0.24);
-  max-width: min(420px, calc(100vw - 24px));
+  max-width: min(420px, calc(100% - 24px));
   padding: 0;
   width: 100%;
 }
@@ -847,8 +879,8 @@ h1 {
   }
 
   .shell {
-    overflow-x: hidden;
     padding: max(10px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    width: 100%;
   }
 
   .topbar,
@@ -903,7 +935,7 @@ h1 {
 
   .progress-panel {
     gap: 8px;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .progress-panel .user-picker,
@@ -932,9 +964,8 @@ h1 {
     display: grid;
     gap: 6px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin: 8px calc(-1 * max(12px, env(safe-area-inset-right))) 10px calc(-1 * max(12px, env(safe-area-inset-left)));
-    overflow-x: hidden;
-    padding: 8px max(12px, env(safe-area-inset-right)) 8px max(12px, env(safe-area-inset-left));
+    margin: 8px 0 10px;
+    padding: 8px 0;
     position: sticky;
     top: env(safe-area-inset-top);
     scrollbar-width: none;
@@ -1005,6 +1036,7 @@ h1 {
   .examples li {
     max-width: 100%;
     min-width: 0;
+    width: 100%;
   }
 
   input,
@@ -1070,7 +1102,6 @@ h1 {
   body[data-active-mode="game"] .grid {
     gap: 8px;
     max-width: 100%;
-    overflow: hidden;
     width: 100%;
   }
 
@@ -1086,10 +1117,8 @@ h1 {
   body[data-active-mode="game"] .ordering-tools,
   body[data-active-mode="game"] .game-feedback,
   body[data-active-mode="game"] .game-actions {
-    contain: inline-size;
     max-width: 100%;
     min-width: 0;
-    overflow-x: hidden;
     width: 100%;
   }
 
@@ -1139,7 +1168,6 @@ h1 {
     gap: 8px;
     grid-template-columns: 1fr;
     max-height: 240px;
-    overflow-x: hidden;
     overflow-y: auto;
     padding-bottom: 0;
   }
