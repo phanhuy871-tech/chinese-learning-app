@@ -233,7 +233,14 @@ function speakWithBrowserVoice(text) {
   }
   const utterance = new SpeechSynthesisUtterance(text);
   const voices = window.speechSynthesis.getVoices();
-  const chineseVoice = voices.find((voice) => voice.lang.toLowerCase().startsWith("zh"));
+  // iPhone thường có cả Quan thoại, Đài Loan và Quảng Đông. Không chọn giọng
+  // `zh` đầu tiên vì máy có thể trả về zh-HK (Quảng Đông) trước zh-CN.
+  const normalizedVoices = voices.map((voice) => ({ voice, lang: voice.lang.toLowerCase().replaceAll("_", "-") }));
+  const chineseVoice =
+    normalizedVoices.find(({ lang }) => lang === "zh-cn")?.voice ||
+    normalizedVoices.find(({ lang }) => lang === "zh-sg")?.voice ||
+    normalizedVoices.find(({ lang }) => lang.startsWith("cmn"))?.voice ||
+    normalizedVoices.find(({ lang }) => lang === "zh-tw")?.voice;
   if (chineseVoice) {
     utterance.voice = chineseVoice;
   }

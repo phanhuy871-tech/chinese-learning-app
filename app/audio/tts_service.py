@@ -1,9 +1,12 @@
 import hashlib
+import os
 
 
-VOICE = "zh-CN-YunyangNeural"
-# Giữ giọng đọc ở tốc độ chuẩn; người học tự điều chỉnh tốc độ ở giao diện Cài đặt.
-RATE = "+0%"
+# Xiaoxiao là giọng Quan thoại phổ thông, phát âm rõ và tự nhiên hơn cho người mới học.
+# Cho phép đổi bằng biến môi trường mà không cần sửa source khi triển khai.
+VOICE = os.getenv("TTS_VOICE", "zh-CN-XiaoxiaoNeural")
+RATE = os.getenv("TTS_RATE", "-8%")
+PITCH = os.getenv("TTS_PITCH", "+0Hz")
 MAX_TEXT_LENGTH = 180
 _AUDIO_CACHE: dict[str, bytes] = {}
 
@@ -24,13 +27,13 @@ async def synthesize_chinese_audio(text: str) -> bytes:
     if not cleaned:
         raise ValueError("Không có nội dung để phát âm.")
 
-    key = cache_key(f"{VOICE}|{RATE}|{cleaned}")
+    key = cache_key(f"{VOICE}|{RATE}|{PITCH}|{cleaned}")
     if key in _AUDIO_CACHE:
         return _AUDIO_CACHE[key]
 
     import edge_tts
 
-    communicate = edge_tts.Communicate(cleaned, VOICE, rate=RATE)
+    communicate = edge_tts.Communicate(cleaned, VOICE, rate=RATE, pitch=PITCH)
     chunks: list[bytes] = []
     async for chunk in communicate.stream():
         if chunk["type"] == "audio":
