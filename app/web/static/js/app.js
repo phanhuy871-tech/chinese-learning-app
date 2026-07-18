@@ -21,6 +21,7 @@ let gameSessionTotal = 0;
 const progressStorageKey = "chineseLearningProgressV1";
 const audioSpeedStorageKey = "chineseLearningAudioSpeed";
 const audioLikeGames = new Set(["audio_to_hanzi", "audio_to_pinyin", "audio_to_meaning"]);
+let activeAudio = null;
 const mobileMedia = window.matchMedia("(max-width: 820px)");
 const gameLabels = {
   audio_to_hanzi: "Nghe âm thanh, chọn chữ Hán",
@@ -207,70 +208,39 @@ function showAudioStatus(message, isError = false) {
   showAudioStatus.timer = window.setTimeout(() => status.classList.remove("is-visible"), 2600);
 }
 
-function googleTtsUrl(text) {
-  // Fallback cuối cùng nếu backend TTS chưa sẵn sàng.
-  const query = encodeURIComponent(String(text || "").slice(0, 180));
-  return `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh-CN&q=${query}`;
-}
-
 function appTtsUrl(text) {
   // Endpoint Python tạo MP3 bằng giọng neural tiếng Trung, ổn định hơn giọng của iPhone/browser.
   return `/api/tts?text=${encodeURIComponent(String(text || "").slice(0, 180))}`;
 }
 
 function playAudioSource(source) {
-  // Tạo audio mới cho mỗi lần bấm để mobile coi đây là thao tác phát do người dùng khởi tạo.
+  // Chỉ phát một nguồn tại một thời điểm, tránh hai giọng chồng lên nhau khi bấm nhanh.
+  if (activeAudio) {
+    activeAudio.pause();
+    activeAudio.currentTime = 0;
+  }
   const audio = new Audio(source);
+  activeAudio = audio;
   audio.preload = "auto";
   audio.playbackRate = audioSpeed;
+  audio.addEventListener("ended", () => {
+    if (activeAudio === audio) {
+      activeAudio = null;
+    }
+  }, { once: true });
   return audio.play();
 }
 
-function speakWithBrowserVoice(text) {
-  // Dùng Web Speech API nếu trình duyệt có sẵn giọng đọc tiếng Trung.
-  if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
-    return false;
-  }
-  const utterance = new SpeechSynthesisUtterance(text);
-  const voices = window.speechSynthesis.getVoices();
-  // iPhone thường có cả Quan thoại, Đài Loan và Quảng Đông. Không chọn giọng
-  // `zh` đầu tiên vì máy có thể trả về zh-HK (Quảng Đông) trước zh-CN.
-  const normalizedVoices = voices.map((voice) => ({ voice, lang: voice.lang.toLowerCase().replaceAll("_", "-") }));
-  const chineseVoice =
-    normalizedVoices.find(({ lang }) => lang === "zh-cn")?.voice ||
-    normalizedVoices.find(({ lang }) => lang === "zh-sg")?.voice ||
-    normalizedVoices.find(({ lang }) => lang.startsWith("cmn"))?.voice ||
-    normalizedVoices.find(({ lang }) => lang === "zh-tw")?.voice;
-  if (chineseVoice) {
-    utterance.voice = chineseVoice;
-  }
-  utterance.lang = "zh-CN";
-  // Đồng bộ tốc độ fallback với tốc độ người học đã chọn trong phần Cài đặt.
-  utterance.rate = audioSpeed;
-  utterance.volume = 1;
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(utterance);
-  return true;
-}
-
 function speakWord(text, audioUrl) {
-  // Ưu tiên nguồn audio chuẩn: file riêng trong Sheet, rồi tới backend TTS tiếng Trung của app.
-  // Giọng trình duyệt chỉ là fallback cuối cùng vì iPhone có thể chọn nhầm giọng và đọc sai âm Hán.
+  // Luôn dùng cùng backend giọng nữ Quan thoại khi có chữ Hán. Không tự chuyển sang
+  // Google/browser vì các nguồn đó có thể đổi sang giọng nam hoặc zh-HK trên iPhone.
   const speakText = String(text || "").trim();
-  const source = audioUrl || (speakText ? appTtsUrl(speakText) : "");
+  const source = speakText ? appTtsUrl(speakText) : audioUrl;
   if (source) {
     playAudioSource(source)
       .then(() => showAudioStatus("Đang phát âm thanh"))
       .catch(() => {
-        playAudioSource(googleTtsUrl(speakText))
-          .then(() => showAudioStatus("Đang phát âm thanh dự phòng"))
-          .catch(() => {
-            if (speakWithBrowserVoice(speakText)) {
-              showAudioStatus("Đang phát bằng giọng của trình duyệt");
-              return;
-            }
-            showAudioStatus("Máy này chưa phát được âm thanh. Hãy thử bật âm lượng và tắt chế độ im lặng.", true);
-          });
+        showAudioStatus("Chưa tải được giọng nữ Quan thoại. Hãy bấm nghe lại sau vài giây.", true);
       });
     return;
   }
