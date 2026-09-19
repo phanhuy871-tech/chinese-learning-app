@@ -7,11 +7,13 @@ from app.data_sources.google_sheets.schema_mapper import (
     SENTENCE_COLUMNS,
     TOPIC_COLUMNS,
     WORD_COLUMNS,
+    MONOLITHIC_COLUMNS,
     pick,
 )
 from app.learning.lesson_scope import lesson_order_from_value
 from app.learning.schemas import GrammarPoint, Lesson, Topic
 from app.radicals.schemas import Radical
+from app.monolithic.schemas import MonolithicCharacter
 from app.sentences.schemas import Sentence
 from app.vocabulary.schemas import Word
 
@@ -51,6 +53,42 @@ def parse_list(value: str) -> list[str]:
     if not value:
         return []
     return [item.strip() for item in re.split(r"[|,;]", value) if item.strip()]
+
+
+def parse_monolithic_characters(rows: list[dict[str, str]]) -> list[MonolithicCharacter]:
+    characters: list[MonolithicCharacter] = []
+    for index, row in enumerate(rows, start=1):
+        simplified = pick(row, MONOLITHIC_COLUMNS["simplified"])
+        if not simplified:
+            continue
+        characters.append(MonolithicCharacter(
+            id=pick(row, MONOLITHIC_COLUMNS["id"], f"mono-{index:03d}"),
+            simplified=simplified,
+            traditional=pick(row, MONOLITHIC_COLUMNS["traditional"], simplified),
+            pinyin=pick(row, MONOLITHIC_COLUMNS["pinyin"]),
+            han_viet=pick(row, MONOLITHIC_COLUMNS["han_viet"]),
+            meaning_vi=pick(row, MONOLITHIC_COLUMNS["meaning_vi"]),
+            origin_meaning_vi=pick(row, MONOLITHIC_COLUMNS["origin_meaning_vi"]),
+            derived_meaning_vi=pick(row, MONOLITHIC_COLUMNS["derived_meaning_vi"]),
+            etymology_type=pick(row, MONOLITHIC_COLUMNS["etymology_type"]),
+            etymology_note_vi=pick(row, MONOLITHIC_COLUMNS["etymology_note_vi"]),
+            stroke_count=parse_int(pick(row, MONOLITHIC_COLUMNS["stroke_count"]), 0),
+            stroke_hint_vi=pick(row, MONOLITHIC_COLUMNS["stroke_hint_vi"]),
+            radical_form=pick(row, MONOLITHIC_COLUMNS["radical_form"]),
+            radical_note_vi=pick(row, MONOLITHIC_COLUMNS["radical_note_vi"]),
+            week=parse_int(pick(row, MONOLITHIC_COLUMNS["week"]), 5),
+            category=pick(row, MONOLITHIC_COLUMNS["category"], "Khái niệm khác"),
+            core_rank=parse_int(pick(row, MONOLITHIC_COLUMNS["core_rank"]), 0),
+            is_core=parse_bool(pick(row, MONOLITHIC_COLUMNS["is_core"]), False),
+            oracle_image_url=pick(row, MONOLITHIC_COLUMNS["oracle_image_url"]),
+            bronze_image_url=pick(row, MONOLITHIC_COLUMNS["bronze_image_url"]),
+            seal_image_url=pick(row, MONOLITHIC_COLUMNS["seal_image_url"]),
+            evolution_source_url=pick(row, MONOLITHIC_COLUMNS["evolution_source_url"]),
+            compounds=parse_list(pick(row, MONOLITHIC_COLUMNS["compounds"])),
+            hidden_examples=parse_list(pick(row, MONOLITHIC_COLUMNS["hidden_examples"])),
+            is_active=parse_bool(pick(row, MONOLITHIC_COLUMNS["is_active"])),
+        ))
+    return characters
 
 
 def resolve_lesson(row: dict[str, str]) -> tuple[str, int]:

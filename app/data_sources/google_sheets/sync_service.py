@@ -3,6 +3,7 @@ from app.data_sources.google_sheets.client import fetch_public_sheet_rows, fetch
 from app.data_sources.google_sheets.parser import (
     parse_grammar_points,
     parse_lessons,
+    parse_monolithic_characters,
     parse_radicals,
     parse_sentences,
     parse_topics,
@@ -17,6 +18,7 @@ def sync_google_sheet() -> dict[str, int]:
     sentences_rows = fetch_public_sheet_rows_by_name(settings.google_sheet_id, settings.google_sentences_sheet)
     grammar_rows = fetch_public_sheet_rows_by_name(settings.google_sheet_id, settings.google_grammar_sheet)
     radical_rows = fetch_public_sheet_rows_by_name(settings.google_sheet_id, settings.google_radicals_sheet)
+    monolithic_rows = fetch_public_sheet_rows_by_name(settings.google_sheet_id, settings.google_monolithic_sheet)
 
     try:
         lessons_rows = fetch_public_sheet_rows_by_name(settings.google_sheet_id, settings.google_lessons_sheet)
@@ -34,6 +36,7 @@ def sync_google_sheet() -> dict[str, int]:
     topics = parse_topics(topics_rows)
     grammar_points = parse_grammar_points(grammar_rows)
     radicals = parse_radicals(radical_rows)
+    monolithic_characters = parse_monolithic_characters(monolithic_rows)
     lessons = supplement_lessons_from_words(lessons, words)
     repository.replace_words(words)
     repository.replace_sentences(sentences)
@@ -41,6 +44,7 @@ def sync_google_sheet() -> dict[str, int]:
     repository.replace_topics(topics)
     repository.replace_grammar_points(grammar_points)
     repository.replace_radicals(radicals)
+    repository.replace_monolithic_characters(monolithic_characters)
     return {
         "word_rows": len(words_rows),
         "sentence_rows": len(sentences_rows),
@@ -52,4 +56,5 @@ def sync_google_sheet() -> dict[str, int]:
         "topics": len(topics),
         "grammar_points": len(grammar_points),
         "radicals": len(radicals),
+        "monolithic_characters": len(monolithic_characters),
     }

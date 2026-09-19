@@ -1223,6 +1223,36 @@ h1 {
   }
 }
 
+.mono-filters { display:grid; gap:10px; margin-bottom:14px; }
+.mono-filters label { align-items:center; display:flex; gap:8px; }
+.mono-filters input { width:auto; }
+.monolithic-list { display:grid; gap:8px; grid-template-columns:repeat(2,minmax(0,1fr)); max-height:70vh; overflow-y:auto; }
+.mono-item { align-items:center; display:grid; gap:2px; grid-template-columns:44px minmax(0,1fr); min-width:0; padding:10px; text-align:left; }
+.mono-item strong { font-size:30px; grid-row:1 / span 2; }
+.mono-item small { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.mono-detail, .mono-detail section, .mono-detail header { box-sizing:border-box; max-width:100%; min-width:0; width:100%; }
+.mono-detail { display:grid; gap:16px; }
+.mono-detail header { align-items:center; display:flex; gap:16px; }
+.mono-main-char { font-size:72px; line-height:1; }
+.core-badge { background:#fff1bd; border-radius:999px; display:inline-block; padding:5px 9px; }
+.evolution-row { display:grid; gap:8px; grid-template-columns:repeat(4,minmax(0,1fr)); }
+.evolution-row figure { margin:0; min-width:0; text-align:center; }
+.evolution-image { align-items:center; aspect-ratio:1; background:#fffaf0; border:1px solid #eadfc7; display:flex; justify-content:center; overflow:hidden; }
+.evolution-image img { height:100%; max-width:100%; object-fit:contain; width:100%; }
+.evolution-image.modern { font-size:50px; }
+.writer-tools { align-items:start; display:flex; flex-wrap:wrap; gap:16px; }
+.writer-tools > * { min-width:0; }
+.rice-grid { background:linear-gradient(45deg,transparent 49.5%,#e9caca 50%,transparent 50.5%),linear-gradient(-45deg,transparent 49.5%,#e9caca 50%,transparent 50.5%); border:2px solid #c98d8d; height:240px; max-width:100%; width:240px; }
+
+@media (max-width: 620px) {
+  .monolithic-list { grid-template-columns:1fr; }
+  .evolution-row { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .mono-detail header { align-items:flex-start; }
+  .mono-main-char { font-size:58px; }
+  .writer-tools > * { width:100%; }
+  .rice-grid { margin-inline:auto; }
+}
+
 @media (max-width: 460px) {
   .eyebrow {
     font-size: 13px;

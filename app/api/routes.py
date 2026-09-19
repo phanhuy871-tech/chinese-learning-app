@@ -32,6 +32,7 @@ def health():
         "sentences": len(repository.list_sentences()),
         "grammar_points": len(repository.list_grammar_points()),
         "radicals": len(repository.list_radicals()),
+        "monolithic_characters": len(repository.list_monolithic_characters()),
         "lessons": len(repository.list_lessons()),
     }
 
@@ -142,6 +143,16 @@ def study_vocabulary(lesson_order: int = 1):
 def radicals():
     # Trả kho kiến thức bộ thủ đọc từ tab "bộ thủ".
     return repository.list_radicals()
+
+
+@router.get("/monolithic-characters")
+def monolithic_characters(week: int | None = None, core_only: bool = False):
+    items = repository.list_monolithic_characters()
+    if week is not None:
+        items = [item for item in items if item.week == week]
+    if core_only:
+        items = [item for item in items if item.is_core]
+    return items
 
 
 @router.get("/grammar")

@@ -3,6 +3,7 @@ let selectedGame = "hanzi_to_pinyin";
 let vocabularyCards = [];
 let radicalCards = [];
 let grammarCards = [];
+let monolithicCards = [];
 let users = [];
 let selectedUserId = localStorage.getItem("selectedUserId") || "user-01";
 let currentProgress = emptyProgress();
@@ -332,6 +333,9 @@ async function switchMode(mode) {
   });
   if (mode === "radicals" && !radicalCards.length) {
     await loadRadicals();
+  }
+  if (mode === "monolithic" && !monolithicCards.length) {
+    await loadMonolithic();
   }
   if (mode === "grammar") {
     await loadGrammar();
@@ -1062,6 +1066,60 @@ async function loadGrammar() {
     selectGrammar(0);
   }
 }
+
+function filteredMonolithic() {
+  const week = Number(document.querySelector("#monoWeek")?.value || 0);
+  const coreOnly = document.querySelector("#monoCore")?.checked ?? true;
+  return monolithicCards.filter((item) => (!week || item.week === week) && (!coreOnly || item.is_core));
+}
+
+function renderMonolithicList() {
+  const items = filteredMonolithic();
+  const list = document.querySelector("#monolithicList");
+  list.innerHTML = items.map((item, index) => `
+    <button class="mono-item" type="button" data-mono-index="${monolithicCards.indexOf(item)}">
+      <strong>${escapeHtml(item.simplified)}</strong><span>${escapeHtml(item.pinyin || "—")}</span>
+      <small>${escapeHtml(item.han_viet || item.meaning_vi || "Đang bổ sung")}</small>
+    </button>`).join("") || '<div class="empty-state">Không có chữ phù hợp bộ lọc.</div>';
+  list.querySelectorAll(".mono-item").forEach((button) => button.addEventListener("click", () => selectMonolithic(Number(button.dataset.monoIndex))));
+  if (items.length) selectMonolithic(monolithicCards.indexOf(items[0]));
+}
+
+function evolutionCard(label, url, fallback) {
+  return `<figure><div class="evolution-image"><img src="${escapeHtml(url)}" alt="${escapeHtml(label)}" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span hidden>${escapeHtml(fallback)}</span></div><figcaption>${escapeHtml(label)}</figcaption></figure>`;
+}
+
+function selectMonolithic(index) {
+  const item = monolithicCards[index];
+  if (!item) return;
+  document.querySelectorAll(".mono-item").forEach((el) => el.classList.toggle("is-active", Number(el.dataset.monoIndex) === index));
+  document.querySelector("#monolithicDetail").innerHTML = `
+    <article class="mono-detail">
+      <header><div class="mono-main-char">${escapeHtml(item.simplified)}</div><div><h3>${escapeHtml(item.pinyin || "—")} · ${escapeHtml(item.han_viet || "Chưa có âm Hán Việt")}</h3><p>Phồn thể: ${escapeHtml(item.traditional || item.simplified)} · ${item.stroke_count || "?"} nét · Tuần ${item.week}</p><span class="core-badge">${item.is_core ? `Cốt lõi #${item.core_rank}` : "Mở rộng"}</span></div></header>
+      <section><h3>Nghĩa</h3><p><b>Nghĩa gốc:</b> ${escapeHtml(item.origin_meaning_vi || item.meaning_vi || "Đang hiệu đính")}</p><p><b>Nghĩa phái sinh:</b> ${escapeHtml(item.derived_meaning_vi || "—")}</p></section>
+      <section><h3>Tiến hóa chữ</h3><div class="evolution-row">${evolutionCard("Giáp Cốt", item.oracle_image_url, "—")}${evolutionCard("Kim Văn", item.bronze_image_url, "—")}${evolutionCard("Tiểu Triện", item.seal_image_url, "—")}<figure><div class="evolution-image modern">${escapeHtml(item.simplified)}</div><figcaption>Khải thư</figcaption></figure></div><p>${escapeHtml(item.etymology_note_vi)}</p><a href="${escapeHtml(item.evolution_source_url)}" target="_blank" rel="noopener">Mở nguồn chữ cổ</a></section>
+      <section><h3>Thứ tự nét · Mễ tự cách</h3><div class="writer-tools"><div id="strokeWriter" class="rice-grid"></div><div><button id="animateStroke" type="button">Xem từng nét</button><button id="quizStroke" class="secondary-button" type="button">Tự viết</button><p>${escapeHtml(item.stroke_hint_vi)}</p></div></div></section>
+      <section><h3>Làm bộ thủ</h3><p><b>${escapeHtml(item.simplified)} → ${escapeHtml(item.radical_form || item.simplified)}</b>. ${escapeHtml(item.radical_note_vi)}</p></section>
+      <section><h3>Bài tập nhanh</h3><p>1. Viết chữ trong ô Mễ tự cách ở trên. 2. Nhìn ba dạng chữ cổ và đoán chữ hiện đại. 3. Tìm <b>${escapeHtml(item.simplified)}</b> trong: ${escapeHtml((item.hidden_examples || []).join(" · ") || "các chữ ghép bạn đã học")}.</p><p><b>Từ ghép:</b> ${escapeHtml((item.compounds || []).join(" · ") || "Đang bổ sung")}</p></section>
+    </article>`;
+  if (window.HanziWriter) {
+    const size = Math.min(240, Math.max(180, document.querySelector("#strokeWriter").clientWidth));
+    const writer = HanziWriter.create("strokeWriter", item.simplified, { width: size, height: size, padding: 10, showOutline: true });
+    document.querySelector("#animateStroke").onclick = () => writer.animateCharacter();
+    document.querySelector("#quizStroke").onclick = () => writer.quiz({ showHintAfterMisses: 2 });
+  }
+}
+
+async function loadMonolithic() {
+  const list = document.querySelector("#monolithicList");
+  list.innerHTML = '<div class="empty-state">Đang tải giáo trình...</div>';
+  const response = await fetch("/api/monolithic-characters");
+  monolithicCards = response.ok ? await response.json() : [];
+  renderMonolithicList();
+}
+
+document.querySelector("#monoWeek")?.addEventListener("change", renderMonolithicList);
+document.querySelector("#monoCore")?.addEventListener("change", renderMonolithicList);
 
 document.querySelectorAll(".lesson").forEach((button) => {
   button.addEventListener("click", async () => {

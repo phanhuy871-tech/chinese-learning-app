@@ -1,5 +1,6 @@
 from app.learning.lesson_scope import sentence_is_valid_for_lesson, words_available_for_lesson
 from app.learning.schemas import GrammarPoint, Lesson, Topic
+from app.monolithic.schemas import MonolithicCharacter
 from app.radicals.schemas import Radical
 from app.sentences.schemas import Sentence
 from app.vocabulary.schemas import Word
@@ -21,6 +22,7 @@ class LearningRepository:
         self._topics: dict[str, Topic] = {}
         self._grammar_points: dict[str, GrammarPoint] = {}
         self._radicals: dict[str, Radical] = {}
+        self._monolithic_characters: dict[str, MonolithicCharacter] = {}
 
     def replace_words(self, words: list[Word]) -> None:
         # Thay toàn bộ từ vựng hiện có sau mỗi lần đồng bộ dữ liệu.
@@ -46,6 +48,9 @@ class LearningRepository:
     def replace_radicals(self, radicals: list[Radical]) -> None:
         self._radicals = {radical.id: radical for radical in radicals if radical.is_active}
 
+    def replace_monolithic_characters(self, characters: list[MonolithicCharacter]) -> None:
+        self._monolithic_characters = {item.id: item for item in characters if item.is_active}
+
     def list_words(self) -> list[Word]:
         return list(self._words.values())
 
@@ -63,6 +68,12 @@ class LearningRepository:
 
     def list_radicals(self) -> list[Radical]:
         return list(self._radicals.values())
+
+    def list_monolithic_characters(self) -> list[MonolithicCharacter]:
+        return sorted(
+            self._monolithic_characters.values(),
+            key=lambda item: (not item.is_core, item.core_rank or 99999, item.stroke_count, item.simplified),
+        )
 
     def list_words_for_lesson(self, lesson_order: int) -> list[Word]:
         # Với game bài N, người học được dùng từ bài 1 -> N theo yêu cầu dự án.

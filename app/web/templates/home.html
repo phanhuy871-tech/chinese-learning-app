@@ -71,6 +71,7 @@
       <section class="modebar" aria-label="Chế độ học">
         <button class="mode is-active" data-mode="study" type="button">Học từ vựng</button>
         <button class="mode" data-mode="radicals" type="button">Bộ thủ</button>
+        <button class="mode" data-mode="monolithic" type="button">Chữ độc thể</button>
         <button class="mode" data-mode="grammar" type="button">Ngữ pháp</button>
         <button class="mode" data-mode="game" type="button">Game luyện tập</button>
       </section>
@@ -109,6 +110,20 @@
         <div class="panel radical-detail-panel hidden" data-panel="radicals">
           <h2>Kiến thức bộ thủ</h2>
           <div id="radicalDetail" class="empty-state">Chọn một bộ thủ để học.</div>
+        </div>
+
+        <div class="panel monolithic-panel hidden" data-panel="monolithic">
+          <h2>284 chữ độc thể</h2>
+          <div class="mono-filters">
+            <select id="monoWeek" aria-label="Chọn tuần"><option value="0">Tất cả 5 tuần</option><option value="1">Tuần 1 · Tự nhiên</option><option value="2">Tuần 2 · Con người</option><option value="3">Tuần 3 · Sinh vật</option><option value="4">Tuần 4 · Đồ vật</option><option value="5">Tuần 5 · Khái niệm</option></select>
+            <label><input id="monoCore" type="checkbox" checked /> 140 chữ cốt lõi</label>
+          </div>
+          <div id="monolithicList" class="monolithic-list"></div>
+        </div>
+
+        <div class="panel monolithic-detail-panel hidden" data-panel="monolithic">
+          <h2>Nguồn gốc · tập viết · bài tập</h2>
+          <div id="monolithicDetail" class="empty-state">Chọn một chữ để học.</div>
         </div>
 
         <!-- Module ngữ pháp: học công thức, ví dụ và ghi chú theo bài. -->
@@ -163,6 +178,7 @@
       </form>
     </dialog>
 
-    <script src="/static/js/app.js?v=20260715-grid-panel-fix"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
+    <script src="/static/js/app.js?v=20260919-monolithic"></script>
   </body>
 </html>

@@ -4,6 +4,7 @@ from pathlib import Path
 from app.data_sources.google_sheets.parser import (
     parse_grammar_points,
     parse_lessons,
+    parse_monolithic_characters,
     parse_radicals,
     parse_sentences,
     parse_topics,
@@ -93,6 +94,7 @@ def load_local_snapshot() -> dict[str, int] | None:
     lessons_rows = read_tsv("lessons") or words_rows
     topics_rows = read_tsv("topics") or words_rows
     radical_rows = read_tsv("radicals")
+    monolithic_rows = read_tsv("monolithic")
 
     words = parse_words(words_rows)
     sentences = repair_snapshot_sentences(parse_sentences(sentences_rows))
@@ -100,6 +102,7 @@ def load_local_snapshot() -> dict[str, int] | None:
     topics = parse_topics(topics_rows)
     grammar_points = parse_grammar_points(grammar_rows)
     radicals = parse_radicals(radical_rows)
+    monolithic_characters = parse_monolithic_characters(monolithic_rows)
     lessons = supplement_lessons_from_words(lessons, words)
 
     repository.replace_words(words)
@@ -108,6 +111,7 @@ def load_local_snapshot() -> dict[str, int] | None:
     repository.replace_topics(topics)
     repository.replace_grammar_points(grammar_points)
     repository.replace_radicals(radicals)
+    repository.replace_monolithic_characters(monolithic_characters)
 
     return {
         "word_rows": len(words_rows),
@@ -120,4 +124,5 @@ def load_local_snapshot() -> dict[str, int] | None:
         "topics": len(topics),
         "grammar_points": len(grammar_points),
         "radicals": len(radicals),
+        "monolithic_characters": len(monolithic_characters),
     }

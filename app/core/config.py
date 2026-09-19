@@ -11,10 +11,10 @@ class Settings(BaseSettings):
     google_lessons_sheet: str = "lessons"
     google_topics_sheet: str = "topics"
     google_radicals_sheet: str = "b\u1ed9 th\u1ee7"
+    google_monolithic_sheet: str = "ch\u1eef \u0111\u1ed9c th\u1ec3"
     sync_on_startup: bool = True
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
 
 settings = Settings()
-

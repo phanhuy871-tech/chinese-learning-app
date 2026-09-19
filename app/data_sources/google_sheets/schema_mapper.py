@@ -88,6 +88,25 @@ RADICAL_COLUMNS = {
     "is_active": ["is_active", "active"],
 }
 
+MONOLITHIC_COLUMNS = {
+    "id": ["character_id", "id"], "simplified": ["simplified", "giản thể"],
+    "traditional": ["traditional", "phồn thể"], "pinyin": ["pinyin"],
+    "han_viet": ["han_viet", "hán việt"], "meaning_vi": ["meaning_vi", "nghĩa tiếng việt"],
+    "origin_meaning_vi": ["origin_meaning_vi", "nghĩa gốc"],
+    "derived_meaning_vi": ["derived_meaning_vi", "nghĩa phái sinh"],
+    "etymology_type": ["etymology_type", "loại cấu tạo"],
+    "etymology_note_vi": ["etymology_note_vi", "giải thích nguồn gốc"],
+    "stroke_count": ["stroke_count", "số nét"], "stroke_hint_vi": ["stroke_hint_vi", "gợi ý thứ tự nét"],
+    "radical_form": ["radical_form", "dạng bộ thủ"], "radical_note_vi": ["radical_note_vi", "ghi chú bộ thủ"],
+    "week": ["week", "tuần"], "category": ["category", "nhóm ngữ nghĩa"],
+    "core_rank": ["core_rank", "xếp hạng cốt lõi"], "is_core": ["is_core", "cốt lõi"],
+    "oracle_image_url": ["oracle_image_url", "ảnh giáp cốt"],
+    "bronze_image_url": ["bronze_image_url", "ảnh kim văn"], "seal_image_url": ["seal_image_url", "ảnh tiểu triện"],
+    "evolution_source_url": ["evolution_source_url", "nguồn chữ cổ"],
+    "compounds": ["compounds", "từ ghép"], "hidden_examples": ["hidden_examples", "ví dụ tìm chữ"],
+    "is_active": ["is_active", "active"],
+}
+
 
 def pick(row: dict[str, str], names: list[str], default: str = "") -> str:
     normalized = {key.strip().lower(): value for key, value in row.items()}
@@ -96,4 +115,3 @@ def pick(row: dict[str, str], names: list[str], default: str = "") -> str:
         if value:
             return value
     return default
-
