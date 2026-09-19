@@ -6,6 +6,7 @@ Nguồn đọc/nghĩa/tần suất: xue-hanzi/CVDICT (CC BY-SA); nét: Make Me a
 from __future__ import annotations
 
 import csv
+import ast
 import html
 import json
 import re
@@ -29,6 +30,12 @@ VARIANTS = {
     "示": "礻", "衣": "衤", "食": "饣", "金": "钅", "言": "讠", "糸": "纟",
     "刀": "刂", "牛": "牜", "足": "⻊", "攴": "攵", "玉": "王", "竹": "⺮",
     "艸": "艹", "肉": "月", "邑": "阝 (bên phải)", "阜": "阝 (bên trái)",
+}
+
+HAN_VIET_FALLBACK = {
+    "乡": "hương", "幺": "yêu", "亓": "kỳ", "韦": "vi", "为": "vi/vị",
+    "戋": "tiên", "电": "điện", "亚": "á", "页": "hiệt", "产": "sản",
+    "芈": "mễ", "肃": "túc", "隶": "lệ",
 }
 
 FIELDS = [
@@ -56,7 +63,7 @@ def fetch_characters() -> list[str]:
     return result[:284]
 
 
-def load_dictionary() -> tuple[dict[str, dict], dict[str, dict]]:
+def load_dictionary() -> tuple[dict[str, dict], dict[str, dict], dict[str, str]]:
     entries = json.loads((ROOT / ".tmp-xue-hanzi/public/data/dictionary.json").read_text(encoding="utf-8"))
     by_s = {}
     for entry in entries:
@@ -67,7 +74,13 @@ def load_dictionary() -> tuple[dict[str, dict], dict[str, dict]]:
         for line in handle:
             entry = json.loads(line)
             strokes[entry["character"]] = entry
-    return by_s, strokes
+    han_viet: dict[str, str] = {}
+    with (ROOT / ".tmp-hanviet/hanviet.csv").open(encoding="utf-8", newline="") as handle:
+        for row in csv.DictReader(handle):
+            readings = ast.literal_eval(row["hanviet"])
+            if readings and row["char"] not in han_viet:
+                han_viet[row["char"]] = readings[0]
+    return by_s, strokes, han_viet
 
 
 def classify(char: str) -> tuple[int, str]:
@@ -89,7 +102,7 @@ def clean(value: object) -> str:
 
 def build() -> list[dict[str, object]]:
     chars = fetch_characters()
-    dictionary, stroke_data = load_dictionary()
+    dictionary, stroke_data, han_viet = load_dictionary()
     ranked = sorted(chars, key=lambda c: (dictionary.get(c, {}).get("mwr", 999999), -dictionary.get(c, {}).get("b", 0)))
     core_rank = {char: index + 1 for index, char in enumerate(ranked[:140])}
     rows = []
@@ -109,7 +122,7 @@ def build() -> list[dict[str, object]]:
         rows.append({
             "character_id": f"mono-{index:03d}", "simplified": char,
             "traditional": entry.get("t") or char, "pinyin": entry.get("p", ""),
-            "han_viet": clean(entry.get("sv", "")), "meaning_vi": clean(entry.get("vi", "")),
+            "han_viet": clean(entry.get("sv") or han_viet.get(char) or HAN_VIET_FALLBACK.get(char, "")), "meaning_vi": clean(entry.get("vi", "")),
             "origin_meaning_vi": meaning_parts[0] if meaning_parts else "",
             "derived_meaning_vi": " / ".join(meaning_parts[1:]), "etymology_type": etym_type,
             "etymology_note_vi": note, "stroke_count": len(stroke.get("strokes", [])),
