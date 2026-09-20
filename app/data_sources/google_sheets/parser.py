@@ -14,6 +14,7 @@ from app.learning.lesson_scope import lesson_order_from_value
 from app.learning.schemas import GrammarPoint, Lesson, Topic
 from app.radicals.schemas import Radical
 from app.monolithic.schemas import MonolithicCharacter
+from app.monolithic.teaching import enrich_character
 from app.sentences.schemas import Sentence
 from app.vocabulary.schemas import Word
 
@@ -88,7 +89,7 @@ def parse_monolithic_characters(rows: list[dict[str, str]]) -> list[MonolithicCh
             hidden_examples=parse_list(pick(row, MONOLITHIC_COLUMNS["hidden_examples"])),
             is_active=parse_bool(pick(row, MONOLITHIC_COLUMNS["is_active"])),
         ))
-    return characters
+    return [enrich_character(item) for item in characters]
 
 
 def resolve_lesson(row: dict[str, str]) -> tuple[str, int]:

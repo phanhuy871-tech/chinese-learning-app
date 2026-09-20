@@ -27,3 +27,7 @@ class MonolithicCharacter(BaseModel):
     compounds: list[str] = Field(default_factory=list)
     hidden_examples: list[str] = Field(default_factory=list)
     is_active: bool = True
+    meanings: list[str] = Field(default_factory=list)
+    readings: list[dict[str, str]] = Field(default_factory=list)
+    examples: list[dict[str, str]] = Field(default_factory=list)
+    usage_note_vi: str = ""

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Chinese Learning App</title>
-    <link rel="stylesheet" href="/static/css/app.css?v=20260919-monolithic" />
+    <link rel="stylesheet" href="/static/css/app.css?v=20260920-teaching" />
   </head>
   <body>
     <main class="shell">
@@ -114,6 +114,9 @@
 
         <div class="panel monolithic-panel hidden" data-panel="monolithic">
           <h2>284 chữ độc thể</h2>
+          <button id="startMonoFlash" type="button">🃏 Học bằng flashcard</button>
+          <button id="startMonoGame" type="button">🎮 Chơi game chữ độc thể</button>
+          <p>Mỗi lượt 10 câu · Chọn tuần và phạm vi bên dưới trước khi chơi.</p>
           <div class="mono-filters">
             <select id="monoWeek" aria-label="Chọn tuần"><option value="0">Tất cả 5 tuần</option><option value="1">Tuần 1 · Tự nhiên</option><option value="2">Tuần 2 · Con người</option><option value="3">Tuần 3 · Sinh vật</option><option value="4">Tuần 4 · Đồ vật</option><option value="5">Tuần 5 · Khái niệm</option></select>
             <label><input id="monoCore" type="checkbox" checked /> 140 chữ cốt lõi</label>
@@ -179,6 +182,7 @@
     </dialog>
 
     <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
-    <script src="/static/js/app.js?v=20260919-monolithic"></script>
+    <script src="/static/js/app.js?v=20260920-teaching"></script>
+    <script src="/static/js/monolithic-game.js?v=20260920-teaching"></script>
   </body>
 </html>

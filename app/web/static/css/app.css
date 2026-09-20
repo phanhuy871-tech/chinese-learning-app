@@ -1224,6 +1224,37 @@ h1 {
 }
 
 .mono-filters { display:grid; gap:10px; margin-bottom:14px; }
+.mono-senses { padding-left:24px; line-height:1.7; }
+.mono-examples { display:grid; gap:14px; }
+.mono-examples article, .mono-reading { padding:14px; border:1px solid #dce6e9; border-radius:12px; min-width:0; max-width:100%; overflow-wrap:anywhere; }
+.mono-example-hanzi { font-size:25px; line-height:1.6; margin:0; }
+.mono-example-hanzi mark { background:#fff0b5; color:#473610; border-radius:4px; padding:1px 3px; }
+.mono-link { background:#eef7f5; padding:10px; border-radius:8px; color:#245d4b; }
+.mono-sound, .mono-examples button, .mono-reading button { padding:10px 14px; min-height:44px; border-radius:8px; border:1px solid #bad4de; background:#ecf6fa; color:#24546b; white-space:normal; max-width:100%; }
+.mono-detail header > div { min-width:0; overflow-wrap:anywhere; }
+.mono-detail details summary { cursor:pointer; padding:12px 0; }
+body[data-active-mode="monolithic"].mono-playing .grid > .panel:first-child,
+body[data-active-mode="monolithic"].mono-playing .monolithic-panel { display:none; }
+body[data-active-mode="monolithic"].mono-playing .monolithic-detail-panel { grid-column:1 / -1; width:100%; max-width:760px; justify-self:center; scroll-margin-top:12px; }
+.mono-game { display:grid; gap:16px; width:100%; max-width:100%; min-width:0; }
+.mono-game progress { width:100%; max-width:100%; accent-color:#286781; }
+.mono-game-actions { display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; }
+.mono-game-actions > *, .mono-answer { min-width:0; max-width:100%; white-space:normal; overflow-wrap:anywhere; }
+.mono-game-prompt { font-size:80px; text-align:center; padding:20px 12px; background:#f3f8fa; border-radius:16px; }
+.mono-game-prompt.is-meaning { font-size:24px; overflow-wrap:anywhere; }
+.mono-game-options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.mono-answer { padding:16px; min-height:66px; border:2px solid #d7e2e7; border-radius:12px; background:white; color:#183d4c; font-size:20px; }
+.mono-answer.is-correct { border-color:#298252; background:#e5f7eb; color:#175333; opacity:1; }
+.mono-answer.is-wrong { border-color:#b74848; background:#fff0f0; color:#852b2b; opacity:1; }
+.mono-score { font-size:32px; font-weight:bold; }
+.mono-flash-card { display:grid; gap:20px; align-content:center; min-height:330px; width:100%; padding:28px 18px; background:#fffaf0; border:2px solid #e8d9b5; border-radius:22px; color:#183d4c; text-align:center; white-space:normal; overflow-wrap:anywhere; cursor:pointer; }
+.flash-hanzi { font-size:96px; line-height:1.2; }
+#flashBack:not([hidden]) { display:grid; gap:12px; font-size:20px; }
+#flashBack strong { font-size:28px; color:#286781; }
+.flash-again { background:#fff0e3; color:#894414; border:1px solid #deb28c; }
+.mono-game [hidden] { display:none !important; }
+#startMonoFlash, #startMonoGame { width:100%; margin-bottom:10px; padding:14px; border-radius:10px; }
+@media(max-width:460px) { .mono-game-options { grid-template-columns:1fr; } .mono-game-actions button { flex:1 1 140px; } }
 .mono-filters label { align-items:center; display:flex; gap:8px; }
 .mono-filters input { width:auto; }
 .monolithic-list { display:grid; gap:8px; grid-template-columns:repeat(2,minmax(0,1fr)); max-height:70vh; overflow-y:auto; }
