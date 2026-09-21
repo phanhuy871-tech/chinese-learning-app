@@ -1273,6 +1273,12 @@ body[data-active-mode="monolithic"].mono-playing .monolithic-detail-panel { grid
 .evolution-image.modern { font-size:50px; }
 .writer-tools { align-items:start; display:flex; flex-wrap:wrap; gap:16px; }
 .writer-tools > * { min-width:0; }
+.word-writing-section { background: linear-gradient(135deg, #fffaf0, #f7fbff); border:1px solid #dbe7ef; border-radius:16px; padding:16px; }
+.word-writer-tools { gap:14px; }
+.word-writer-tools .rice-grid { flex:0 1 220px; min-width:180px; }
+.character-practice-picker { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0; }
+.practice-char { background:#fff; border:1px solid #b8cbd8; border-radius:8px; font-size:1.4rem; min-width:44px; padding:5px 10px; }
+.practice-char.is-active { background:#176b8f; color:#fff; border-color:#176b8f; }
 .rice-grid { background:linear-gradient(45deg,transparent 49.5%,#e9caca 50%,transparent 50.5%),linear-gradient(-45deg,transparent 49.5%,#e9caca 50%,transparent 50.5%); border:2px solid #c98d8d; height:240px; max-width:100%; width:240px; }
 
 @media (max-width: 620px) {

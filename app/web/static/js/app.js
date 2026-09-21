@@ -828,6 +828,10 @@ function renderWordDetail(card, showAll = false) {
         )
         .join("")
     : `<p class="muted">Chưa tìm thấy bộ thủ liên quan trong tab bộ thủ.</p>`;
+  const practiceChars = [...new Set([...word.hanzi].filter(char => /[\u3400-\u9fff]/.test(char)))];
+  const practicePicker = practiceChars.length > 1
+    ? `<div class="character-practice-picker" role="group" aria-label="Chọn chữ để tập viết">${practiceChars.map((char, index) => `<button type="button" class="practice-char${index === 0 ? " is-active" : ""}" data-practice-char="${escapeHtml(char)}">${escapeHtml(char)}</button>`).join("")}</div>`
+    : "";
 
   detail.innerHTML = `
     <div class="word-detail-head">
@@ -840,6 +844,12 @@ function renderWordDetail(card, showAll = false) {
     <section>
       <h3>Chiết từ</h3>
       <p>${escapeHtml(word.decomposition || "Chưa có dữ liệu chiết từ.")}</p>
+    </section>
+    <section class="word-writing-section">
+      <h3>Tập viết chữ Hán</h3>
+      <p class="muted">Dùng ngón tay hoặc chuột viết trực tiếp theo thứ tự nét, không cần nhập pinyin.</p>
+      ${practicePicker}
+      <div class="writer-tools word-writer-tools"><div id="wordStrokeWriter" class="rice-grid" aria-label="Ô tập viết chữ Hán"></div><div><button id="wordAnimateStroke" type="button">Xem thứ tự nét</button><button id="wordQuizStroke" class="secondary-button" type="button">Tự viết</button><p id="wordStrokeHint">Viết chữ theo gợi ý màu xanh; nếu sai, ứng dụng sẽ nhắc lại nét.</p></div></div>
     </section>
     <section>
       <h3>Ví dụ</h3>
@@ -856,6 +866,22 @@ function renderWordDetail(card, showAll = false) {
     // Nút "Nghe" đọc từ đang xem.
     speakWord(word.hanzi, word.audio_url);
   });
+
+  if (window.HanziWriter && practiceChars.length) {
+    let practiceWriter;
+    const mountWriter = (char) => {
+      const target = document.querySelector("#wordStrokeWriter");
+      target.innerHTML = "";
+      practiceWriter = HanziWriter.create("wordStrokeWriter", char, { width: 220, height: 220, padding: 10, showOutline: true });
+      document.querySelector("#wordAnimateStroke").onclick = () => practiceWriter.animateCharacter();
+      document.querySelector("#wordQuizStroke").onclick = () => practiceWriter.quiz({ showHintAfterMisses: 2 });
+    };
+    mountWriter(practiceChars[0]);
+    detail.querySelectorAll(".practice-char").forEach(button => button.addEventListener("click", () => {
+      detail.querySelectorAll(".practice-char").forEach(item => item.classList.toggle("is-active", item === button));
+      mountWriter(button.dataset.practiceChar);
+    }));
+  }
 
   detail.querySelectorAll(".sentence-sound").forEach((button) => {
     button.addEventListener("click", () => speakWord(button.dataset.speakValue, button.dataset.audioUrl));
