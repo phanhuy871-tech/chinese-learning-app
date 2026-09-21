@@ -124,22 +124,34 @@ function renderMonoFlash() {
     return;
   }
   state.flipped = false;
+  state.pinyinChecked = false;
   box.innerHTML = `<div class="mono-game"><div class="mono-game-actions"><strong>Flashcard · Còn ${state.queue.length} lượt</strong><button id="flashExit" class="secondary-button">Về bài học</button></div>
-    <p>Nhìn chữ, tự nhớ cách đọc và nghĩa rồi chạm để lật thẻ.</p>
-    <button id="flashCard" class="mono-flash-card" aria-label="Lật thẻ" aria-expanded="false"><span class="flash-hanzi">${escapeHtml(card.simplified)}</span><span id="flashBack" hidden><strong>${escapeHtml(card.pinyin)}</strong><span>Hán Việt: ${escapeHtml(card.han_viet)}</span><span>${escapeHtml(card.meaning_vi)}</span>${card.examples?.[0] ? `<small>${escapeHtml(card.examples[0].hanzi)}<br>${escapeHtml(card.examples[0].pinyin)}<br>${escapeHtml(card.examples[0].meaning_vi)}</small>` : ""}<small>Dạng thành phần: ${escapeHtml(card.radical_form || card.simplified)}</small></span><small id="flipHint">Chạm để xem đáp án</small></button>
+    <p>Nhìn chữ, tự nhớ cách đọc rồi gõ pinyin vào ô bên dưới. Có thể nhập pinyin có dấu hoặc không dấu.</p>
+    <div id="flashCard" class="mono-flash-card" aria-label="Mặt trước flashcard"><span class="flash-hanzi">${escapeHtml(card.simplified)}</span><span id="flashBack" hidden><strong>${escapeHtml(card.pinyin)}</strong><span>Hán Việt: ${escapeHtml(card.han_viet)}</span><span>${escapeHtml(card.meaning_vi)}</span>${card.examples?.[0] ? `<small>${escapeHtml(card.examples[0].hanzi)}<br>${escapeHtml(card.examples[0].pinyin)}<br>${escapeHtml(card.examples[0].meaning_vi)}</small>` : ""}<small>Dạng thành phần: ${escapeHtml(card.radical_form || card.simplified)}</small></span><small id="flipHint">Chưa mở đáp án</small></div>
+    <div class="flash-pinyin-check"><label for="flashPinyin">Pinyin bạn nhớ</label><div><input id="flashPinyin" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Ví dụ: ni hao" /><button id="flashCheckPinyin" type="button">Kiểm tra</button></div><p id="flashPinyinStatus" role="status"></p></div>
     <div class="mono-game-actions"><button id="flashSound" class="secondary-button">Nghe tiếng phổ thông</button></div>
     <div id="flashRatings" class="mono-game-actions" hidden><button id="flashAgain" class="flash-again">Chưa nhớ · Ôn lại</button><button id="flashKnown">Đã nhớ ✓</button></div><p id="flashSaveStatus" role="status"></p></div>`;
   document.querySelector("#flashExit").onclick = leaveMonoGame;
   document.querySelector("#flashSound").onclick = () => speakWord(card.readings?.[0]?.audio_text || card.simplified, "");
-  document.querySelector("#flashCard").onclick = () => {
-    state.flipped = !state.flipped;
+  const normalizePinyin = value => value.toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[1-5]/g, "").replace(/\s+/g, "");
+  document.querySelector("#flashCheckPinyin").onclick = () => {
+    const answer = normalizePinyin(document.querySelector("#flashPinyin").value);
+    const expected = normalizePinyin(card.pinyin);
+    if (!answer) return;
+    if (answer !== expected) {
+      document.querySelector("#flashPinyinStatus").textContent = "Chưa đúng, thử lại nhé. Nghe mẫu nếu cần.";
+      document.querySelector("#flashPinyin").select();
+      return;
+    }
+    state.pinyinChecked = true;
+    state.flipped = true;
     document.querySelector("#flashBack").hidden = !state.flipped;
-    document.querySelector("#flipHint").textContent = state.flipped ? "Chạm để trở lại mặt trước" : "Chạm để xem đáp án";
-    document.querySelector("#flashCard").setAttribute("aria-expanded", String(state.flipped));
+    document.querySelector("#flipHint").textContent = "Pinyin đúng ✓";
+    document.querySelector("#flashPinyinStatus").textContent = "Đúng rồi! Bây giờ xem nghĩa và tự đánh giá thẻ này.";
     document.querySelector("#flashRatings").hidden = !state.flipped;
   };
   const rate = known => {
-    if (!state.flipped || state.queue[0] !== card) return;
+    if (!state.flipped || !state.pinyinChecked || state.queue[0] !== card) return;
     state.queue.shift();
     const previous = state.memory[card.id] || {};
     const days = known ? Math.min(30, previous.days ? previous.days * 2 : 1) : 0;

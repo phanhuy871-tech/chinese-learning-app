@@ -1249,6 +1249,11 @@ body[data-active-mode="monolithic"].mono-playing .monolithic-detail-panel { grid
 .mono-score { font-size:32px; font-weight:bold; }
 .mono-flash-card { display:grid; gap:20px; align-content:center; min-height:330px; width:100%; padding:28px 18px; background:#fffaf0; border:2px solid #e8d9b5; border-radius:22px; color:#183d4c; text-align:center; white-space:normal; overflow-wrap:anywhere; cursor:pointer; }
 .flash-hanzi { font-size:96px; line-height:1.2; }
+.flash-pinyin-check { display:grid; gap:7px; margin:12px auto; max-width:480px; width:100%; }
+.flash-pinyin-check > div { display:flex; gap:8px; }
+.flash-pinyin-check input { flex:1; min-width:0; border:1px solid #b8cbd8; border-radius:9px; padding:11px 12px; font-size:1rem; }
+.flash-pinyin-check button { white-space:nowrap; }
+.flash-pinyin-check p { min-height:1.4em; margin:0; color:#176b8f; }
 #flashBack:not([hidden]) { display:grid; gap:12px; font-size:20px; }
 #flashBack strong { font-size:28px; color:#286781; }
 .flash-again { background:#fff0e3; color:#894414; border:1px solid #deb28c; }
