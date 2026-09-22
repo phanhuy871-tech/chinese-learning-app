@@ -31,3 +31,4 @@ class MonolithicCharacter(BaseModel):
     readings: list[dict[str, str]] = Field(default_factory=list)
     examples: list[dict[str, str]] = Field(default_factory=list)
     usage_note_vi: str = ""
+    origin_story_vi: str = ""

@@ -1281,6 +1281,9 @@ body[data-active-mode="monolithic"].mono-playing .monolithic-detail-panel { grid
 .writer-tools { align-items:start; display:flex; flex-wrap:wrap; gap:16px; }
 .writer-tools > * { min-width:0; }
 .word-writing-section { background: linear-gradient(135deg, #fffaf0, #f7fbff); border:1px solid #dbe7ef; border-radius:16px; padding:16px; }
+.origin-source-note { color:#526b76; font-size:.9rem; }
+.origin-story { background:#fff8df; border-left:4px solid #d9a441; border-radius:8px; padding:12px 14px; line-height:1.65; }
+.origin-reference { color:#607782; font-size:.88rem; }
 .word-writer-tools { gap:14px; }
 .word-writer-tools .rice-grid { flex:0 1 220px; min-width:180px; }
 .character-practice-picker { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0; }
