@@ -32,3 +32,5 @@ class MonolithicCharacter(BaseModel):
     examples: list[dict[str, str]] = Field(default_factory=list)
     usage_note_vi: str = ""
     origin_story_vi: str = ""
+    origin_source_url: str = ""
+    origin_verified: bool = False

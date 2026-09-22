@@ -1,6 +1,7 @@
 """Reviewed teaching overlays apply identically to Sheet and snapshot records."""
 from functools import lru_cache
 from pathlib import Path
+from app.monolithic.origins import origin_fields
 
 ROOT = Path(__file__).resolve().parents[2] / "data" / "local"
 REFERENCE_CHARS = set("丌乂乜亥卅壬夬巳廿弋弗彖戈戊戋毋氐爿甪矢禺缶耒聿臾艮芈豕豸酉")
@@ -94,10 +95,10 @@ def enrich_character(item):
     return item.model_copy(update={
         "pinyin": info["pinyin"], "meaning_vi": "; ".join(info["senses"]),
         "han_viet": HAN_VIET.get(char, item.han_viet),
-        "origin_meaning_vi": info["senses"][0], "derived_meaning_vi": "; ".join(info["senses"][1:]),
+        "derived_meaning_vi": "",
         "meanings": info["senses"],
         "readings": [{"pinyin": py, "meaning_vi": meaning, "audio_text": audio} for py, meaning, audio in readings],
         "examples": matched[:3],
         "usage_note_vi": ("Chữ ít gặp trong giao tiếp: ví dụ dưới đây giúp nhận diện chữ trong văn viết, tên riêng hoặc bài học chữ." if char in REFERENCE_CHARS else "Từ tô màu cho biết chữ đang nằm trong từ nào và cả từ ấy có nghĩa gì. Không dịch từ ghép bằng cách cộng máy móc nghĩa từng chữ."),
-        "origin_story_vi": ORIGIN_STORIES.get(char, f"Chữ {char} được ghi nhận từ chữ cổ và được chuẩn hóa dần qua Kim văn, Tiểu triện rồi Khải thư. Nghĩa gốc liên quan đến ‘{info['senses'][0]}’; các nét hiện nay là dạng viết quy ước, không phải hình vẽ nguyên bản."),
+        **origin_fields(char),
     })

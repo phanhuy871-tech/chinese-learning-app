@@ -38,6 +38,12 @@ class MonolithicModuleTest(unittest.TestCase):
             self.assertIn(meaning, items[char].meaning_vi)
         self.assertEqual({reading["pinyin"] for reading in items["重"].readings}, {"zhòng", "chóng"})
 
+    def test_unverified_origins_are_not_presented_as_facts(self) -> None:
+        items = {item.simplified: item for item in repository.list_monolithic_characters()}
+        self.assertTrue(items["大"].origin_verified)
+        self.assertIn("Chưa có thuyết minh", items["了"].origin_story_vi)
+        self.assertEqual(items["了"].origin_source_url, "")
+
 
 if __name__ == "__main__":
     unittest.main()
