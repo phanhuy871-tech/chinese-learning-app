@@ -323,6 +323,7 @@ function scrollQuestionIntoViewIfMobile() {
 }
 
 async function switchMode(mode) {
+  if (document.body.classList.contains("mono-playing") && mode !== "monolithic") leaveMonoGame();
   // Đổi module đang xem: study, radicals, grammar, hoặc game.
   document.body.dataset.activeMode = mode;
   document.querySelectorAll(".mode").forEach((item) => {
@@ -1099,6 +1100,15 @@ function filteredMonolithic() {
   return monolithicCards.filter((item) => (!week || item.week === week) && (!coreOnly || item.is_core));
 }
 
+let selectedMonoIndex = -1;
+function scrollMonolithicIntoView() {
+  const bar = document.querySelector(".modebar");
+  const panel = document.querySelector(".monolithic-detail-panel");
+  const style = getComputedStyle(bar);
+  const offset = style.position === "sticky" ? bar.getBoundingClientRect().height + (parseFloat(style.top) || 0) + 12 : 12;
+  panel.style.scrollMarginTop = `${offset}px`;
+  panel.scrollIntoView({block:"start", behavior:"smooth"});
+}
 function renderMonolithicList() {
   const items = filteredMonolithic();
   const list = document.querySelector("#monolithicList");
@@ -1107,8 +1117,12 @@ function renderMonolithicList() {
       <strong>${escapeHtml(item.simplified)}</strong><span>${escapeHtml(item.pinyin || "—")}</span>
       <small>${escapeHtml(item.han_viet || item.meaning_vi || "Đang bổ sung")}</small>
     </button>`).join("") || '<div class="empty-state">Không có chữ phù hợp bộ lọc.</div>';
-  list.querySelectorAll(".mono-item").forEach((button) => button.addEventListener("click", () => selectMonolithic(Number(button.dataset.monoIndex))));
-  if (items.length) selectMonolithic(monolithicCards.indexOf(items[0]));
+  list.querySelectorAll(".mono-item").forEach((button) => button.addEventListener("click", () => {
+    selectMonolithic(Number(button.dataset.monoIndex));
+    if (mobileMedia.matches) scrollMonolithicIntoView();
+  }));
+  if (items.length) selectMonolithic(items.includes(monolithicCards[selectedMonoIndex]) ? selectedMonoIndex : monolithicCards.indexOf(items[0]));
+  else document.querySelector("#monolithicDetail").textContent = "Không có chữ phù hợp bộ lọc.";
 }
 
 function evolutionCard(label, url, fallback) {
@@ -1118,6 +1132,7 @@ function evolutionCard(label, url, fallback) {
 function selectMonolithic(index) {
   const item = monolithicCards[index];
   if (!item) return;
+  selectedMonoIndex = index;
   document.querySelectorAll(".mono-item").forEach((el) => el.classList.toggle("is-active", Number(el.dataset.monoIndex) === index));
   document.querySelector("#monolithicDetail").innerHTML = `
     <article class="mono-detail">
@@ -1127,26 +1142,32 @@ function selectMonolithic(index) {
       ${item.readings?.length > 1 ? `<h4>Phân biệt cách đọc</h4>${item.readings.map(reading => `<div class="mono-reading"><p><b>${escapeHtml(reading.pinyin)}</b> → ${escapeHtml(reading.meaning_vi)}</p><button data-mono-audio="${escapeHtml(reading.audio_text)}" type="button">Nghe ${escapeHtml(reading.audio_text)}</button></div>`).join("")}` : ""}</section>
       <section><h3>Ví dụ: chữ → từ → câu</h3><p>${escapeHtml(item.usage_note_vi || "")}</p><div class="mono-examples">${(item.examples || []).map(example => `<article><small>${escapeHtml(example.level_note || "Ví dụ mở rộng")}</small><p class="mono-example-hanzi">${highlightMonoPhrase(example.hanzi, example.focus)}</p><p class="pinyin">${escapeHtml(example.pinyin)}</p><p>${escapeHtml(example.meaning_vi)}</p><p class="mono-link">${escapeHtml(example.explanation_vi)}</p>${example.grammar_vi ? `<p>Mẫu câu: ${escapeHtml(example.grammar_vi)}</p>` : ""}${example.kind === "reference" ? '<small>Ngữ cảnh học chữ / văn viết / tên riêng.</small>' : ""}<button data-mono-audio="${escapeHtml(example.hanzi)}" type="button">🔊 Nghe câu</button></article>`).join("")}</div><small>Pinyin ghi thanh từ điển; 一、不 và hai thanh 3 liên tiếp có thể biến điệu khi nói.</small></section>
       <details><summary>Nguồn gốc và tiến hóa chữ</summary><p class="origin-source-note"><strong>${escapeHtml(item.etymology_type || "Tư liệu chữ cổ")}</strong> · ${item.origin_verified ? "Đã có nhận định được đối chiếu riêng." : "Chưa có diễn giải nguồn gốc được kiểm chứng riêng cho chữ này."} Không suy nghĩa gốc từ nghĩa hiện đại.</p><p class="origin-story">${escapeHtml(item.origin_story_vi || "Chưa có thuyết minh chi tiết.")}</p><div class="evolution-row">${evolutionCard("Giáp Cốt", item.oracle_image_url, "Chưa có hình / chưa tìm thấy mẫu")}${evolutionCard("Kim Văn", item.bronze_image_url, "Chưa có hình / chưa tìm thấy mẫu")}${evolutionCard("Tiểu Triện", item.seal_image_url, "Chưa có hình / chưa tìm thấy mẫu")}<figure><div class="evolution-image modern">${escapeHtml(item.simplified)}</div><figcaption>Khải thư</figcaption></figure></div><p class="origin-reference">Ghi chú dữ liệu ban đầu: ${escapeHtml(item.etymology_note_vi || "Không có ghi chú.")}</p>${item.origin_source_url ? `<a href="${escapeHtml(item.origin_source_url)}" target="_blank" rel="noopener">Mở hồ sơ nguồn đã đối chiếu</a>` : ""}</details>
-      <section><h3>Thứ tự nét · Mễ tự cách</h3><div class="writer-tools"><div id="strokeWriter" class="rice-grid"></div><div><button id="animateStroke" type="button">Xem từng nét</button><button id="quizStroke" class="secondary-button" type="button">Tự viết</button><p>${escapeHtml(item.stroke_hint_vi)}</p></div></div></section>
+      <section><h3>Thứ tự nét · Mễ tự cách</h3><div class="writer-tools"><div id="strokeWriter" class="rice-grid"></div><div><button id="animateStroke" type="button" disabled>Xem từng nét</button><button id="quizStroke" class="secondary-button" type="button" disabled>Tự viết</button><p id="monoWriterStatus" role="status">Đang tải dữ liệu nét…</p><p>${escapeHtml(item.stroke_hint_vi)}</p></div></div></section>
       <section><h3>Làm bộ thủ</h3><p><b>${escapeHtml(item.simplified)} → ${escapeHtml(item.radical_form || item.simplified)}</b>. ${escapeHtml(item.radical_note_vi)}</p></section>
-      <section><h3>Bài tập nhanh</h3><p>1. Viết chữ trong ô Mễ tự cách ở trên. 2. Nhìn ba dạng chữ cổ và đoán chữ hiện đại. 3. Tìm <b>${escapeHtml(item.simplified)}</b> trong: ${escapeHtml((item.hidden_examples || []).join(" · ") || "các chữ ghép bạn đã học")}.</p><p><b>Từ ghép:</b> ${escapeHtml((item.compounds || []).join(" · ") || "Đang bổ sung")}</p></section>
+      <section><h3>Bài tập nhanh</h3><p>Viết chữ trong ô Mễ tự cách ở trên. Tìm và đọc chữ <b>${escapeHtml(item.simplified)}</b> trong các từ: ${escapeHtml((item.hidden_examples || []).join(" · ") || "các từ bạn đã học")}.</p><p><b>Từ có chứa chữ:</b> ${escapeHtml((item.compounds || []).join(" · ") || "Đang bổ sung")}</p></section>
     </article>`;
   document.querySelectorAll("[data-mono-audio]").forEach(button => {
     button.onclick = () => speakWord(button.dataset.monoAudio, "");
   });
+  const writerHost = document.querySelector("#strokeWriter");
+  const status = document.querySelector("#monoWriterStatus");
+  const animate = document.querySelector("#animateStroke"), quiz = document.querySelector("#quizStroke");
   if (window.HanziWriter) {
-    const size = Math.min(240, Math.max(180, document.querySelector("#strokeWriter").clientWidth));
+    const size = Math.min(236, writerHost.clientWidth);
     const writer = HanziWriter.create("strokeWriter", item.simplified, { width: size, height: size, padding: 10, showOutline: true,
       onLoadCharDataSuccess: data => {
-        if (document.querySelector(".mono-main-char")?.textContent === item.simplified) {
+        if (writerHost.isConnected) {
           const count = document.querySelector("#monoStrokeCount");
           if (count) count.textContent = `${data.strokes.length} nét · `;
+          animate.disabled = quiz.disabled = false;
+          status.textContent = "Chọn Xem từng nét hoặc Tự viết bằng ngón tay / chuột.";
         }
-      }
+      },
+      onLoadCharDataError: () => { if (writerHost.isConnected) status.textContent = "Không tải được dữ liệu nét. Kiểm tra mạng rồi chọn lại chữ để thử lại."; }
     });
-    document.querySelector("#animateStroke").onclick = () => writer.animateCharacter();
-    document.querySelector("#quizStroke").onclick = () => writer.quiz({ showHintAfterMisses: 2 });
-  }
+    animate.onclick = () => { writer.cancelQuiz(); writer.animateCharacter(); };
+    quiz.onclick = () => writer.quiz({ showHintAfterMisses: 2, onComplete: () => { if (writerHost.isConnected) status.textContent = "Viết xong rồi! Chọn Tự viết để luyện lại."; } });
+  } else status.textContent = "Chưa tải được công cụ tập viết. Kiểm tra mạng và tải lại trang.";
 }
 
 function highlightMonoPhrase(sentence, phrase) {
@@ -1157,9 +1178,17 @@ function highlightMonoPhrase(sentence, phrase) {
 async function loadMonolithic() {
   const list = document.querySelector("#monolithicList");
   list.innerHTML = '<div class="empty-state">Đang tải giáo trình...</div>';
-  const response = await fetch("/api/monolithic-characters");
-  monolithicCards = response.ok ? await response.json() : [];
-  renderMonolithicList();
+  try {
+    const response = await fetch("/api/monolithic-characters");
+    if (!response.ok) throw new Error("load failed");
+    const data = await response.json();
+    if (!Array.isArray(data)) throw new Error("invalid data");
+    monolithicCards = data;
+    renderMonolithicList();
+  } catch {
+    list.innerHTML = '<p>Không tải được giáo trình. Kiểm tra mạng rồi thử lại.</p><button id="retryMonolithic" type="button">Thử lại</button>';
+    document.querySelector("#retryMonolithic").onclick = loadMonolithic;
+  }
 }
 
 document.querySelector("#monoWeek")?.addEventListener("change", renderMonolithicList);
@@ -1214,10 +1243,14 @@ document.querySelector("#syncButton").addEventListener("click", async () => {
   clearGameSession();
   radicalCards = [];
   grammarCards = [];
+  monolithicCards = [];
+  if (document.body.classList.contains("mono-playing")) leaveMonoGame();
+  if (document.body.dataset.activeMode === "monolithic") await loadMonolithic();
   await loadVocabulary();
 });
 
 document.querySelector("#userSelect").addEventListener("change", async (event) => {
+  if (document.body.classList.contains("mono-playing")) leaveMonoGame();
   // Đổi hồ sơ người học thì tải tiến độ riêng của người đó.
   await loadProgressForUser(event.target.value);
 });
