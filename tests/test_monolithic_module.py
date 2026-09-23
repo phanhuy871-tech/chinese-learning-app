@@ -44,6 +44,20 @@ class MonolithicModuleTest(unittest.TestCase):
         self.assertIn("Chưa có thuyết minh", items["了"].origin_story_vi)
         self.assertEqual(items["了"].origin_source_url, "")
 
+    def test_beginner_examples_precede_extension_examples(self) -> None:
+        items = {item.simplified: item for item in repository.list_monolithic_characters()}
+        for char in "水大人女儿日月上下米书":
+            self.assertTrue(items[char].examples[0]["level_note"].startswith("HSK 1"), char)
+            self.assertTrue(items[char].examples[0]["grammar_vi"], char)
+        self.assertTrue(all(e["level_note"].startswith("Mở rộng") for e in items["戈"].examples))
+        for item in items.values():
+            seen_extension = False
+            for example in item.examples:
+                if example["level_note"].startswith("Mở rộng"):
+                    seen_extension = True
+                else:
+                    self.assertFalse(seen_extension, item.simplified)
+
 
 if __name__ == "__main__":
     unittest.main()

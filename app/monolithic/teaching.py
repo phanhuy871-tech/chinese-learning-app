@@ -72,11 +72,17 @@ def teaching_data():
         hanzi, pinyin, meaning, links = line.split("|", 3)
         glossary = [part.split(":", 1) for part in links.split(";")]
         examples.append((hanzi, pinyin, meaning, glossary))
-    return meanings, examples
+    beginner = []
+    for line in (ROOT / "monolithic_hsk1.txt").read_text(encoding="utf-8").splitlines():
+        if not line or line.startswith("#"):
+            continue
+        hanzi, pinyin, meaning, links, grammar = line.split("|")
+        beginner.append((hanzi, pinyin, meaning, [part.split(":", 1) for part in links.split(";")], grammar))
+    return meanings, examples, beginner
 
 
 def enrich_character(item):
-    meanings, examples = teaching_data()
+    meanings, examples, beginner = teaching_data()
     info = meanings.get(item.simplified)
     if not info:
         return item
@@ -88,9 +94,20 @@ def enrich_character(item):
             continue
         focus, gloss = links[0]
         matched.append({"hanzi": hanzi, "pinyin": pinyin, "meaning_vi": meaning,
-                        "focus": focus, "explanation_vi": f"{focus} → {gloss}.", "kind": "reference" if char in REFERENCE_CHARS else "daily"})
+                        "focus": focus, "explanation_vi": f"{focus} → {gloss}.", "kind": "reference" if char in REFERENCE_CHARS else "daily", "level_note": "Mở rộng ngoài bộ câu HSK 1", "grammar_vi": ""})
     # Prefer short sentences while keeping independently authored examples.
     matched.sort(key=lambda example: (any(c in REFERENCE_CHARS for c in example["hanzi"]), len(example["hanzi"])))
+    easy = []
+    for hanzi, pinyin, meaning, glossary, grammar in beginner:
+        links = [(word, gloss) for word, gloss in glossary if char in word]
+        if links:
+            focus, gloss = links[0]
+            easy.append({"hanzi": hanzi, "pinyin": pinyin, "meaning_vi": meaning,
+                         "focus": focus, "explanation_vi": f"{focus} → {gloss}.",
+                         "kind": "daily", "level_note": "HSK 1 · bộ 150 từ", "grammar_vi": grammar})
+    easy.sort(key=lambda example: len(example["hanzi"]))
+    seen = {example["hanzi"] for example in easy}
+    matched = easy + [example for example in matched if example["hanzi"] not in seen]
     readings = READINGS.get(char, [(info["pinyin"], "; ".join(info["senses"]), char)])
     return item.model_copy(update={
         "pinyin": info["pinyin"], "meaning_vi": "; ".join(info["senses"]),
@@ -99,6 +116,6 @@ def enrich_character(item):
         "meanings": info["senses"],
         "readings": [{"pinyin": py, "meaning_vi": meaning, "audio_text": audio} for py, meaning, audio in readings],
         "examples": matched[:3],
-        "usage_note_vi": ("Chữ ít gặp trong giao tiếp: ví dụ dưới đây giúp nhận diện chữ trong văn viết, tên riêng hoặc bài học chữ." if char in REFERENCE_CHARS else "Từ tô màu cho biết chữ đang nằm trong từ nào và cả từ ấy có nghĩa gì. Không dịch từ ghép bằng cách cộng máy móc nghĩa từng chữ."),
+        "usage_note_vi": ("Ưu tiên câu ngắn theo HSK 1 (bộ 150 từ). Từ tô màu nối chữ với nghĩa trong câu. Câu chưa thuộc bộ HSK 1 được ghi ‘Mở rộng’; không phải tất cả 284 chữ đều nằm trong HSK 1."),
         **origin_fields(char),
     })

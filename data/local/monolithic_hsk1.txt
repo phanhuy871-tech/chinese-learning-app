@@ -1,0 +1,68 @@
+# Câu tự biên soạn theo HSK 1 (150 từ); không phải câu trích từ đề thi.
+# Câu|Pinyin|Dịch|Từ trọng tâm:nghĩa|Mẫu câu
+我喝水。|Wǒ hē shuǐ.|Tôi uống nước.|水:nước|Chủ ngữ + động từ + tân ngữ
+你喝水吗？|Nǐ hē shuǐ ma?|Bạn uống nước không?|水:nước|Câu hỏi với 吗
+水很热。|Shuǐ hěn rè.|Nước nóng.|水:nước|Chủ ngữ + 很 + tính từ
+他是中国人。|Tā shì Zhōngguó rén.|Anh ấy là người Trung Quốc.|人:người;中国:Trung Quốc|A + 是 + B
+你是中国人吗？|Nǐ shì Zhōngguó rén ma?|Bạn là người Trung Quốc phải không?|人:người;中国:Trung Quốc|是…吗？
+她是我的女儿。|Tā shì wǒ de nǚ'ér.|Cô bé là con gái tôi.|女儿:con gái|A + 是 + B; 的 chỉ sở hữu
+我女儿三岁。|Wǒ nǚ'ér sān suì.|Con gái tôi ba tuổi.|女儿:con gái;三:ba|Nói tuổi: người + số + 岁
+他是我的儿子。|Tā shì wǒ de érzi.|Cậu bé là con trai tôi.|儿子:con trai|A + 是 + B
+我儿子五岁。|Wǒ érzi wǔ suì.|Con trai tôi năm tuổi.|儿子:con trai;五:năm|Nói tuổi
+我有一个儿子。|Wǒ yǒu yī ge érzi.|Tôi có một con trai.|一:một;个:lượng từ;儿子:con trai|有 + số + lượng từ + danh từ
+我有三个杯子。|Wǒ yǒu sān ge bēizi.|Tôi có ba cái cốc.|三:ba;个:lượng từ;杯子:cốc|有 + số + lượng từ + danh từ
+这本书很大。|Zhè běn shū hěn dà.|Quyển sách này to.|本:lượng từ cho sách;书:sách;大:to|这 + lượng từ + danh từ; 很 + tính từ
+那个苹果很大。|Nà ge píngguǒ hěn dà.|Quả táo kia to.|个:lượng từ;大:to|那 + lượng từ + danh từ
+这个杯子很小。|Zhè ge bēizi hěn xiǎo.|Cái cốc này nhỏ.|个:lượng từ;杯子:cốc;小:nhỏ|很 + tính từ
+小猫在这儿。|Xiǎo māo zài zhèr.|Con mèo nhỏ ở đây.|小:nhỏ|在 + nơi chốn
+我看书。|Wǒ kàn shū.|Tôi đọc sách.|书:sách|Chủ ngữ + động từ + tân ngữ
+我买了一本书。|Wǒ mǎi le yī běn shū.|Tôi đã mua một quyển sách.|了:đánh dấu hành động hoàn tất;一:một;本:lượng từ;书:sách|Động từ + 了 + tân ngữ
+下雨了。|Xià yǔ le.|Trời mưa rồi.|下雨:mưa;了:tình huống mới|了 cuối câu
+今天下雨。|Jīntiān xià yǔ.|Hôm nay trời mưa.|今天:hôm nay;下雨:mưa|Thời gian + hành động
+明天不下雨。|Míngtiān bù xià yǔ.|Ngày mai trời không mưa.|明天:ngày mai;不:không;下雨:mưa|不 + động từ
+今天天气很好。|Jīntiān tiānqì hěn hǎo.|Thời tiết hôm nay đẹp.|今天:hôm nay;天气:thời tiết|很 + tính từ
+他来了。|Tā lái le.|Anh ấy đến rồi.|来:đến;了:tình huống mới|Động từ + 了
+你什么时候来？|Nǐ shénme shíhou lái?|Khi nào bạn đến?|什么:cái gì, dùng trong 什么时候;来:đến|什么时候 hỏi thời gian
+我不喝茶。|Wǒ bù hē chá.|Tôi không uống trà.|不:không|不 + động từ
+他不是老师。|Tā bù shì lǎoshī.|Anh ấy không phải giáo viên.|不:không|不是 + danh từ
+书在桌子上。|Shū zài zhuōzi shàng.|Sách ở trên bàn.|书:sách;桌子:bàn;上:trên|在 + danh từ + 上
+猫在桌子下。|Māo zài zhuōzi xià.|Mèo ở dưới bàn.|桌子:bàn;下:dưới|在 + danh từ + 下
+我上午去学校。|Wǒ shàngwǔ qù xuéxiào.|Buổi sáng tôi đi học.|上午:buổi sáng|Chủ ngữ + thời gian + động từ
+我下午去商店。|Wǒ xiàwǔ qù shāngdiàn.|Buổi chiều tôi đi cửa hàng.|下午:buổi chiều|Chủ ngữ + thời gian + động từ
+我在家里。|Wǒ zài jiā lǐ.|Tôi ở trong nhà.|里:trong|在 + danh từ + 里
+杯子里有水。|Bēizi lǐ yǒu shuǐ.|Trong cốc có nước.|杯子:cốc;里:trong;水:nước|Nơi chốn + 有 + vật
+今天是三月一日。|Jīntiān shì sān yuè yī rì.|Hôm nay là ngày 1 tháng 3 (câu mẫu).|今天:hôm nay;三:ba;月:tháng;一:một;日:ngày|Nói ngày tháng
+今天是五月二日。|Jīntiān shì wǔ yuè èr rì.|Hôm nay là ngày 2 tháng 5 (câu mẫu).|今天:hôm nay;五:năm;月:tháng;二:hai;日:ngày|Nói ngày tháng
+我十岁。|Wǒ shí suì.|Tôi mười tuổi.|十:mười|Nói tuổi
+我九岁。|Wǒ jiǔ suì.|Tôi chín tuổi.|九:chín|Nói tuổi
+现在八点。|Xiànzài bā diǎn.|Bây giờ là tám giờ.|八:tám|Nói giờ: số + 点
+现在七点。|Xiànzài qī diǎn.|Bây giờ là bảy giờ.|七:bảy|Nói giờ
+现在六点。|Xiànzài liù diǎn.|Bây giờ là sáu giờ.|六:sáu|Nói giờ
+现在四点。|Xiànzài sì diǎn.|Bây giờ là bốn giờ.|四:bốn|Nói giờ
+他四岁。|Tā sì suì.|Cậu bé bốn tuổi.|四:bốn|Nói tuổi
+她六岁。|Tā liù suì.|Cô bé sáu tuổi.|六:sáu|Nói tuổi
+他七岁。|Tā qī suì.|Cậu bé bảy tuổi.|七:bảy|Nói tuổi
+她八岁。|Tā bā suì.|Cô bé tám tuổi.|八:tám|Nói tuổi
+现在九点。|Xiànzài jiǔ diǎn.|Bây giờ là chín giờ.|九:chín|Nói giờ
+现在十点。|Xiànzài shí diǎn.|Bây giờ là mười giờ.|十:mười|Nói giờ
+我有五本书。|Wǒ yǒu wǔ běn shū.|Tôi có năm quyển sách.|五:năm;本:lượng từ;书:sách|有 + số + lượng từ + danh từ
+这儿有三个人。|Zhèr yǒu sān ge rén.|Ở đây có ba người.|人:người;个:lượng từ;三:ba|Nơi chốn + 有 + người
+你有几本书？|Nǐ yǒu jǐ běn shū?|Bạn có mấy quyển sách?|几:mấy;本:lượng từ;书:sách|几 + lượng từ
+你女儿几岁？|Nǐ nǚ'ér jǐ suì?|Con gái bạn mấy tuổi?|女儿:con gái;几:mấy|几岁 hỏi tuổi trẻ nhỏ
+这里人很多。|Zhè lǐ rén hěn duō.|Ở đây có nhiều người.|里:trong 这里 nghĩa ở đây;人:người;多:nhiều|很 + tính từ
+我有很多书。|Wǒ yǒu hěn duō shū.|Tôi có nhiều sách.|多:nhiều;书:sách|很多 + danh từ
+这儿人很少。|Zhèr rén hěn shǎo.|Ở đây ít người.|人:người;少:ít|很 + tính từ
+我喝的水很少。|Wǒ hē de shuǐ hěn shǎo.|Lượng nước tôi uống rất ít.|水:nước;少:ít|的 bổ nghĩa danh từ
+他开车。|Tā kāi chē.|Anh ấy lái xe.|开:lái trong 开车;车:xe trong 开车|Động từ + tân ngữ
+我会开车。|Wǒ huì kāi chē.|Tôi biết lái xe.|开:lái trong 开车;车:xe trong 开车|会 + động từ
+我看电视。|Wǒ kàn diànshì.|Tôi xem tivi.|电视:tivi|Động từ + tân ngữ
+他不看电视。|Tā bù kàn diànshì.|Anh ấy không xem tivi.|不:không;电视:tivi|不 + động từ
+我吃米饭。|Wǒ chī mǐfàn.|Tôi ăn cơm.|米饭:cơm|Động từ + tân ngữ
+你吃米饭吗？|Nǐ chī mǐfàn ma?|Bạn ăn cơm không?|米饭:cơm|Câu hỏi với 吗
+我很高兴。|Wǒ hěn gāoxìng.|Tôi vui.|高兴:vui|很 + tính từ
+我认识他。|Wǒ rènshi tā.|Tôi quen anh ấy.|认识:quen, biết|Động từ + tân ngữ
+我住在北京。|Wǒ zhù zài Běijīng.|Tôi sống ở Bắc Kinh.|北京:Bắc Kinh|住在 + nơi chốn
+他去北京。|Tā qù Běijīng.|Anh ấy đi Bắc Kinh.|北京:Bắc Kinh|去 + nơi chốn
+东西在这里。|Dōngxi zài zhè lǐ.|Đồ ở đây.|东西:đồ vật, không dịch là đông + tây|在 + nơi chốn
+我买东西。|Wǒ mǎi dōngxi.|Tôi mua đồ.|东西:đồ vật|Động từ + tân ngữ
+我很高兴认识你。|Wǒ hěn gāoxìng rènshi nǐ.|Tôi rất vui được quen bạn.|高兴:vui;认识:quen, biết|很 + tính từ
