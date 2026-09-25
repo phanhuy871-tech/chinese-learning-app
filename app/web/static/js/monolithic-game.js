@@ -27,6 +27,13 @@ function monoHanziMatches(answer, question) {
   return (question.accepted || [question.card.simplified, question.card.traditional]).includes(answer.trim().normalize("NFC"));
 }
 
+function monoAnswerExplanation(card) {
+  const example = card.examples?.[0];
+  return `<p class="mono-answer-reveal">${escapeHtml(card.simplified)} · ${escapeHtml(card.pinyin)} · ${escapeHtml(card.han_viet || "")}</p>
+    <p>${escapeHtml(monoMeaning(card))}</p>
+    ${example ? `<div class="mono-link"><strong>Ví dụ${example.level_note ? ` · ${escapeHtml(example.level_note)}` : ""}</strong><p>${highlightMonoPhrase(example.hanzi, example.focus)}</p><p>${escapeHtml(example.pinyin)}</p><p>${escapeHtml(example.meaning_vi)}</p><p>${escapeHtml(example.explanation_vi || "")}</p>${example.grammar_vi ? `<p>Mẫu câu: ${escapeHtml(example.grammar_vi)}</p>` : ""}</div>` : ""}`;
+}
+
 function monoGameQuestions(cards) {
   const kinds = ["meaning", "pinyin", "character"];
   return shuffleItems(cards).slice(0, 10).map((card, index) => {
@@ -60,7 +67,7 @@ function startMonoGame(review = null, mode = "choice") {
     document.querySelector("#monolithicDetail").textContent = "Cần ít nhất hai chữ khác nhau để chơi. Hãy chọn thêm tuần hoặc bỏ lọc cốt lõi.";
     return;
   }
-  monoSession = {questions, index: 0, correct: 0, wrong: [], locked: false, review: Boolean(review), mode};
+  monoSession = {questions, index: 0, correct: 0, wrong: [], answers: [], locked: false, review: Boolean(review), mode};
   document.body.classList.add("mono-playing");
   renderMonoQuestion();
   scrollMonolithicIntoView();
@@ -81,6 +88,7 @@ function renderMonoQuestion() {
     box.innerHTML = `<div class="mono-game"><h3>${session.review ? "Đã ôn xong!" : "Hoàn thành lượt chơi!"}</h3>
       <p class="mono-score">${session.correct}/${session.questions.length} câu đúng</p>
       <p>${session.wrong.length ? "Ôn lại các câu sai để nhớ lâu hơn nhé." : "Tốt lắm! Thử lượt mới để học thêm chữ nhé."}</p>
+      ${session.answers.some(a => !a.correct) ? `<details><summary>Xem lại các câu sai / bỏ qua</summary>${session.answers.filter(a => !a.correct).map(a => `<article><p>Bạn nhập: ${escapeHtml(a.answer || "(bỏ qua)")}</p>${monoAnswerExplanation(a.card)}</article>`).join("")}</details>` : ""}
       <div class="mono-game-actions">${session.wrong.length ? '<button id="monoReview" type="button">Ôn câu sai</button>' : ""}<button id="monoAgain" type="button">Chơi lượt mới</button><button id="monoExit" class="secondary-button" type="button">Về bài học</button></div></div>`;
     document.querySelector("#monoReview")?.addEventListener("click", () => startMonoGame(shuffleItems(session.wrong), session.mode));
     document.querySelector("#monoAgain").onclick = () => startMonoGame(null, session.mode);
@@ -92,20 +100,37 @@ function renderMonoQuestion() {
   if (session.mode === "typing") {
     box.innerHTML = `<div class="mono-game"><div class="mono-game-actions"><span>Câu ${session.index + 1}/${session.questions.length} · Đúng ${session.correct}</span><button id="monoExit" class="secondary-button" type="button">Về bài học</button></div><progress aria-label="Tiến độ lượt chơi" value="${session.index}" max="${session.questions.length}"></progress><h3>Nhập chữ Hán ứng với nghĩa này</h3><div class="mono-game-prompt is-meaning">${escapeHtml(monoMeaning(question.card))}</div><input id="monoHanziInput" class="mono-hanzi-input" inputmode="text" autocomplete="off" placeholder="Nhập chữ Hán…" aria-label="Chữ Hán trả lời"><button id="monoCheckHanzi" type="button">Kiểm tra</button><div id="monoFeedback" role="status" aria-live="polite"></div><div class="mono-game-actions"><button id="monoNext" type="button" hidden>Câu tiếp theo →</button></div></div>`;
     document.querySelector("#monoExit").onclick = leaveMonoGame;
-    document.querySelector("#monoCheckHanzi").onclick = () => {
+    const input = document.querySelector("#monoHanziInput");
+    const check = document.querySelector("#monoCheckHanzi");
+    const skip = document.createElement("button");
+    skip.id = "monoSkipHanzi";
+    skip.type = "button";
+    skip.className = "secondary-button";
+    skip.textContent = "Chưa nhớ · Xem đáp án và bỏ qua";
+    check.insertAdjacentElement("afterend", skip);
+    let composing = false;
+    input.addEventListener("compositionstart", () => { composing = true; });
+    input.addEventListener("compositionend", () => { composing = false; });
+    const submit = (skipped = false) => {
       if (session.locked) return;
-      const answer = document.querySelector("#monoHanziInput").value.trim();
-      if (!answer) return;
+      if (composing) return;
+      const answer = skipped ? "" : input.value.trim();
+      if (!answer && !skipped) { document.querySelector("#monoFeedback").textContent = "Hãy nhập chữ Hán, hoặc chọn Chưa nhớ để xem đáp án và qua câu khác."; return; }
       session.locked = true;
-      const correct = monoHanziMatches(answer, question);
+      const correct = !skipped && monoHanziMatches(answer, question);
+      session.answers.push({card: question.card, answer, correct});
       document.querySelector("#monoHanziInput").disabled = true;
       document.querySelector("#monoCheckHanzi").disabled = true;
       if (correct) session.correct += 1; else session.wrong.push(question);
       document.querySelector(".mono-game-actions > span").textContent = `Câu ${session.index + 1}/${session.questions.length} · Đúng ${session.correct}`;
-      document.querySelector("#monoFeedback").innerHTML = `<p><strong>${correct ? "Đúng rồi!" : "Chưa đúng — đáp án là:"}</strong></p><p class="mono-answer-reveal">${escapeHtml(question.card.simplified)} · ${escapeHtml(question.card.pinyin)}</p><p>${escapeHtml(monoMeaning(question.card))}</p>`;
+      skip.disabled = true;
+      document.querySelector("#monoFeedback").innerHTML = `<p><strong>${correct ? "Đúng rồi!" : skipped ? "Cùng xem đáp án nhé:" : "Chưa khớp chữ trong bài — đáp án mẫu:"}</strong></p>${monoAnswerExplanation(question.card)}${!correct ? '<p>Câu này đã được lưu để ôn sau khi làm hết lượt. Bạn có thể sang câu tiếp theo ngay.</p>' : ""}<button id="monoTypedListen" class="secondary-button" type="button">Nghe đáp án</button>`;
+      document.querySelector("#monoTypedListen").onclick = () => speakWord(question.card.readings?.[0]?.audio_text || question.card.simplified, "");
       document.querySelector("#monoNext").hidden = false;
       document.querySelector("#monoNext").focus({preventScroll:true});
     };
+    check.onclick = () => submit();
+    skip.onclick = () => submit(true);
     document.querySelector("#monoHanziInput").addEventListener("keydown", event => {
       if (event.key === "Enter" && !event.isComposing && event.keyCode !== 229) { event.preventDefault(); document.querySelector("#monoCheckHanzi").click(); }
     });
@@ -134,7 +159,8 @@ function renderMonoQuestion() {
     });
     if (!correct) button.classList.add("is-wrong");
     const card = question.card;
-    document.querySelector("#monoFeedback").innerHTML = `<p><strong>${correct ? "Đúng rồi!" : "Chưa đúng — cùng ghi nhớ nhé:"}</strong></p><p>${escapeHtml(card.simplified)} · ${escapeHtml(card.pinyin)} · ${escapeHtml(card.han_viet)}</p><p>${escapeHtml(monoMeaning(card))}</p>`;
+    session.answers.push({card, answer: chosen, correct});
+    document.querySelector("#monoFeedback").innerHTML = `<p><strong>${correct ? "Đúng rồi!" : "Chưa đúng — cùng ghi nhớ nhé:"}</strong></p>${monoAnswerExplanation(card)}${!correct ? '<p>Làm tiếp các câu khác; câu này sẽ được ôn lại sau khi hết lượt.</p>' : ""}`;
     document.querySelector("#monoListen").hidden = false;
     document.querySelector("#monoNext").hidden = false;
     document.querySelector("#monoNext").focus({preventScroll: true});
