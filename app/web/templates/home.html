@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Chinese Learning App</title>
-    <link rel="stylesheet" href="/static/css/app.css?v=20260923-mono-audit" />
+    <link rel="stylesheet" href="/static/css/app.css?v=20261027-course-recall" />
   </head>
   <body>
     <main class="shell">
@@ -70,6 +70,7 @@
       <!-- Thanh chọn module chính của ứng dụng. data-mode sẽ được JavaScript dùng để bật/tắt panel. -->
       <section class="modebar" aria-label="Chế độ học">
         <button class="mode is-active" data-mode="study" type="button">Học từ vựng</button>
+        <button class="mode" data-mode="course" type="button">Học bài khóa</button>
         <button class="mode" data-mode="radicals" type="button">Bộ thủ</button>
         <button class="mode" data-mode="monolithic" type="button">Chữ độc thể</button>
         <button class="mode" data-mode="grammar" type="button">Ngữ pháp</button>
@@ -78,6 +79,23 @@
 
       <!-- Lưới nội dung chính: cột bài học luôn hiện, các panel còn lại đổi theo module. -->
       <section class="grid">
+        <div class="panel course-panel hidden" data-panel="course" id="coursePanel">
+          <h2>Học bài khóa</h2>
+          <p>Mỗi bài khóa nhỏ gồm một đoạn hội thoại. Tiến độ lưu riêng trên trình duyệt này.</p>
+          <div class="course-toolbar">
+            <label>Bài khóa <select id="courseLesson" aria-label="Bài khóa"></select></label>
+            <button id="courseRefresh" type="button">Cập nhật bài khóa từ Sheet</button>
+          </div>
+          <div id="courseSections" class="course-toolbar" role="group" aria-label="Bốn phần học">
+            <button type="button" data-section="1">1 · Học và hiểu</button>
+            <button type="button" data-section="2">2 · Nghe và viết</button>
+            <button type="button" data-section="3">3 · Dịch tiếng Việt</button>
+            <button type="button" data-section="4">4 · Viết lại bài</button>
+          </div>
+          <p id="courseStatus" role="status" aria-live="polite"></p>
+          <div id="courseReturn" class="course-return"></div>
+          <div id="courseContent"></div>
+        </div>
         <div class="panel">
           <h2>Bài học</h2>
           <div class="list">
@@ -184,7 +202,9 @@
     </dialog>
 
     <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
-    <script src="/static/js/app.js?v=20260923-mono-audit"></script>
+    <script src="/static/js/app.js?v=20261027-reset"></script>
     <script src="/static/js/monolithic-game.js?v=20260925-mono-feedback"></script>
+    <script src="/static/js/course-state.js?v=3-inputs"></script>
+    <script src="/static/js/course.js?v=5-reset"></script>
   </body>
 </html>

@@ -9,6 +9,7 @@ RATE = os.getenv("TTS_RATE", "-8%")
 PITCH = os.getenv("TTS_PITCH", "+0Hz")
 MAX_TEXT_LENGTH = 180
 _AUDIO_CACHE: dict[str, bytes] = {}
+COURSE_VOICES = {"A": "zh-CN-XiaoxiaoNeural", "B": "zh-CN-YunxiNeural"}
 
 
 def clean_tts_text(text: str) -> str:
@@ -21,19 +22,20 @@ def cache_key(text: str) -> str:
     return hashlib.sha1(text.encode("utf-8")).hexdigest()
 
 
-async def synthesize_chinese_audio(text: str) -> bytes:
+async def synthesize_chinese_audio(text: str, speaker: str = "") -> bytes:
     """Tạo MP3 tiếng Trung bằng Edge neural TTS và cache trong bộ nhớ server."""
     cleaned = clean_tts_text(text)
     if not cleaned:
         raise ValueError("Không có nội dung để phát âm.")
 
-    key = cache_key(f"{VOICE}|{RATE}|{PITCH}|{cleaned}")
+    voice = COURSE_VOICES.get(speaker, VOICE)
+    key = cache_key(f"{voice}|{RATE}|{PITCH}|{cleaned}")
     if key in _AUDIO_CACHE:
         return _AUDIO_CACHE[key]
 
     import edge_tts
 
-    communicate = edge_tts.Communicate(cleaned, VOICE, rate=RATE, pitch=PITCH)
+    communicate = edge_tts.Communicate(cleaned, voice, rate=RATE, pitch=PITCH)
     chunks: list[bytes] = []
     async for chunk in communicate.stream():
         if chunk["type"] == "audio":

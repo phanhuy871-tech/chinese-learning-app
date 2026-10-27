@@ -1,0 +1,142 @@
+{
+  "BK01-C01": {
+    "text": "我要去北京旅游， 你觉得\n什么时候去最好",
+    "speaker": "A",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "url": "/static/course-audio/995cddfeb5dace15008eaa9090f50b3624952d77.mp3",
+    "bytes": 27648
+  },
+  "BK01-C02": {
+    "text": "九月去北京旅游最好",
+    "speaker": "B",
+    "voice": "zh-CN-YunxiNeural",
+    "url": "/static/course-audio/8b469c935558666e3aea96a0e4d1d9b0e0f3e1b3.mp3",
+    "bytes": 17856
+  },
+  "BK01-C03": {
+    "text": "为什么？",
+    "speaker": "A",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "url": "/static/course-audio/075054233a6a3326e78c5e95a67300ceef4395b4.mp3",
+    "bytes": 11232
+  },
+  "BK01-C04": {
+    "text": "九月的北京天气不冷不热",
+    "speaker": "B",
+    "voice": "zh-CN-YunxiNeural",
+    "url": "/static/course-audio/3dfa9bdc6b6ac38e33bfda2d9ba686e7dc219113.mp3",
+    "bytes": 19872
+  },
+  "BK02-C01": {
+    "text": "你喜欢什么运动",
+    "speaker": "A",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "url": "/static/course-audio/55d159ce0b74be1fcc8d5a117b038a86ae8167ec.mp3",
+    "bytes": 12672
+  },
+  "BK02-C02": {
+    "text": "我最喜欢踢足球",
+    "speaker": "B",
+    "voice": "zh-CN-YunxiNeural",
+    "url": "/static/course-audio/93aae9502337614b01cfd3208cb490539bfe144e.mp3",
+    "bytes": 16272
+  },
+  "BK02-C03": {
+    "text": "下午我们一起去踢足球吧",
+    "speaker": "A",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "url": "/static/course-audio/73f527cba1a75533e0f321eafc775c03f0afb114.mp3",
+    "bytes": 19008
+  },
+  "BK02-C04": {
+    "text": "好啊",
+    "speaker": "B",
+    "voice": "zh-CN-YunxiNeural",
+    "url": "/static/course-audio/a7c899fec1468516b17c61a64f81fbd5118d74a4.mp3",
+    "bytes": 11232
+  },
+  "BK03-C01": {
+    "text": "我们要不要买几个新的椅子？",
+    "speaker": "A",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "url": "/static/course-audio/b939a4cb124d560207ee9d9c591fa8654123f6f4.mp3",
+    "bytes": 17136
+  },
+  "BK03-C02": {
+    "text": "好啊。",
+    "speaker": "B",
+    "voice": "zh-CN-YunxiNeural",
+    "url": "/static/course-audio/57e7d60daedbba48618138e79a38aa6b6cfb8463.mp3",
+    "bytes": 11664
+  },
+  "BK03-C03": {
+    "text": "什么时候去买？",
+    "speaker": "B",
+    "voice": "zh-CN-YunxiNeural",
+    "url": "/static/course-audio/ce11d0f4fc2535e43e082c1d17d68c0865fd8c8c.mp3",
+    "bytes": 12816
+  },
+  "BK03-C04": {
+    "text": "明天下午怎么样？",
+    "speaker": "A",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "url": "/static/course-audio/25cf1f1e171d9d613bcc96bf3185b0913ec8a506.mp3",
+    "bytes": 12384
+  },
+  "BK03-C05": {
+    "text": "你明天几点能回来？",
+    "speaker": "A",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "url": "/static/course-audio/e45e73ce5c0320e9fd12348f980303cc9e4554f1.mp3",
+    "bytes": 13968
+  },
+  "BK03-C06": {
+    "text": "三点多",
+    "speaker": "B",
+    "voice": "zh-CN-YunxiNeural",
+    "url": "/static/course-audio/7dc7934ef3826f98763c508528dc4864607837ee.mp3",
+    "bytes": 11808
+  },
+  "BK04-C01": {
+    "text": "桌子下面有个猫",
+    "speaker": "A",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "url": "/static/course-audio/d86aed78852aa203af8ab1ac346f714a270424f2.mp3",
+    "bytes": 12816
+  },
+  "BK04-C02": {
+    "text": "那是我的猫，他叫花花",
+    "speaker": "B",
+    "voice": "zh-CN-YunxiNeural",
+    "url": "/static/course-audio/a6127d86bf61da39ed2ba9a618f7dafba374a658.mp3",
+    "bytes": 18288
+  },
+  "BK04-C03": {
+    "text": "她很漂亮",
+    "speaker": "A",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "url": "/static/course-audio/9fd5b81e11b9b62379db3bb487fc0f886c787912.mp3",
+    "bytes": 11232
+  },
+  "BK04-C04": {
+    "text": "是啊，我觉得她的眼睛最漂亮",
+    "speaker": "B",
+    "voice": "zh-CN-YunxiNeural",
+    "url": "/static/course-audio/6c875fb0edf9c3a0b20ebcc0b8514d01a2a6fe89.mp3",
+    "bytes": 22752
+  },
+  "BK04-C05": {
+    "text": "他多大了",
+    "speaker": "A",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "url": "/static/course-audio/133690b895934c30a4dc8cbaaefe6274254bc6e8.mp3",
+    "bytes": 11232
+  },
+  "BK04-C06": {
+    "text": "六个多月",
+    "speaker": "B",
+    "voice": "zh-CN-YunxiNeural",
+    "url": "/static/course-audio/3aa7d803906cb5be9355cd4ac06fa250ebaf670a.mp3",
+    "bytes": 11808
+  }
+}

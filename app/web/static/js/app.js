@@ -102,6 +102,7 @@ async function loadProgressForUser(userId) {
   // Tải tiến độ của người học từ backend SQLite.
   selectedUserId = userId;
   localStorage.setItem("selectedUserId", selectedUserId);
+  window.dispatchEvent(new Event("learning-user-changed"));
   try {
     const response = await fetch(`/api/users/${selectedUserId}/progress`);
     currentProgress = { ...emptyProgress(), ...(await response.json()) };
@@ -1276,6 +1277,8 @@ document.querySelector("#addUser").addEventListener("click", async () => {
 });
 
 document.querySelector("#resetProgress").addEventListener("click", async () => {
+  if (!window.confirm("Xóa toàn bộ tiến độ của người học hiện tại, gồm bài khóa và các bản nháp? Không thể hoàn tác.")) return;
+  window.dispatchEvent(new Event("learning-progress-reset"));
   // Xóa tiến độ học của người đang chọn, không ảnh hưởng dữ liệu bài học.
   try {
     const response = await fetch(`/api/users/${selectedUserId}/progress/reset`, { method: "POST" });

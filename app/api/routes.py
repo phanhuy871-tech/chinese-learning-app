@@ -38,10 +38,12 @@ def health():
 
 
 @router.get("/tts")
-async def tts_audio(text: str):
+async def tts_audio(text: str, speaker: str = ""):
     """Tạo file MP3 phát âm tiếng Trung cho từ/câu đang học."""
     try:
-        audio = await synthesize_chinese_audio(text)
+        if speaker not in ("", "A", "B"):
+            raise ValueError("Người nói phải là A hoặc B.")
+        audio = await synthesize_chinese_audio(text, speaker=speaker)
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     except Exception as exc:

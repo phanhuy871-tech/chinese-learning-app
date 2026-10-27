@@ -8,6 +8,7 @@ from app.data_sources.bootstrap import load_sample_data
 from app.data_sources.google_sheets.sync_service import sync_google_sheet
 from app.data_sources.local_snapshot import load_local_snapshot
 from app.web.routes import router as web_router
+from app.learning.course import router as course_router
 
 
 def create_app() -> FastAPI:
@@ -25,6 +26,7 @@ def create_app() -> FastAPI:
     # api_router: các API trả JSON cho frontend.
     # web_router: các trang HTML người dùng nhìn thấy.
     app.include_router(api_router)
+    app.include_router(course_router)
     app.include_router(web_router)
 
     @app.on_event("startup")
