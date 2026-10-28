@@ -7,6 +7,18 @@ from app.learning import course
 from app.learning.course import parse_course, media_url, SNAPSHOT
 
 class CourseTest(unittest.TestCase):
+    def test_token_hints(self):
+        from app.learning.course_tokens import token_hints
+        hints = token_hints('九月去北京旅游最好', 'jiǔ yuè qù běi jīng lǚ yóu zuì hǎo')
+        self.assertEqual(hints[2], {'character_count': 2, 'pinyin_initials': 'B J'})
+        self.assertEqual(hints[3]['pinyin_initials'], 'L Y')
+        self.assertTrue(all(not h['pinyin_initials'] for h in token_hints('为什么', 'wèishénme')))
+        for lesson in parse_course(json.loads(SNAPSHOT.read_text(encoding='utf-8'))):
+            for sentence in lesson['sentences']:
+                hints = sentence['listening_token_hints']
+                self.assertEqual(len(hints), len(sentence['listening_tokens']))
+                self.assertTrue(all(h['pinyin_initials'] for h in hints))
+
     def test_refresh_persists_and_survives_cache_reset(self):
         rows = [{'lesson_id':'BK01','sentence_id':'C1','hanzi':'我','sentence_order':1}]
         with tempfile.TemporaryDirectory() as directory, patch.object(course, 'STORE', Path(directory)/'course.json'), patch.object(course, '_cached', None), patch.object(course, 'fetch_public_sheet_rows_by_name', return_value=rows):

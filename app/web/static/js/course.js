@@ -134,7 +134,8 @@
     const toggle=state.section===2?`<label class="course-assist-toggle"><input type="checkbox" id="courseAssist" ${s.assisted?'checked':''} ${!tokens.length||s.grading_state?'disabled':''}> Hỗ trợ từng từ/cụm</label>
       <small>${tokens.length?'Hai chế độ giữ bản nháp riêng. Kiểm tra khi chọn xong chữ Hán hoặc rời ô; chưa hiện đáp án.':'Câu này chưa có cách tách từ đã duyệt; hãy nhập cả câu.'}</small>`:'';
     if(state.section===2&&s.assisted&&tokens.length) return `${toggle}<div class="course-token-grid">${tokens.map((t,i)=>`<label class="course-token-cell">Từ/cụm ${i+1}
-      <input data-token-index="${i}" aria-label="Từ hoặc cụm ${i+1}" aria-describedby="token-feedback-${i}" autocomplete="off" spellcheck="false" ${locked}>
+      <input data-token-index="${i}" aria-label="Từ hoặc cụm ${i+1}" aria-describedby="token-feedback-${i} token-hint-${i}" autocomplete="off" spellcheck="false" ${locked}>
+      <small id="token-hint-${i}">${Array.from(t).length} chữ Hán · ${row.listening_token_hints?.[i]?.pinyin_initials ? `Đầu pinyin: ${esc(row.listening_token_hints[i].pinyin_initials)}` : 'Chưa có gợi ý pinyin đã khớp'}</small>
       <span id="token-feedback-${i}" class="course-input-feedback" aria-live="polite"></span></label>`).join('')}</div>`;
     return `${toggle}<label for="courseAnswer">${state.section===3?'Bản dịch tiếng Việt':'Nội dung chữ Hán'}</label>
       <textarea id="courseAnswer" rows="3" autocomplete="off" spellcheck="false" ${locked}></textarea>`;
@@ -145,7 +146,7 @@
       const result=s.input_checks[key]||'';
       input.dataset.feedback=result;
       input.setAttribute('aria-invalid',String(result==='incorrect'));
-      const message=document.getElementById(input.getAttribute('aria-describedby'));
+      const message=document.getElementById(input.getAttribute('aria-describedby').split(' ')[0]);
       if(message)message.textContent=result==='correct'?'✓ Đúng':result==='incorrect'?'Chưa đúng, hãy thử sửa lại.':'';
     };
     const wire=(input,expected,key,onEdit)=>{

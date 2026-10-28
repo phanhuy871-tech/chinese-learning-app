@@ -10,7 +10,7 @@ from fastapi import APIRouter, HTTPException
 
 from app.core.config import settings
 from app.learning.course_glossary import glossary_for
-from app.learning.course_tokens import listening_tokens
+from app.learning.course_tokens import listening_tokens, token_hints
 from app.data_sources.google_sheets.client import fetch_public_sheet_rows_by_name
 
 router = APIRouter(prefix="/api/course", tags=["course"])
@@ -99,6 +99,7 @@ def parse_course(rows: list[dict]) -> list[dict]:
         sentence["voice_label"] = "A · giọng nữ Quan thoại" if sentence["speaker"] == "A" else "B · giọng nam Quan thoại" if sentence["speaker"] == "B" else "Quan thoại"
         sentence["word_glossary"] = glossary_for(hanzi)
         sentence["listening_tokens"] = listening_tokens(hanzi)
+        sentence["listening_token_hints"] = token_hints(hanzi, sentence["pinyin"])
         sentence["revision"] = hashlib.sha256(json.dumps(
             [hanzi, sentence["pinyin"], sentence["translation_vi"]], ensure_ascii=False,
         ).encode()).hexdigest()

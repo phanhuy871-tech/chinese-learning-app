@@ -7,6 +7,8 @@ const assert=require('node:assert/strict');
  await page.locator('#courseLesson').selectOption('BK01');
  await page.locator('[data-section="2"]').click();await page.locator('#courseAnswer').fill('我想');
  await page.locator('#courseAssist').check();
+ assert.equal(await page.locator('#token-hint-3').innerText(),'2 chữ Hán · Đầu pinyin: B J');
+ assert.equal(await page.locator('#token-hint-7').innerText(),'4 chữ Hán · Đầu pinyin: S M S H');
  const first=page.locator('[data-token-index="0"]');
  await first.fill('你');await first.blur();assert.equal(await first.getAttribute('aria-invalid'),'true');
  assert.match(await page.locator('#token-feedback-0').innerText(),/Chưa đúng/);

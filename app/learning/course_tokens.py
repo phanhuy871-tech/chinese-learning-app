@@ -1,5 +1,6 @@
 """Reviewed word/phrase boundaries for the current lessons; unknown text stays free-form."""
 import re
+import unicodedata
 
 PHRASES = [
     '我|要|去|北京|旅游|你|觉得|什么时候|去|最|好',
@@ -15,3 +16,20 @@ TOKEN_MAP = {p.replace('|', ''): p.split('|') for p in PHRASES}
 def listening_tokens(text):
     normalized = re.sub(r'[^\u3400-\u9fff]', '', text)
     return TOKEN_MAP.get(normalized, []) if not re.search(r'[A-Za-z0-9]', text) else []
+
+
+def token_hints(text, pinyin):
+    """Align only explicitly separated syllables; never guess missing boundaries."""
+    tokens = listening_tokens(text)
+    plain = ''.join(c for c in unicodedata.normalize('NFD', pinyin.lower())
+                    if not unicodedata.combining(c))
+    syllables = plain.split()
+    valid = (len(syllables) == sum(map(len, tokens)) and
+             all(re.fullmatch(r'[a-z]+', s) for s in syllables))
+    result, offset = [], 0
+    for token in tokens:
+        count = len(token)
+        result.append({'character_count': count,
+                       'pinyin_initials': ' '.join(s[0].upper() for s in syllables[offset:offset+count]) if valid else ''})
+        offset += count
+    return result
