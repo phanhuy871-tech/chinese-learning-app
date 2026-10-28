@@ -134,6 +134,12 @@ và viewport 320/375/390/430/1280. Kiểm tra scrollWidth=clientWidth, scrollX=0
 
 ## Giới hạn
 
+Audio bài khóa dùng tốc độ tổng hợp -22% và dấu ngắt theo cụm nghĩa đã duyệt
+trong `app/audio/course_prosody.py`. Chữ Hán nguồn không đổi; manifest ghi riêng
+`speech_text` và `rate`. Câu ngắn không bị ngắt từng chữ. Tốc độ 1x trên trình phát
+là tốc độ file này, không phải chuẩn tốc độ chung giữa các website. Audio mới có
+tên hash mới tránh cache cũ. Các module từ vựng/game khác giữ cấu hình hiện có.
+
 Tiến độ nằm trên trình duyệt/thiết bị, không đồng bộ giữa điện thoại và máy tính.
 Xóa dữ liệu trình duyệt/private mode có thể làm mất tiến độ; storage đầy/bị chặn
 hiển thị cảnh báo. Nhiều tab cùng người học chưa có giải quyết xung đột (ghi cuối thắng).

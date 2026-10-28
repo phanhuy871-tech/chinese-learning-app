@@ -3,140 +3,180 @@
     "text": "我要去北京旅游， 你觉得\n什么时候去最好",
     "speaker": "A",
     "voice": "zh-CN-XiaoxiaoNeural",
-    "url": "/static/course-audio/995cddfeb5dace15008eaa9090f50b3624952d77.mp3",
-    "bytes": 27648
+    "rate": "-22%",
+    "speech_text": "我要去北京旅游。你觉得，什么时候去最好？",
+    "url": "/static/course-audio/5fcb3681d4ce6aaaa351cd9faf094adf1dae3528.mp3",
+    "bytes": 35568
   },
   "BK01-C02": {
     "text": "九月去北京旅游最好",
     "speaker": "B",
     "voice": "zh-CN-YunxiNeural",
-    "url": "/static/course-audio/8b469c935558666e3aea96a0e4d1d9b0e0f3e1b3.mp3",
-    "bytes": 17856
+    "rate": "-22%",
+    "speech_text": "九月，去北京旅游最好。",
+    "url": "/static/course-audio/4fb96d4ea5db37bfb900fcab991da965b4545c11.mp3",
+    "bytes": 22752
   },
   "BK01-C03": {
     "text": "为什么？",
     "speaker": "A",
     "voice": "zh-CN-XiaoxiaoNeural",
-    "url": "/static/course-audio/075054233a6a3326e78c5e95a67300ceef4395b4.mp3",
+    "rate": "-22%",
+    "speech_text": "为什么？",
+    "url": "/static/course-audio/78757e8e41824f9b5377e4818580ce7015a6f76f.mp3",
     "bytes": 11232
   },
   "BK01-C04": {
     "text": "九月的北京天气不冷不热",
     "speaker": "B",
     "voice": "zh-CN-YunxiNeural",
-    "url": "/static/course-audio/3dfa9bdc6b6ac38e33bfda2d9ba686e7dc219113.mp3",
-    "bytes": 19872
+    "rate": "-22%",
+    "speech_text": "九月的北京，天气不冷不热。",
+    "url": "/static/course-audio/2cf81be88d5b3e877ea95575aaaa80e908487a06.mp3",
+    "bytes": 25344
   },
   "BK02-C01": {
     "text": "你喜欢什么运动",
     "speaker": "A",
     "voice": "zh-CN-XiaoxiaoNeural",
-    "url": "/static/course-audio/55d159ce0b74be1fcc8d5a117b038a86ae8167ec.mp3",
-    "bytes": 12672
+    "rate": "-22%",
+    "speech_text": "你喜欢什么运动？",
+    "url": "/static/course-audio/35d2b4499b337694a646199016f652418efc02fc.mp3",
+    "bytes": 14544
   },
   "BK02-C02": {
     "text": "我最喜欢踢足球",
     "speaker": "B",
     "voice": "zh-CN-YunxiNeural",
-    "url": "/static/course-audio/93aae9502337614b01cfd3208cb490539bfe144e.mp3",
-    "bytes": 16272
+    "rate": "-22%",
+    "speech_text": "我最喜欢踢足球。",
+    "url": "/static/course-audio/3ee8e91975b2e5b1c65b0e2cf1a614abf52a1890.mp3",
+    "bytes": 19152
   },
   "BK02-C03": {
     "text": "下午我们一起去踢足球吧",
     "speaker": "A",
     "voice": "zh-CN-XiaoxiaoNeural",
-    "url": "/static/course-audio/73f527cba1a75533e0f321eafc775c03f0afb114.mp3",
-    "bytes": 19008
+    "rate": "-22%",
+    "speech_text": "下午，我们一起去踢足球吧。",
+    "url": "/static/course-audio/09173c64d4c36e0ae24ef6b357abbd0fd26d5f49.mp3",
+    "bytes": 23040
   },
   "BK02-C04": {
     "text": "好啊",
     "speaker": "B",
     "voice": "zh-CN-YunxiNeural",
-    "url": "/static/course-audio/a7c899fec1468516b17c61a64f81fbd5118d74a4.mp3",
-    "bytes": 11232
+    "rate": "-22%",
+    "speech_text": "好啊。",
+    "url": "/static/course-audio/b7b2d6d7e3783b0ad3ecf72a74715256397da3ed.mp3",
+    "bytes": 13680
   },
   "BK03-C01": {
     "text": "我们要不要买几个新的椅子？",
     "speaker": "A",
     "voice": "zh-CN-XiaoxiaoNeural",
-    "url": "/static/course-audio/b939a4cb124d560207ee9d9c591fa8654123f6f4.mp3",
-    "bytes": 17136
+    "rate": "-22%",
+    "speech_text": "我们要不要，买几个新的椅子？",
+    "url": "/static/course-audio/b89e3f4af97e5c98eea9beae66ffe62f13b050b6.mp3",
+    "bytes": 23040
   },
   "BK03-C02": {
     "text": "好啊。",
     "speaker": "B",
     "voice": "zh-CN-YunxiNeural",
-    "url": "/static/course-audio/57e7d60daedbba48618138e79a38aa6b6cfb8463.mp3",
-    "bytes": 11664
+    "rate": "-22%",
+    "speech_text": "好啊。",
+    "url": "/static/course-audio/b7b2d6d7e3783b0ad3ecf72a74715256397da3ed.mp3",
+    "bytes": 13680
   },
   "BK03-C03": {
     "text": "什么时候去买？",
     "speaker": "B",
     "voice": "zh-CN-YunxiNeural",
-    "url": "/static/course-audio/ce11d0f4fc2535e43e082c1d17d68c0865fd8c8c.mp3",
-    "bytes": 12816
+    "rate": "-22%",
+    "speech_text": "什么时候去买？",
+    "url": "/static/course-audio/31b21c3a9aadb08f6a39a1972d3183e6e85bab2d.mp3",
+    "bytes": 14976
   },
   "BK03-C04": {
     "text": "明天下午怎么样？",
     "speaker": "A",
     "voice": "zh-CN-XiaoxiaoNeural",
-    "url": "/static/course-audio/25cf1f1e171d9d613bcc96bf3185b0913ec8a506.mp3",
-    "bytes": 12384
+    "rate": "-22%",
+    "speech_text": "明天下午，怎么样？",
+    "url": "/static/course-audio/a51c906f332d6a8ff11c0ba7ca0409618a9fcfb0.mp3",
+    "bytes": 17424
   },
   "BK03-C05": {
     "text": "你明天几点能回来？",
     "speaker": "A",
     "voice": "zh-CN-XiaoxiaoNeural",
-    "url": "/static/course-audio/e45e73ce5c0320e9fd12348f980303cc9e4554f1.mp3",
-    "bytes": 13968
+    "rate": "-22%",
+    "speech_text": "你明天，几点能回来？",
+    "url": "/static/course-audio/7b7e4a8299a0bf718b27f757ea28e2dc55ab57b3.mp3",
+    "bytes": 18864
   },
   "BK03-C06": {
     "text": "三点多",
     "speaker": "B",
     "voice": "zh-CN-YunxiNeural",
-    "url": "/static/course-audio/7dc7934ef3826f98763c508528dc4864607837ee.mp3",
-    "bytes": 11808
+    "rate": "-22%",
+    "speech_text": "三点多。",
+    "url": "/static/course-audio/3601a1b980cdd89f48e1350fab24167973a2d546.mp3",
+    "bytes": 13824
   },
   "BK04-C01": {
     "text": "桌子下面有个猫",
     "speaker": "A",
     "voice": "zh-CN-XiaoxiaoNeural",
-    "url": "/static/course-audio/d86aed78852aa203af8ab1ac346f714a270424f2.mp3",
-    "bytes": 12816
+    "rate": "-22%",
+    "speech_text": "桌子下面，有个猫。",
+    "url": "/static/course-audio/6d34965bfd1aa94da1ae623ea830f85abb6e3553.mp3",
+    "bytes": 17712
   },
   "BK04-C02": {
     "text": "那是我的猫，他叫花花",
     "speaker": "B",
     "voice": "zh-CN-YunxiNeural",
-    "url": "/static/course-audio/a6127d86bf61da39ed2ba9a618f7dafba374a658.mp3",
-    "bytes": 18288
+    "rate": "-22%",
+    "speech_text": "那是我的猫，他叫花花。",
+    "url": "/static/course-audio/fbc28d14e0e41bcbfdd8c82a73bcb420a17db8b4.mp3",
+    "bytes": 21456
   },
   "BK04-C03": {
     "text": "她很漂亮",
     "speaker": "A",
     "voice": "zh-CN-XiaoxiaoNeural",
-    "url": "/static/course-audio/9fd5b81e11b9b62379db3bb487fc0f886c787912.mp3",
-    "bytes": 11232
+    "rate": "-22%",
+    "speech_text": "她很漂亮。",
+    "url": "/static/course-audio/7bef1527d800044566da77f253c0a907e1cb0642.mp3",
+    "bytes": 12240
   },
   "BK04-C04": {
     "text": "是啊，我觉得她的眼睛最漂亮",
     "speaker": "B",
     "voice": "zh-CN-YunxiNeural",
-    "url": "/static/course-audio/6c875fb0edf9c3a0b20ebcc0b8514d01a2a6fe89.mp3",
-    "bytes": 22752
+    "rate": "-22%",
+    "speech_text": "是啊，我觉得，她的眼睛最漂亮。",
+    "url": "/static/course-audio/6086a4d37fe10dab13b563e560d99a5cb18e7e88.mp3",
+    "bytes": 29664
   },
   "BK04-C05": {
     "text": "他多大了",
     "speaker": "A",
     "voice": "zh-CN-XiaoxiaoNeural",
-    "url": "/static/course-audio/133690b895934c30a4dc8cbaaefe6274254bc6e8.mp3",
-    "bytes": 11232
+    "rate": "-22%",
+    "speech_text": "他多大了？",
+    "url": "/static/course-audio/27bc23097f68dfd95819d79f87e6d54eafec0d53.mp3",
+    "bytes": 11664
   },
   "BK04-C06": {
     "text": "六个多月",
     "speaker": "B",
     "voice": "zh-CN-YunxiNeural",
-    "url": "/static/course-audio/3aa7d803906cb5be9355cd4ac06fa250ebaf670a.mp3",
-    "bytes": 11808
+    "rate": "-22%",
+    "speech_text": "六个多月。",
+    "url": "/static/course-audio/b02159b7d2f6ec70b718bcb6fb24eeb220692d4a.mp3",
+    "bytes": 13824
   }
 }

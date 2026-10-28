@@ -7,6 +7,14 @@ from app.learning import course
 from app.learning.course import parse_course, media_url, SNAPSHOT
 
 class CourseTest(unittest.TestCase):
+    def test_speech_rhythm_preserves_source_characters(self):
+        from app.audio.course_prosody import course_speech_text, characters, COURSE_RATE
+        self.assertEqual(COURSE_RATE, '-22%')
+        for row in json.loads(SNAPSHOT.read_text(encoding='utf-8')):
+            self.assertEqual(characters(course_speech_text(row['hanzi'])), characters(row['hanzi']))
+        self.assertEqual(course_speech_text('九月去北京旅游最好'), '九月，去北京旅游最好。')
+        self.assertEqual(course_speech_text('未知的句子'), '未知的句子')
+
     def test_token_hints(self):
         from app.learning.course_tokens import token_hints
         hints = token_hints('九月去北京旅游最好', 'jiǔ yuè qù běi jīng lǚ yóu zuì hǎo')
