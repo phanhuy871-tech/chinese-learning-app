@@ -212,7 +212,7 @@ function showAudioStatus(message, isError = false) {
 
 function appTtsUrl(text) {
   // Endpoint Python tạo MP3 bằng giọng neural tiếng Trung, ổn định hơn giọng của iPhone/browser.
-  return `/api/tts?text=${encodeURIComponent(String(text || "").slice(0, 180))}`;
+  return `/api/tts?v=clear-v2&text=${encodeURIComponent(String(text || ""))}`;
 }
 
 function playAudioSource(source) {

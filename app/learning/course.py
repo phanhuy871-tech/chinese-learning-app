@@ -93,9 +93,11 @@ def parse_course(rows: list[dict]) -> list[dict]:
             image_ref = f"{lesson_id}.jpg"
         sentence["image_url"] = media_url(image_ref)
         sentence["audio_url"] = media_url(row.get("audio_refs", ""))
+        sentence["audio_segments"] = []
         generated = manifest.get(sid, {})
         if not sentence["audio_url"] and generated.get("text") == hanzi and generated.get("speaker") == sentence["speaker"]:
             sentence["audio_url"] = generated["url"]
+            sentence["audio_segments"] = generated.get("segments", [])
         sentence["voice_label"] = "A · giọng nữ Quan thoại" if sentence["speaker"] == "A" else "B · giọng nam Quan thoại" if sentence["speaker"] == "B" else "Quan thoại"
         sentence["word_glossary"] = glossary_for(hanzi)
         sentence["listening_tokens"] = listening_tokens(hanzi)

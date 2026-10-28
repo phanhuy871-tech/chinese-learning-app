@@ -30,6 +30,22 @@
       const row = currentLesson()?.sentences.find(s => s.sentence_id === button.dataset.courseAudio);
       if (row) play(row);
     });
+    scope.querySelectorAll('[data-course-audio]').forEach(button=>{
+      const row=currentLesson()?.sentences.find(s=>s.sentence_id===button.dataset.courseAudio);
+      if(!row?.audio_segments?.length || button.nextElementSibling?.classList.contains('course-segment-audio'))return;
+      const details=document.createElement('details');details.className='course-segment-audio';
+      details.innerHTML='<summary>Nghe rõ từng cụm</summary><p>Nghe riêng cụm khó nghe; không thay đổi đáp án hoặc điểm.</p><div class="course-toolbar"></div>';
+      row.audio_segments.forEach((part,i)=>{
+        const clip=document.createElement('button');clip.type='button';clip.textContent=`🔊 Cụm ${i+1}`;
+        clip.onclick=()=>{
+          status(`Đang tải cụm ${i+1} · ${row.voice_label}`);
+          playAudioSource(part.url).then(()=>status(`Đang phát cụm ${i+1} · ${row.voice_label}`))
+            .catch(()=>status('Không tải được cụm âm thanh. Hãy thử lại.'));
+        };
+        details.querySelector('div').append(clip);
+      });
+      button.after(details);
+    });
     scope.querySelectorAll("img").forEach(img => img.onerror = () => {
       const text = document.createElement("p"); text.textContent = "Chưa tải được ảnh minh họa. Kiểm tra tên file/link ảnh."; img.replaceWith(text);
     });

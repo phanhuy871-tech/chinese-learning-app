@@ -6,16 +6,19 @@ from app.audio.course_prosody import COURSE_RATE, course_speech_text
 # Xiaoxiao là giọng Quan thoại phổ thông, phát âm rõ và tự nhiên hơn cho người mới học.
 # Cho phép đổi bằng biến môi trường mà không cần sửa source khi triển khai.
 VOICE = os.getenv("TTS_VOICE", "zh-CN-XiaoxiaoNeural")
-RATE = os.getenv("TTS_RATE", "-8%")
+RATE = os.getenv("TTS_RATE", "-22%")
 PITCH = os.getenv("TTS_PITCH", "+0Hz")
-MAX_TEXT_LENGTH = 180
+MAX_TEXT_LENGTH = 2000
 _AUDIO_CACHE: dict[str, bytes] = {}
 COURSE_VOICES = {"A": "zh-CN-XiaoxiaoNeural", "B": "zh-CN-YunxiNeural"}
 
 
 def clean_tts_text(text: str) -> str:
     """Chuẩn hóa câu/từ cần đọc để TTS không nhận chuỗi quá dài hoặc rỗng."""
-    return " ".join(str(text or "").strip().split())[:MAX_TEXT_LENGTH]
+    cleaned = " ".join(str(text or "").strip().split())
+    if len(cleaned) > MAX_TEXT_LENGTH:
+        raise ValueError("Đoạn đọc quá dài (tối đa 2000 ký tự). Hãy chia đoạn; ứng dụng không tự cắt mất chữ.")
+    return cleaned
 
 
 def cache_key(text: str) -> str:

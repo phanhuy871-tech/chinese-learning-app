@@ -138,7 +138,15 @@ Audio bài khóa dùng tốc độ tổng hợp -22% và dấu ngắt theo cụm
 trong `app/audio/course_prosody.py`. Chữ Hán nguồn không đổi; manifest ghi riêng
 `speech_text` và `rate`. Câu ngắn không bị ngắt từng chữ. Tốc độ 1x trên trình phát
 là tốc độ file này, không phải chuẩn tốc độ chung giữa các website. Audio mới có
-tên hash mới tránh cache cũ. Các module từ vựng/game khác giữ cấu hình hiện có.
+tên hash mới tránh cache cũ. Luồng TTS chung mặc định cũng dùng -22% (có thể bị
+ghi đè bằng TTS_RATE trên server). Bỏ cắt âm thầm ở 180 ký tự; quá 2000 ký tự
+báo lỗi rõ ràng thay vì phát thiếu phần cuối. URL TTS có phiên bản để tránh cache cũ.
+
+Mỗi câu bài khóa có thêm Nghe rõ từng cụm, dùng file riêng cùng giọng A/B.
+Nhãn chỉ ghi số cụm để không lộ đáp án trong phần nghe viết. Manifest gắn cụm với
+đúng câu/giọng; nguồn thay đổi thì không dùng cụm cũ. Kiểm tra tự động bảo đảm
+ghép các cụm giữ đủ chữ nguồn; không thay thế đánh giá phát âm bằng tai người.
+BK03-C01 giữ bản ngắt sau 买几个 đã được người dùng xác nhận nghe rõ 个.
 
 Tiến độ nằm trên trình duyệt/thiết bị, không đồng bộ giữa điện thoại và máy tính.
 Xóa dữ liệu trình duyệt/private mode có thể làm mất tiến độ; storage đầy/bị chặn
